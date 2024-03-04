@@ -6,3 +6,5 @@ declare module '*.vue' {
   const vueComponent: DefineComponent<{ any }, { any }, any>
   export default vueComponent
 }
+
+declare module 'lodash' //声明.防止爆红

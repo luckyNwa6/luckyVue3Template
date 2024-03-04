@@ -4,6 +4,18 @@ node 16+
 技术栈 vue3+ts+pinia+vite+vue-router
 包管理采用pnpm
 
+# 代码提交规范
+
+| 类型     | 描述                     |
+| -------- | ------------------------ |
+| feat     | 新功能（feature）        |
+| fix      | 修补 bug                 |
+| docs     | 文档（documentation）    |
+| style    | 格式方面的优化           |
+| refactor | 重构                     |
+| test     | 测试                     |
+| chore    | 构建过程或辅助工具的变动 |
+
 # husky说明
 
 ```shell

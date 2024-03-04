@@ -27,6 +27,11 @@ export const constantRoute = [
     path: '/',
     redirect: '/login',
   },
+  {
+    path: '/home',
+    component: () => import('@/views/home/index.vue'),
+    name: 'home',
+  },
 ]
 
 //异步路由

@@ -49,12 +49,16 @@
 // import request from '@/utils/request'
 // import { reqLogin } from '@/api/user'
 import useMousePosition from '@/hooks/useMousePosition' //混入
-
+import { useRouter, useRoute } from 'vue-router'
 //引入用户相关的小仓库。请求再这里面异步请求
 import useUserStore from '@/store/modules/user'
 
 let useStore = useUserStore()
 let luckyC = ref('ref类似定义data里的值')
+//获取路由器
+let $router = useRouter()
+//路由对象
+let $route = useRoute()
 
 const { x, y } = useMousePosition()
 const form = reactive({
@@ -73,6 +77,8 @@ const open = () => {
 const login = async () => {
   try {
     await useStore.userLogin(form)
+
+    $router.push({ path: '/home' })
     //登录成功提示信息
     ElNotification({
       type: 'success',

@@ -8,16 +8,33 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElButton: (typeof import('element-plus/es'))['ElButton']
+    ElCard: (typeof import('element-plus/es'))['ElCard']
+    ElCol: (typeof import('element-plus/es'))['ElCol']
+    ElDatePicker: (typeof import('element-plus/es'))['ElDatePicker']
+    ElForm: (typeof import('element-plus/es'))['ElForm']
     ElIcon: (typeof import('element-plus/es'))['ElIcon']
+    ElInput: (typeof import('element-plus/es'))['ElInput']
+    ElLink: (typeof import('element-plus/es'))['ElLink']
+    ElOption: (typeof import('element-plus/es'))['ElOption']
     ElPagination: (typeof import('element-plus/es'))['ElPagination']
+    ElRow: (typeof import('element-plus/es'))['ElRow']
+    ElSelect: (typeof import('element-plus/es'))['ElSelect']
+    ElSwitch: (typeof import('element-plus/es'))['ElSwitch']
+    ElTable: (typeof import('element-plus/es'))['ElTable']
+    ElTableColumn: (typeof import('element-plus/es'))['ElTableColumn']
     HelloWorld: (typeof import('./../components/HelloWorld.vue'))['default']
     IEpAddLocation: (typeof import('~icons/ep/add-location'))['default']
     IEpAim: (typeof import('~icons/ep/aim'))['default']
+    IEpArrowDown: (typeof import('~icons/ep/arrow-down'))['default']
     IEpEdit: (typeof import('~icons/ep/edit'))['default']
     IEpPlus: (typeof import('~icons/ep/plus'))['default']
+    PagePack: (typeof import('./../components/PagePack/index.vue'))['default']
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
     SvgIcon: (typeof import('./../components/SvgIcon/index.vue'))['default']
     TestA: (typeof import('./../components/TestA/index.vue'))['default']
+  }
+  export interface ComponentCustomProperties {
+    vLoading: (typeof import('element-plus/es'))['ElLoadingDirective']
   }
 }
