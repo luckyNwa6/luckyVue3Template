@@ -47,10 +47,10 @@
 // import { Plus, Edit } from '@element-plus/icons-vue' //这种的需要手动导，TODO
 // import SvgIcon from '@/components/SvgIcon/index.vue'
 // import request from '@/utils/request'
-import { reqLogin } from '@/api/user'
+// import { reqLogin } from '@/api/user'
 import useMousePosition from '@/hooks/useMousePosition' //混入
 
-//引入用户相关的小仓库
+//引入用户相关的小仓库。请求再这里面异步请求
 import useUserStore from '@/store/modules/user'
 
 let useStore = useUserStore()

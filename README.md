@@ -1,3 +1,9 @@
+# 环境
+
+node 16+
+技术栈 vue3+ts+pinia+vite+vue-router
+包管理采用pnpm
+
 # husky说明
 
 ```shell
