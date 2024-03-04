@@ -296,6 +296,9 @@ declare module 'vue' {
     readonly ElMessage: UnwrapRef<
       (typeof import('element-plus/es'))['ElMessage']
     >
+    readonly ElNotification: UnwrapRef<
+      (typeof import('element-plus/es'))['ElNotification']
+    >
     readonly asyncComputed: UnwrapRef<
       (typeof import('@vueuse/core'))['asyncComputed']
     >
@@ -950,6 +953,9 @@ declare module '@vue/runtime-core' {
     readonly EffectScope: UnwrapRef<(typeof import('vue'))['EffectScope']>
     readonly ElMessage: UnwrapRef<
       (typeof import('element-plus/es'))['ElMessage']
+    >
+    readonly ElNotification: UnwrapRef<
+      (typeof import('element-plus/es'))['ElNotification']
     >
     readonly asyncComputed: UnwrapRef<
       (typeof import('@vueuse/core'))['asyncComputed']

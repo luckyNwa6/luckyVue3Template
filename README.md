@@ -1,11 +1,13 @@
-# 环境
+# Vue3项目模板
+
+## 环境
 
 测试lucky分支
 node 16+
 技术栈 vue3+ts+pinia+vite+vue-router
 包管理采用pnpm
 
-# 代码提交规范
+## 代码提交规范
 
 | 类型     | 描述                     |
 | -------- | ------------------------ |
@@ -17,7 +19,7 @@ node 16+
 | test     | 测试                     |
 | chore    | 构建过程或辅助工具的变动 |
 
-# husky说明
+## husky说明
 
 ```shell
 #!/usr/bin/env sh
