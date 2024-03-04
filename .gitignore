@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 
 #自动生成
-/src/typings/
+
+src/typings/components.d.ts
+src/typings/auto-imports.d.ts
