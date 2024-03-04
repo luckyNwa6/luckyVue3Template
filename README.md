@@ -6,12 +6,13 @@ node 16+
 
 技术栈采用:
 
-vue3+ts+pinia+vite+vue-router+Element Plus
+Vue3+TypeScript+Pinia+Vite+vue-router+Element Plus
 
 包管理采用pnpm
 
 ```shell
 npm install -g pnpm
+pnpm install
 ```
 
 ## 🐯代码提交规范
@@ -53,6 +54,12 @@ fix: 修复bug
 | Prettier                      | 代码格式化                                       |
 | ESLint                        | 脚本代码检查                                     |
 | DotENV                        | env 文件高亮                                     |
+
+## 🚀优势
+
+1、项目集成了各种配置，比如自动按需引入组件，自动按需引入Vue相关API，自动引入图标
+
+2、技术栈也是优势
 
 ## 🐷其他
 
