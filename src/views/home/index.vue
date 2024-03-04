@@ -1,6 +1,11 @@
 <template>
   <div>这次可以提交了</div>
-  <el-button :plain="true" @click="exitLogin">注销</el-button>
+  <el-button
+    :plain="true"
+    @click="exitLogin"
+  >注销</el-button>
+  <hr />
+  <el-button @click="toDialog">跳转</el-button>
   <hr />
   下面是组件的使用。首先是pagePack
   <div class="flex-1 w-0">
@@ -55,7 +60,10 @@
         </el-row> -->
       </template>
       <template #searchButton>
-        <el-button type="primary" @click="hooks_handleSearch(getTablePage)">
+        <el-button
+          type="primary"
+          @click="hooks_handleSearch(getTablePage)"
+        >
           搜索
         </el-button>
         <!-- <el-button @click="hooks_resetQueryTable(getTablePage)">
@@ -174,7 +182,11 @@
               <span>{{ scope.row.createdTime }}</span>
             </template>
           </el-table-column>
-          <el-table-column width="210" label="操作" fixed="right">
+          <el-table-column
+            width="210"
+            label="操作"
+            fixed="right"
+          >
             <template #default="scope">
               <div>
                 <el-link
@@ -223,6 +235,7 @@
 import { useRouter } from 'vue-router'
 import useTable from '@/hooks/useTable'
 import { reqTablePage } from '@/api/home'
+import router from '@/router'
 
 let $router = useRouter()
 
@@ -292,6 +305,10 @@ const sortData = reactive({
 })
 const handleSort = () => {
   hooks_sortTableByProps(sortData, null, getTablePage)
+}
+
+const toDialog = () => {
+  router.push('/dialog')
 }
 </script>
 
