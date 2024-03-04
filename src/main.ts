@@ -11,6 +11,8 @@ import router from '@/router/index'
 import 'element-plus/dist/index.css'
 //导入svg插件，去阿里图标库，选择icon，copy它的Svg代码,并放到本项目的icons下，起个名字放入
 import 'virtual:svg-icons-register'
+//引入仓库
+import pinia from './store'
 //获取应用实例对象
 const app = createApp(App)
 //引入自定义插件对象 全局注册  已经配置了组件的自动引入，而且是按需的，就不必这样了
@@ -23,7 +25,7 @@ app.use(ElementPlus, {
 //安装element-plus插件
 app.use(ElementPlus)
 
-console.log(import.meta.env)
+// console.log(import.meta.env)
 
 //测试mock  可以
 // import axios from 'axios'
@@ -38,7 +40,8 @@ console.log(import.meta.env)
 
 //注册模板路由
 app.use(router)
-
+//安装仓库
+app.use(pinia)
 //将应用挂载道节点上
 
 app.mount('#app')

@@ -70,7 +70,9 @@ export default defineConfig(({ command }) => {
             importStyle: 'sass',
           }),
 
-          IconsResolver({}), // 自动导入图标组件
+          IconsResolver({
+            prefix: 'Icon',
+          }), // 自动导入图标组件
         ],
         vueTemplate: true, // 是否在 vue 模板中自动导入
         dts: path.resolve(pathSrc, 'typings', 'auto-imports.d.ts'), //自动导包的存放路径

@@ -17,6 +17,12 @@ dependencies:
   element-plus:
     specifier: ^2.5.6
     version: 2.5.6(vue@3.4.21)
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
+  pinia:
+    specifier: ^2.1.7
+    version: 2.1.7(typescript@5.3.3)(vue@3.4.21)
   vue:
     specifier: ^3.4.19
     version: 3.4.21(typescript@5.3.3)
@@ -34,9 +40,6 @@ devDependencies:
   '@commitlint/config-conventional':
     specifier: ^19.0.3
     version: 19.0.3
-  '@iconify-json/ep':
-    specifier: ^1.1.14
-    version: 1.1.14
   '@typescript-eslint/eslint-plugin':
     specifier: ^7.1.0
     version: 7.1.0(@typescript-eslint/parser@7.1.0)(eslint@8.57.0)(typescript@5.3.3)
@@ -785,12 +788,6 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.2:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
-    dev: true
-
-  /@iconify-json/ep@1.1.14:
-    resolution: {integrity: sha512-F5tuycil4mEYNLtKcHRcPVOFOiN9nT+9wjTSUm27aIH/ylrKEoZWmB6sBXSLa1IUvsqPOlWXgz3ohISzknSQ5A==}
-    dependencies:
-      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:
@@ -4115,6 +4112,24 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
     dev: true
+
+  /pinia@2.1.7(typescript@5.3.3)(vue@3.4.21):
+    resolution: {integrity: sha512-+C2AHFtcFqjPih0zpYuvof37SFxMQ7OEG2zV9jRI12i9BOy3YQVAHwdKtyyc8pDcDyIc33WCIsZaCFWU7WWxGQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      typescript: '>=4.4.4'
+      vue: ^2.6.14 || ^3.3.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.6.1
+      typescript: 5.3.3
+      vue: 3.4.21(typescript@5.3.3)
+      vue-demi: 0.14.7(vue@3.4.21)
+    dev: false
 
   /pkg-types@1.0.3:
     resolution: {integrity: sha512-nN7pYi0AQqJnoLPC9eHFQ8AcyaixBUOwvqc5TDnIKCMEE6I0y8P7OKA7fPexsXGCGxQDl/cmrLAp26LhcwxZ4A==}

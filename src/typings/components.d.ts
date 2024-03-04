@@ -8,10 +8,13 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElButton: (typeof import('element-plus/es'))['ElButton']
+    ElIcon: (typeof import('element-plus/es'))['ElIcon']
     ElPagination: (typeof import('element-plus/es'))['ElPagination']
     HelloWorld: (typeof import('./../components/HelloWorld.vue'))['default']
     IEpAddLocation: (typeof import('~icons/ep/add-location'))['default']
     IEpAim: (typeof import('~icons/ep/aim'))['default']
+    IEpEdit: (typeof import('~icons/ep/edit'))['default']
+    IEpPlus: (typeof import('~icons/ep/plus'))['default']
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
     SvgIcon: (typeof import('./../components/SvgIcon/index.vue'))['default']

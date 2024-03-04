@@ -1,6 +1,9 @@
 <template>
   <div>
-    <el-button type="primary" :icon="Edit" size="small">world</el-button>
+    <el-button type="primary" size="small">
+      <i-ep-edit />
+      编辑
+    </el-button>
 
     <hr />
     默认是英文的，需要main那修改配置
@@ -27,9 +30,9 @@
     <hr />
     <TestA />
     <hr />
-    这是elementui图标按需导入也不要注册
+    这是elementui图标按需导入也不要注册,不过有前缀
     <i-ep-add-location />
-    <i-ep-aim />
+    <i-ep-edit />
     <hr />
     这是elementui组件按需自动导入
     <el-button :plain="true" @click="open">Show message</el-button>
@@ -41,12 +44,16 @@
 </template>
 
 <script setup lang="ts">
-import { Plus, Edit } from '@element-plus/icons-vue' //这种的需要手动导，TODO
+// import { Plus, Edit } from '@element-plus/icons-vue' //这种的需要手动导，TODO
 // import SvgIcon from '@/components/SvgIcon/index.vue'
 // import request from '@/utils/request'
 import { reqLogin } from '@/api/user'
 import useMousePosition from '@/hooks/useMousePosition' //混入
 
+//引入用户相关的小仓库
+import useUserStore from '@/store/modules/user'
+
+let useStore = useUserStore()
 let luckyC = ref('ref类似定义data里的值')
 
 const { x, y } = useMousePosition()
@@ -62,11 +69,31 @@ const open = () => {
     type: 'success',
   })
 }
-const login = () => {
-  reqLogin(form).then((res: any) => {
-    console.log(res)
-  })
+
+const login = async () => {
+  try {
+    await useStore.userLogin(form)
+    //登录成功提示信息
+    ElNotification({
+      type: 'success',
+      message: '欢迎回来',
+      title: `HI`,
+    })
+  } catch (error) {
+    //登录失败的提示信息
+    ElNotification({
+      type: 'error',
+      message: (error as Error).message,
+    })
+  }
 }
+
+// const login = () => {
+
+//   // reqLogin(form).then((res: any) => {
+//   //   console.log(res)
+//   // })
+// }
 // onMounted(() => {
 //   // request({
 //   //   url: '/user/login',
