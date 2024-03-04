@@ -1,47 +1,59 @@
 # Vue3项目模板
 
-## 环境
+## 🐶环境
 
-测试lucky分支
 node 16+
-技术栈 vue3+ts+pinia+vite+vue-router
+
+技术栈采用:
+
+vue3+ts+pinia+vite+vue-router+Element Plus
+
 包管理采用pnpm
 
-## 代码提交规范
+```shell
+npm install -g pnpm
+```
+
+## 🐯代码提交规范
+
+husky 是一个 Git Hook 工具，可以让你在 Git 提交过程中自动运行脚本。
+
+当commit的时候会执行脚本，脚本会校验commit message是否符合规范。
+
+严格安装如下规范:
 
 | 类型     | 描述                     |
 | -------- | ------------------------ |
-| feat     | 新功能（feature）        |
+| feat     | 新功能                   |
 | fix      | 修补 bug                 |
-| docs     | 文档（documentation）    |
+| docs     | 文档                     |
 | style    | 格式方面的优化           |
 | refactor | 重构                     |
 | test     | 测试                     |
 | chore    | 构建过程或辅助工具的变动 |
 
-## husky说明
+比如修复一个bug 必须是
 
-```shell
-#!/usr/bin/env sh
+fix: 修复bug
 
-# 引入 husky.sh 脚本
+中间有:后面有空格
 
-. "$(dirname -- "\$0")/\_/husky.sh"
+## ⭐️开发工具
 
-# 运行 npm 的 format 和 fix 命令
+推荐 VS Code 开发，配合插件如下：
 
-npm run format && npm run fix
+| 插件名                        | 功能                                             |
+| ----------------------------- | ------------------------------------------------ |
+| TypeScript Vue Plugin (Volar) | 用于 TypeScript 的 Vue 插件                      |
+| Vue Language Features (Volar) | Vue3.0 语法支持                                  |
+| WindiCSS IntelliSense         | 自动完成、语法突出显示、代码折叠和构建等高级功能 |
+| Iconify IntelliSense          | Iconify 预览和搜索                               |
+| i18n Ally                     | 国际化智能提示                                   |
+| Stylelint                     | Css 格式化                                       |
+| Prettier                      | 代码格式化                                       |
+| ESLint                        | 脚本代码检查                                     |
+| DotENV                        | env 文件高亮                                     |
 
-# 将所有修改的文件添加到 Git 暂存区
+## 🐷其他
 
-git add .
-
-```
-
-自动导入的vue里的ref watch 等
-npm i -D unplugin-auto-import -force
-
-自动引入组件 少了import {}...
-npm i unplugin-vue-components -D -force
-
-npm i unplugin-icons -D -force
+暂无
