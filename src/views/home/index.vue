@@ -1,5 +1,5 @@
 <template>
-  <div>这是主页</div>
+  <div>这是主页1</div>
   <el-button :plain="true" @click="exitLogin">注销</el-button>
   <hr />
   下面是组件的使用。首先是pagePack
