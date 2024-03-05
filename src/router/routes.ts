@@ -136,14 +136,14 @@ export const constantRoute = [
 // ]
 
 //任意路由
-export const anyRoute = {
-  //任意路由
-  path: '/:pathMatch(.*)*',
-  redirect: '/404',
-  name: 'Any',
-  meta: {
-    title: '任意路由',
-    hidden: true,
-    icon: 'DataLine',
-  },
-}
+// export const anyRoute = {
+//   //任意路由
+//   path: '/:pathMatch(.*)*',
+//   redirect: '/404',
+//   name: 'Any',
+//   meta: {
+//     title: '任意路由',
+//     hidden: true,
+//     icon: 'DataLine',
+//   },
+// }
