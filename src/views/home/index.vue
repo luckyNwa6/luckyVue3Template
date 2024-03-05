@@ -1,9 +1,6 @@
 <template>
   <div>这次可以提交了</div>
-  <el-button
-    :plain="true"
-    @click="exitLogin"
-  >注销</el-button>
+  <el-button :plain="true" @click="exitLogin">注销</el-button>
   <hr />
   <el-button @click="toDialog">跳转</el-button>
   <hr />
@@ -23,7 +20,7 @@
               clearable
             />
           </el-col>
-          <!-- <el-col :span="7">
+          <el-col :span="7">
             <el-input
               v-model="searchData.nickname"
               :placeholder="$t('systemManager.userManager.username')"
@@ -39,9 +36,9 @@
               :end-placeholder="$t('systemManager.userManager.endDate')"
               value-format="YYYY-MM-DD"
             />
-          </el-col> -->
+          </el-col>
         </el-row>
-        <!-- <el-row :gutter="12" v-if="showSeniorSearch" class="mt-3">
+        <el-row :gutter="12" v-if="showSeniorSearch" class="mt-3">
           <el-col :span="7">
             <el-select
               v-model="searchData.status"
@@ -57,33 +54,22 @@
               />
             </el-select>
           </el-col>
-        </el-row> -->
+        </el-row>
       </template>
       <template #searchButton>
-        <el-button
-          type="primary"
-          @click="hooks_handleSearch(getTablePage)"
-        >
+        <el-button type="primary" @click="hooks_handleSearch(getTablePage)">
           搜索
         </el-button>
-        <!-- <el-button @click="hooks_resetQueryTable(getTablePage)">
+        <el-button @click="hooks_resetQueryTable(getTablePage)">
           {{ $t('page.reset') }}
-        </el-button> -->
+        </el-button>
       </template>
       <template #pageTable>
-        <!-- <div
-          class="btn-content"
-          v-has-perms="USER_MANAGER_ADD_BUTTON"
-          v-if="currentNode.permission"
-        >
-          <el-button
-            :icon="Plus"
-            type="primary"
-            @click="editData({ type: 'create' })"
-          >
+        <div class="btn-content">
+          <el-button :icon="Plus" type="primary" @click="editData()">
             {{ $t('page.add') }}
           </el-button>
-        </div> -->
+        </div>
         <el-table
           ref="tableRef"
           height="100%"
@@ -105,16 +91,16 @@
           />
           <el-table-column
             prop="username"
-            label="账号名称"
+            :label="$t('systemManager.userManager.accountName')"
             show-overflow-tooltip
             min-width="100"
           />
-          <!-- <el-table-column
+          <el-table-column
             prop="nickname"
-            :label="$t('systemManager.userManager.username')"
+            label="姓名"
             show-overflow-tooltip
             min-width="100"
-          /> -->
+          />
           <!-- <el-table-column
             :label="$t('systemManager.userManager.accountType')"
             show-overflow-tooltip
@@ -134,11 +120,11 @@
             min-width="130"
             show-overflow-tooltip
           />
-          <!-- <el-table-column
+          <el-table-column
             prop="emailNo"
             :label="$t('page.email')"
             show-overflow-tooltip
-          /> -->
+          />
           <!-- <el-table-column
             prop="groupName"
             :label="$t('systemManager.userManager.belongingGroup')"
@@ -182,11 +168,7 @@
               <span>{{ scope.row.createdTime }}</span>
             </template>
           </el-table-column>
-          <el-table-column
-            width="210"
-            label="操作"
-            fixed="right"
-          >
+          <el-table-column width="210" label="操作" fixed="right">
             <template #default="scope">
               <div>
                 <el-link
@@ -235,6 +217,7 @@
 import { useRouter } from 'vue-router'
 import useTable from '@/hooks/useTable'
 import { reqTablePage } from '@/api/home'
+import { Plus } from '@element-plus/icons-vue'
 import router from '@/router'
 
 let $router = useRouter()

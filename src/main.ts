@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 
 import App from '@/App.vue'
-
+import { isDevMode } from '@/utils/env'
 import ElementPlus from 'element-plus'
-//@ts-expect-error忽略当前文件ts类型的检测否则有红色提示(打包会失败)
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不需要这个了
 import '@/styles/index.scss'
 //引入路由
 import router from '@/router/index'
@@ -13,6 +13,14 @@ import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 //引入仓库
 import pinia from './store'
+// 国际化
+import i18n from '@/lang/index'
+
+// 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
+if (isDevMode()) {
+  import('element-plus/dist/index.css')
+}
+
 //获取应用实例对象
 const app = createApp(App)
 //引入自定义插件对象 全局注册  已经配置了组件的自动引入，而且是按需的，就不必这样了
@@ -22,8 +30,6 @@ const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn,
 })
-//安装element-plus插件
-app.use(ElementPlus)
 
 // console.log(import.meta.env)
 
@@ -38,10 +44,9 @@ app.use(ElementPlus)
 //   },
 // })
 
-//注册模板路由
-app.use(router)
-//安装仓库
-app.use(pinia)
-//将应用挂载道节点上
-
-app.mount('#app')
+app
+  .use(router) //注册模板路由
+  .use(i18n) //中英切换
+  .use(ElementPlus) //安装element-plus插件
+  .use(pinia) //安装仓库
+  .mount('#app') //将应用挂载道节点上

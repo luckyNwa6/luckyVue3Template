@@ -1,10 +1,6 @@
 <template>
-  <div>
-    弹窗测试
-  </div>
+  <div>弹窗测试</div>
 </template>
-<script setup>
-</script>
+<script setup></script>
 
-<style scoped>
-</style>
+<style scoped></style>
