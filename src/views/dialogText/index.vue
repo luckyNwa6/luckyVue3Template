@@ -1,16 +1,9 @@
 <template>
-  <div @click="dialogOpen">
-    弹窗测试
-  </div>
+  <div @click="dialogOpen">弹窗测试</div>
   <div>
-    <el-dialog
-      v-model="dialogVisible"
-      :before-close="dialogCancel"
-    >
+    <el-dialog v-model="dialogVisible" :before-close="dialogCancel">
       <div>
-        <div>
-          弹窗内容
-        </div>
+        <div>弹窗内容</div>
         <div>
           <!-- 带校验表单 -->
           <el-form
@@ -18,11 +11,7 @@
             label-width="auto"
             :model="dynamicValidateForm"
           >
-            <el-form-item
-              prop="email"
-              label="Email"
-              :rules="EmailRules"
-            >
+            <el-form-item prop="email" label="Email" :rules="EmailRules">
               <el-input v-model="dynamicValidateForm.email" />
             </el-form-item>
             <el-form-item
@@ -33,27 +22,23 @@
               :rules="domainRules"
             >
               <el-input v-model="domain.value" />
-              <el-button
-                class="mt-2"
-                @click.prevent="removeDomain(domain)"
-              >Delete</el-button>
+              <el-button class="mt-2" @click.prevent="removeDomain(domain)">
+                Delete
+              </el-button>
             </el-form-item>
             <el-form-item>
-              <el-button
-                type="primary"
-                @click="submitForm(testForm)"
-              >Submit</el-button>
+              <el-button type="primary" @click="submitForm(testForm)">
+                Submit
+              </el-button>
               <el-button @click="addDomain">New domain</el-button>
               <el-button @click="resetForm(testForm)">Reset</el-button>
             </el-form-item>
           </el-form>
-
         </div>
         <div>
           <el-button @click="dialogClose">关闭按钮</el-button>
         </div>
       </div>
-
     </el-dialog>
   </div>
 </template>

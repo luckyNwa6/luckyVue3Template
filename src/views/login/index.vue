@@ -39,6 +39,9 @@
     <hr />
     这里测试mockjs模拟的数据
     <el-button :plain="true" @click="login">登录</el-button>
+
+    <el-button :plain="true" @click="iTest">牛逼i18n测试</el-button>
+
     <hr />
   </div>
 </template>
@@ -72,6 +75,10 @@ const open = () => {
     grouping: true,
     type: 'success',
   })
+}
+
+const iTest = () => {
+  $router.push({ path: '/iTest' })
 }
 
 const login = async () => {

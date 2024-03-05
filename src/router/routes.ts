@@ -37,6 +37,11 @@ export const constantRoute = [
     component: () => import('@/views/dialogText/index.vue'),
     name: 'dialog',
   },
+  {
+    path: '/iTest',
+    component: () => import('@/views/iTest/index.vue'),
+    name: 'iTest',
+  },
 ]
 
 //异步路由
