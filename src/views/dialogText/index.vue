@@ -1,7 +1,22 @@
 <template>
-  <div @click="dialogOpen">弹窗测试</div>
+  <div class="top">
+    <div class="top-text">弹窗Hook测试：</div>
+    <div @click="dialogOpen">
+      <el-button>点击打开弹窗</el-button>
+    </div>
+  </div>
   <div>
-    <el-dialog v-model="dialogVisible" :before-close="dialogCancel">
+
+  </div>
+  <div>
+
+  </div>
+
+  <div>
+    <el-dialog
+      v-model="dialogVisible"
+      :before-close="dialogCancel"
+    >
       <div>
         <div>弹窗内容</div>
         <div>
@@ -11,7 +26,11 @@
             label-width="auto"
             :model="dynamicValidateForm"
           >
-            <el-form-item prop="email" label="Email" :rules="EmailRules">
+            <el-form-item
+              prop="email"
+              label="Email"
+              :rules="EmailRules"
+            >
               <el-input v-model="dynamicValidateForm.email" />
             </el-form-item>
             <el-form-item
@@ -22,12 +41,18 @@
               :rules="domainRules"
             >
               <el-input v-model="domain.value" />
-              <el-button class="mt-2" @click.prevent="removeDomain(domain)">
+              <el-button
+                class="mt-2"
+                @click.prevent="removeDomain(domain)"
+              >
                 Delete
               </el-button>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="submitForm(testForm)">
+              <el-button
+                type="primary"
+                @click="submitForm(testForm)"
+              >
                 Submit
               </el-button>
               <el-button @click="addDomain">New domain</el-button>
@@ -144,3 +169,15 @@ const resetForm = (formEl: FormInstance | undefined) => {
 //   window.$bus.off('dialogCancel', changeEventBus)
 // })
 </script>
+<style lang="scss" scoped>
+.top {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  &-text {
+    margin-right: 20px;
+  }
+}
+</style>
