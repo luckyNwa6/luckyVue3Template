@@ -59,7 +59,11 @@ export default defineConfig(({ command }) => {
       //---------------------------------------
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-        imports: ['vue', '@vueuse/core'],
+        imports: [
+          'vue',
+          '@vueuse/core',
+          { '@/hooks/web/useI18n': ['useI18n'] },
+        ],
         // dts: '/auto-import.d.ts',
         eslintrc: {
           enabled: false, //  Default `false`
