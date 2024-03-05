@@ -1,8 +1,6 @@
 <template>
   <el-button :plain="true" @click="exitLogin">注销</el-button>
   <hr />
-
-  <hr />
   下面是组件的使用。首先是pagePack
   <div class="flex-1 w-0">
     <PagePack
