@@ -52,7 +52,7 @@
 </template>
 <script lang="ts" setup>
 import { reactive, ref, onMounted, onBeforeMount } from 'vue'
-import useDialog from '@/hooks/useDialog'
+// import useDialog from '@/hooks/useDialog'
 import type { FormInstance } from 'element-plus'
 
 const testForm = ref<FormInstance>()

@@ -35,6 +35,9 @@ const pathSrc = path.resolve(__dirname, 'src')
 //改成箭头函数
 export default defineConfig(({ command }) => {
   return {
+    base: './', // 在生产中服务时的基本公共路径
+    publicDir: 'public', // 静态资源服务的文件夹, 默认"public"
+
     //--------------------------------------
     resolve: {
       alias: {
