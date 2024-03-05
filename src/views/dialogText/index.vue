@@ -58,7 +58,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted, onBeforeMount } from 'vue'
 import useDialog from '@/hooks/useDialog'
 import type { FormInstance } from 'element-plus'
 
@@ -68,6 +68,8 @@ interface DomainItem {
   key: number
   value: string
 }
+
+// 表单数据
 const dynamicValidateForm = reactive<{
   domains: DomainItem[]
   email: string
@@ -81,6 +83,7 @@ const dynamicValidateForm = reactive<{
   email: '',
 })
 
+// 校验规则
 const EmailRules = reactive([
   {
     required: true,
@@ -93,7 +96,6 @@ const EmailRules = reactive([
     trigger: ['blur', 'change'],
   },
 ])
-
 const domainRules = reactive({
   required: true,
   message: 'domain can not be null',
@@ -148,4 +150,12 @@ const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
 }
+
+// 监听/释放eventBus
+// onMounted(() => {
+//   window.$bus.on('dialogCancel', changeEventBus)
+// })
+// onBeforeMount(() => {
+//   window.$bus.off('dialogCancel', changeEventBus)
+// })
 </script>
