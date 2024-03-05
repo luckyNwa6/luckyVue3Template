@@ -37,7 +37,9 @@ export default defineConfig(({ command }) => {
   return {
     base: '/luckyVue3Template/', // 在生产中服务时的基本公共路径
     publicDir: 'public', // 静态资源服务的文件夹, 默认"public"
-
+    build: {
+      outDir: 'docs', //github部署那设置成这个即可
+    },
     //--------------------------------------
     resolve: {
       alias: {
