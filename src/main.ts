@@ -13,11 +13,8 @@ import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 //引入仓库
 import pinia from './store'
-// // 国际化
-// import i18n from '@/locales/index'
-
-// 初始化多语言
-import { setupI18n } from '@/plugins/vueI18n'
+// 国际化
+import i18n from '@/lang/index'
 
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
@@ -47,11 +44,9 @@ app.use(ElementPlus, {
 //   },
 // })
 
-setupI18n(app)
-
 app
   .use(router) //注册模板路由
-  // .use(i18n) //中英切换
+  .use(i18n) //中英切换
   .use(ElementPlus) //安装element-plus插件
   .use(pinia) //安装仓库
   .mount('#app') //将应用挂载道节点上

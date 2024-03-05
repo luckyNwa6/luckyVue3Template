@@ -32,11 +32,7 @@ export const constantRoute = [
     component: () => import('@/views/home/index.vue'),
     name: 'home',
   },
-  {
-    path: '/dialog',
-    component: () => import('@/views/dialogText/index.vue'),
-    name: 'dialog',
-  },
+
   {
     path: '/iTest',
     component: () => import('@/views/iTest/index.vue'),

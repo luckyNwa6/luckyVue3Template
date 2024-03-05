@@ -65,7 +65,7 @@ export default defineConfig(({ command }) => {
         imports: [
           'vue',
           '@vueuse/core',
-          { '@/hooks/web/useI18n': ['useI18n'] },
+          // { '@/hooks/web/useI18n': ['useI18n'] },//还能这样每个vue页都导入
         ],
         // dts: '/auto-import.d.ts',
         eslintrc: {

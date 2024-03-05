@@ -7,7 +7,6 @@
 </template>
 
 <script setup>
-const { t } = useI18n() // 国际化
 let filterText = ref('')
 </script>
 

@@ -1,8 +1,7 @@
 <template>
-  <div>这次可以提交了</div>
   <el-button :plain="true" @click="exitLogin">注销</el-button>
   <hr />
-  <el-button @click="toDialog">跳转</el-button>
+
   <hr />
   下面是组件的使用。首先是pagePack
   <div class="flex-1 w-0">
@@ -288,10 +287,6 @@ const sortData = reactive({
 })
 const handleSort = () => {
   hooks_sortTableByProps(sortData, null, getTablePage)
-}
-
-const toDialog = () => {
-  router.push('/dialog')
 }
 </script>
 
