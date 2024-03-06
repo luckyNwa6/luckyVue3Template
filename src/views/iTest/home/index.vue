@@ -2,7 +2,7 @@
   <el-button :plain="true" @click="exitLogin">注销</el-button>
   <hr />
   下面是组件的使用。首先是pagePack
-  <div class="flex-1 w-0">
+  <div class="flex-1 w-full">
     <PagePack
       permissionName="USER_MANAGER_LIST_PAGE"
       showToggleButton
@@ -170,7 +170,6 @@
               <div>
                 <el-link
                   class="opreation-link"
-                  v-has-perms="14"
                   :underline="false"
                   @click="editData()"
                 >

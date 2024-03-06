@@ -2,6 +2,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -61,6 +62,7 @@ export default defineConfig(({ command }) => {
     //---------------------------------------
     plugins: [
       vue(),
+      UnoCSS({}),
       //---------------------------------------
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等

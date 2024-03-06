@@ -39,8 +39,8 @@
   这里测试mockjs模拟的数据
   <el-button :plain="true" @click="login">登录</el-button>
 
-  <el-button :plain="true" @click="iTest">牛逼i18n测试</el-button>
-
+  <el-button :plain="true" @click="i18T">牛逼i18n测试</el-button>
+  <el-button :plain="true" @click="chart">echarts测试</el-button>
   <hr />
 </template>
 
@@ -60,7 +60,6 @@ let luckyC = ref('ref类似定义data里的值')
 let $router = useRouter()
 //路由对象
 let $route = useRoute()
-
 const { x, y } = useMousePosition()
 const form = reactive({
   //一般表单用这个
@@ -74,11 +73,15 @@ const open = () => {
     type: 'success',
   })
 }
-
-const iTest = () => {
+//下面是按钮的路由跳转
+const i18T = () => {
   $router.push({ path: '/i18T' })
 }
+const chart = () => {
+  $router.push({ path: '/chart' })
+}
 
+//下面是登录
 const login = async () => {
   try {
     await useStore.userLogin(form)

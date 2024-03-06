@@ -23,21 +23,6 @@ export const constantRoute = [
       icon: 'DocumentDelete',
     },
   },
-  {
-    path: '/',
-    redirect: '/login',
-  },
-  {
-    path: '/home',
-    component: () => import('@/views/home/index.vue'),
-    name: 'home',
-  },
-
-  {
-    path: '/iTest',
-    component: () => import('@/views/iTest/index.vue'),
-    name: 'iTest',
-  },
 ]
 
 //异步路由
@@ -143,3 +128,38 @@ export const anyRoute = {
     icon: 'DataLine',
   },
 }
+
+//测试路由    同级index.ts再设置一下
+export const testRoute = [
+  {
+    path: '/login',
+    component: () => import('@/views/iTest/login/index.vue'),
+    name: 'login',
+  },
+  {
+    //404
+    path: '/404',
+    component: () => import('@/views/404/index.vue'),
+    name: '404',
+  },
+  {
+    path: '/',
+    redirect: '/login',
+  },
+  {
+    path: '/home',
+    component: () => import('@/views/iTest/home/index.vue'),
+    name: 'home',
+  },
+
+  {
+    path: '/i18T',
+    component: () => import('@/views/iTest/i18T/index.vue'),
+    name: 'i18T',
+  },
+  {
+    path: '/chart',
+    component: () => import('@/views/iTest/chart/index.vue'),
+    name: 'chart',
+  },
+]
