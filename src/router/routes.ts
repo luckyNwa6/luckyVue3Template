@@ -32,6 +32,12 @@ export const constantRoute = [
     component: () => import('@/views/home/index.vue'),
     name: 'home',
   },
+
+  {
+    path: '/iTest',
+    component: () => import('@/views/iTest/index.vue'),
+    name: 'iTest',
+  },
 ]
 
 //异步路由

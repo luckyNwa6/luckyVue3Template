@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
@@ -7,6 +8,7 @@ import { viteMockServe } from 'vite-plugin-mock'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 const pathSrc = path.resolve(__dirname, 'src')
 // export default defineConfig({
@@ -33,6 +35,11 @@ const pathSrc = path.resolve(__dirname, 'src')
 //改成箭头函数
 export default defineConfig(({ command }) => {
   return {
+    base: '/luckyVue3Template/', // 在生产中服务时的基本公共路径
+    publicDir: 'public', // 静态资源服务的文件夹, 默认"public"
+    build: {
+      outDir: 'docs', //github部署那设置成这个即可
+    },
     //--------------------------------------
     resolve: {
       alias: {
@@ -57,7 +64,11 @@ export default defineConfig(({ command }) => {
       //---------------------------------------
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
-        imports: ['vue', '@vueuse/core'],
+        imports: [
+          'vue',
+          '@vueuse/core',
+          // { '@/hooks/web/useI18n': ['useI18n'] },//还能这样每个vue页都导入
+        ],
         // dts: '/auto-import.d.ts',
         eslintrc: {
           enabled: false, //  Default `false`
@@ -91,6 +102,12 @@ export default defineConfig(({ command }) => {
       //---------------------------------------
       Icons({
         autoInstall: true, // 自动安装图标库
+      }),
+      //---------------------------------------
+      VueI18nPlugin({
+        runtimeOnly: true,
+        compositionOnly: true,
+        include: [resolve(__dirname, 'src/locales/**')],
       }),
       //---------------------------------------
       createSvgIconsPlugin({

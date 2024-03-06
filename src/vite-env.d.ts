@@ -7,4 +7,6 @@ declare module '*.vue' {
   export default vueComponent
 }
 
-declare module 'lodash' //声明.防止爆红
+declare module 'lodash' //声明.防止爆红,不再声明可以用注释 //@ts-expect-error 忽略当前文件ts类型的检测否则有红色提示(打包会失败)
+declare module 'element-plus/dist/locale/zh-cn.mjs'
+declare module 'element-plus/dist/locale/en.mjs'
