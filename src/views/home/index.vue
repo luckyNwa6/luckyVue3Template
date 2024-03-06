@@ -250,6 +250,9 @@ const exitLogin = () => {
   $router.push({ path: '/login' })
 }
 
+onMounted(() => {
+  getTablePage()
+})
 // 当前页真正获取表格页数据的方法
 const getTablePage = async () => {
   tableLoading.value = true

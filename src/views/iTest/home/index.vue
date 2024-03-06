@@ -2,7 +2,7 @@
   <el-button :plain="true" @click="exitLogin">注销</el-button>
   <hr />
   下面是组件的使用。首先是pagePack
-  <div class="flex-1 w-0">
+  <div class="flex-1 w-full">
     <PagePack
       permissionName="USER_MANAGER_LIST_PAGE"
       showToggleButton
@@ -63,7 +63,7 @@
       </template>
       <template #pageTable>
         <div class="btn-content">
-          <el-button icon="Plus" type="primary" @click="editData()">
+          <el-button :icon="Plus" type="primary" @click="editData()">
             {{ $t('page.add') }}
           </el-button>
         </div>
@@ -210,11 +210,14 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import useTable from '@/hooks/useTable'
 import { reqTablePage } from '@/api/home'
+import { Plus } from '@element-plus/icons-vue'
+import router from '@/router'
 
-import useExitLogin from '@/hooks/useExitLogin'
-const { exitLogin } = useExitLogin()
+let $router = useRouter()
+
 const tableRef = ref('tableRef')
 const showSeniorSearch = ref(false)
 
@@ -242,10 +245,13 @@ const {
   hooks_handleSearch,
 } = useTable(initTableQueryData, tableRef)
 
+const exitLogin = () => {
+  $router.push({ path: '/login' })
+}
+
 onMounted(() => {
   getTablePage()
 })
-
 // 当前页真正获取表格页数据的方法
 const getTablePage = async () => {
   tableLoading.value = true
