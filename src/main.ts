@@ -8,6 +8,7 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不�
 import '@/styles/index.scss'
 //引入路由
 import router from '@/router/index'
+
 import 'element-plus/dist/index.css'
 //导入svg插件，去阿里图标库，选择icon，copy它的Svg代码,并放到本项目的icons下，起个名字放入
 import 'virtual:svg-icons-register'
@@ -23,9 +24,9 @@ if (isDevMode()) {
 
 //获取应用实例对象
 const app = createApp(App)
-//引入自定义插件对象 全局注册  已经配置了组件的自动引入，而且是按需的，就不必这样了
-// import gloablComponent from '@/components'
-// app.use(gloablComponent)
+//全局注册ep图标
+import ElementPlusIconsVue from '@/components'
+app.use(ElementPlusIconsVue)
 //国际化配置
 app.use(ElementPlus, {
   locale: zhCn,
