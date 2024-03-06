@@ -1,11 +1,45 @@
 <template>
   <div class="top">
     <div class="top-text">弹窗Hook测试：</div>
-    <div @click="dialogOpen">
-      <el-button>点击打开弹窗</el-button>
+    <div>
+      <el-button @click="dialogOpen">点击打开弹窗</el-button>
+    </div>
+    <div>
+      <el-button @click="tipsOpen">点击打开提示</el-button>
     </div>
   </div>
-  <div></div>
+  <div
+    style="border: 1px solid rgba(0, 0, 0, 0.5); margin: 20px; padding: 10px"
+  >
+    <el-row>
+      <el-col :span="8">
+        <el-countdown title="Start to grab" :value="value" />
+      </el-col>
+      <el-col :span="8">
+        <el-countdown
+          title="Remaining VIP time"
+          format="HH:mm:ss"
+          :value="value1"
+        />
+      </el-col>
+      <el-col :span="8">
+        <el-countdown format="DD [days] HH:mm:ss" :value="value2">
+          <template #title>
+            <div style="display: inline-flex; align-items: center">
+              <el-icon style="margin-right: 4px" :size="12">
+                <Calendar />
+              </el-icon>
+              Still to go until next month
+            </div>
+          </template>
+        </el-countdown>
+        <div class="countdown-footer">{{ value2.format('YYYY-MM-DD') }}</div>
+      </el-col>
+    </el-row>
+  </div>
+  <div style="display: flex; width: 100%; justify-content: center">
+    <div ref="charts" id="charts" style="width: 800px; height: 400px"></div>
+  </div>
   <div></div>
 
   <div>
@@ -51,11 +85,24 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive, ref, onMounted, onBeforeMount } from 'vue'
+// import {
+//   reactive,
+//   ref,
+//   onMounted,
+//   onBeforeMount,
+//   getCurrentInstance,
+//   nextTick
+// } from 'vue'
 import useDialog from '@/hooks/useDialog'
 import type { FormInstance } from 'element-plus'
-
+import useChart from '@/hooks/useChart'
+import dayjs from 'dayjs'
+import { Calendar } from '@element-plus/icons-vue'
+import { useMessage } from '@/hooks/web/useMessage'
 const testForm = ref<FormInstance>()
+const value = ref(Date.now() + 1000 * 60 * 60 * 7)
+const value1 = ref(Date.now() + 1000 * 60 * 60 * 2)
+const value2 = ref(dayjs().add(1, 'month').startOf('month'))
 
 interface DomainItem {
   key: number
@@ -107,10 +154,23 @@ const changeEventBus = (e: any) => {
 let { dialogVisible, dialogOpen, dialogClose, dialogCancel } = useDialog(
   testForm,
   {
-    emitName: 'testBus',
     initFormData: changeForm,
   },
 )
+
+// 解构msg
+let { info, error, confirm } = useMessage()
+let tipsOpen = () => {
+  confirm('需要点击确认', '这是确认提示')
+    .then(() => {
+      // console.log('点击确认')
+      info('这是点击确认提示')
+    })
+    .catch(() => {
+      // console.log('点击取消')
+      error('这是点击取消提示')
+    })
+}
 
 // 表单操作
 const removeDomain = (item: DomainItem) => {
@@ -151,6 +211,123 @@ const resetForm = (formEl: FormInstance | undefined) => {
 // onBeforeMount(() => {
 //   window.$bus.off('dialogCancel', changeEventBus)
 // })
+const { mountedChart } = useChart()
+let chart = null
+const chartId = 'charts'
+// 初始化数据并挂载图表
+let tocharts = ref(null)
+onMounted(() => {
+  initCharts()
+  console.log('页面渲染')
+  nextTick(() => {
+    console.log('页面渲染222')
+    mountedChart(chartId, (tocharts) => {
+      console.log('触发hook图表初始化')
+      // await initData();
+    })
+  })
+})
+
+const internalInstance = getCurrentInstance()
+const echarts = internalInstance?.appContext.config.globalProperties.$echarts
+const initCharts = () => {
+  const dom = document.getElementById('charts')
+  const myChart = echarts.init(dom)
+  tocharts.value = myChart
+  const option = {
+    title: {
+      text: 'Distribution of Electricity',
+      subtext: 'Fake Data',
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+      },
+    },
+    xAxis: {
+      type: 'category',
+      data: [
+        'MonVIP',
+        'TueVIP',
+        'WedVIP',
+        'ThuVIP',
+        'FriVIP',
+        'SatVIP',
+        'SunVIP',
+      ],
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} h',
+      },
+      axisPointer: {
+        snap: true,
+      },
+    },
+    visualMap: {
+      show: false,
+      dimension: 0,
+      pieces: [
+        {
+          gt: 0,
+          lte: 1,
+          color: 'green',
+        },
+        {
+          gt: 1,
+          lte: 3,
+          color: 'red',
+        },
+        {
+          gt: 3,
+          lte: 5,
+          color: 'green',
+        },
+        {
+          gt: 5,
+          lte: 6,
+          color: 'red',
+        },
+      ],
+    },
+    series: [
+      {
+        data: [666, 888, 555, 555, 555, 777, 999],
+        type: 'line',
+        smooth: true,
+        markArea: {
+          itemStyle: {
+            color: 'rgba(255, 173, 177, 0.4)',
+          },
+          data: [
+            [
+              {
+                name: 'Down Peak',
+                xAxis: 'TueVIP',
+              },
+              {
+                xAxis: 'WedVIP',
+              },
+            ],
+            [
+              {
+                name: 'Up Peak',
+                xAxis: 'FriVIP',
+              },
+              {
+                xAxis: 'SatVIP',
+              },
+            ],
+          ],
+        },
+      },
+    ],
+  }
+  // 设置实例参数
+  myChart.setOption(option)
+}
 </script>
 <style lang="scss" scoped>
 .top {
@@ -162,5 +339,13 @@ const resetForm = (formEl: FormInstance | undefined) => {
   &-text {
     margin-right: 20px;
   }
+}
+
+.el-col {
+  text-align: center;
+}
+
+.countdown-footer {
+  margin-top: 8px;
 }
 </style>

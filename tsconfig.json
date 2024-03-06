@@ -16,7 +16,8 @@
     "paths": {
       //路径映射，相对于baseUrl
       "@/*": ["src/*"]
-    }
+    },
+    "types": ["vue3-baidu-map-gl/volar"]
   },
   "include": [
     "src/**/*.ts",

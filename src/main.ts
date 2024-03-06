@@ -3,7 +3,7 @@ import { createApp } from 'vue'
 import App from '@/App.vue'
 import { isDevMode } from '@/utils/env'
 import ElementPlus from 'element-plus'
-
+import * as echarts from 'echarts'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不需要这个了
 import '@/styles/index.scss'
 //引入路由
@@ -19,6 +19,9 @@ import pinia from './store'
 // 初始化多语言
 import { setupI18n } from '@/plugins/vueI18n'
 
+// 百度地图插件
+import baiduMap from 'vue3-baidu-map-gl'
+
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
   import('element-plus/dist/index.css')
@@ -33,7 +36,7 @@ const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn,
 })
-
+app.config.globalProperties.$echarts = echarts
 // console.log(import.meta.env)
 
 //测试mock  可以
@@ -46,6 +49,10 @@ app.use(ElementPlus, {
 //     password: '111111',
 //   },
 // })
+app.use(baiduMap, {
+  ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
+  plugins: ['TrackAnimation'],
+})
 
 setupI18n(app)
 
