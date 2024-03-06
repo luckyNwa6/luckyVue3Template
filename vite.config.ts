@@ -12,6 +12,7 @@ import Icons from 'unplugin-icons/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 const pathSrc = path.resolve(__dirname, 'src')
+
 // export default defineConfig({
 //   plugins: [vue(),createSvgIconsPlugin({
 //     // 阿里icon就放icons下了

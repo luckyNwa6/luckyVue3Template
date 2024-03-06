@@ -37,8 +37,8 @@
   <el-button :plain="true" @click="open">Show message</el-button>
   <hr />
   这里测试mockjs模拟的数据
-  <el-button :plain="true" @click="login">登录</el-button>
-
+  <el-button :plain="true" @click="loginM">Mock登录测试</el-button>
+  <!-- <el-button :plain="true" @click="loginX">线上登录测试</el-button> -->
   <el-button :plain="true" @click="i18T">牛逼i18n测试</el-button>
   <el-button :plain="true" @click="chart">echarts测试</el-button>
   <hr />
@@ -82,7 +82,7 @@ const chart = () => {
 }
 
 //下面是登录
-const login = async () => {
+const loginM = async () => {
   try {
     await useStore.userLogin(form)
 
@@ -102,7 +102,7 @@ const login = async () => {
   }
 }
 
-// const login = () => {
+// const loginM = () => {
 
 //   // reqLogin(form).then((res: any) => {
 //   //   console.log(res)
