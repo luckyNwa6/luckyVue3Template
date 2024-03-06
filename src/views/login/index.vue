@@ -42,6 +42,7 @@
 
     <el-button :plain="true" @click="iTest">牛逼i18n测试</el-button>
 
+    <el-button :plain="true" @click="toMap">地图测试</el-button>
     <hr />
   </div>
 </template>
@@ -79,6 +80,10 @@ const open = () => {
 
 const iTest = () => {
   $router.push({ path: '/iTest' })
+}
+
+const toMap = () => {
+  $router.push({ path: '/map' })
 }
 
 const login = async () => {
