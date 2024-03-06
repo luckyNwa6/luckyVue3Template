@@ -63,7 +63,7 @@
       </template>
       <template #pageTable>
         <div class="btn-content">
-          <el-button :icon="Plus" type="primary" @click="editData()">
+          <el-button icon="Plus" type="primary" @click="editData()">
             {{ $t('page.add') }}
           </el-button>
         </div>
@@ -170,7 +170,6 @@
               <div>
                 <el-link
                   class="opreation-link"
-                  v-has-perms="14"
                   :underline="false"
                   @click="editData()"
                 >
@@ -242,6 +241,10 @@ const {
   hooks_resetQueryTable,
   hooks_handleSearch,
 } = useTable(initTableQueryData, tableRef)
+
+onMounted(() => {
+  getTablePage()
+})
 
 // 当前页真正获取表格页数据的方法
 const getTablePage = async () => {

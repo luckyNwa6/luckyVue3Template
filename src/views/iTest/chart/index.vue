@@ -6,49 +6,33 @@
         :key="item.component"
         :span="item.span"
       >
-        <component
-          :is="item.component"
-          :com-title="item.title"
-          :head-icon="item.headIcon"
-        />
+        <component :is="item.component" :com-title="item.title" />
       </el-col>
     </el-row>
+    <el-button :plain="true" @click="exitLogin">注销</el-button>
   </div>
 </template>
 
-<script>
+<script setup>
 import productType from './components/productType.vue' // 产品类型统计
 import { cloneDeep } from 'lodash'
-export default {
-  name: 'Dashboard',
-  components: {
-    productType,
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+import useExitLogin from '@/hooks/useExitLogin'
+const { exitLogin } = useExitLogin()
+const componentsList = ref([
+  {
+    title: t('Product type statistics'),
+    component: productType,
+    span: 8,
+    index: 3,
   },
-  data() {
-    return {
-      componentsList: [
-        {
-          title: this.$t('Product type statistics'),
-          component: 'productType',
-          headIcon: 'el-type',
-          span: 8,
-          index: 3,
-        },
-      ],
-    }
-  },
-  computed: {
-    componentsListSort() {
-      const components = cloneDeep(this.componentsList)
-      return components.sort((a, b) => a.index - b.index)
-    },
-  },
-  watch: {},
+])
 
-  mounted() {},
-
-  methods: {},
-}
+const componentsListSort = computed(() => {
+  const components = cloneDeep(componentsList.value)
+  return components.sort((a, b) => a.index - b.index)
+})
 </script>
 
 <style lang="scss" scoped>
