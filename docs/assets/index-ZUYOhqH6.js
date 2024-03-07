@@ -1,39 +1,39 @@
 import {
-  o as c,
-  c as i,
+  o as u,
+  c as r,
   a as e,
   d as g,
   _ as y,
-  n as L,
+  n as N,
   r as f,
-  b as q,
-  e as D,
-  u as H,
-  f as N,
-  g as T,
-  h as o,
-  w as _,
+  b as T,
+  e as b,
+  u as q,
+  f as D,
+  g as H,
+  h as n,
+  w as i,
   i as s,
   t as d,
   j as p,
   F as V,
-  E as b,
+  E as A,
   k as m,
-  l as A,
-  m as X,
-  p as j,
-  q as P,
-} from './index-CfViZvwD.js'
+  l as X,
+  m as j,
+  p as P,
+  q as R,
+} from './index-uBCHypy4.js'
 /* empty css                  */ import {
-  r as R,
-  u as U,
-} from './request-caPHKosA.js'
-/* empty css                 */ const Y = {
+  r as U,
+  u as Y,
+} from './request-CJ29PJIZ.js'
+/* empty css                 */ const G = {
     viewBox: '0 0 1024 1024',
     width: '1.2em',
     height: '1.2em',
   },
-  G = e(
+  J = e(
     'path',
     {
       fill: 'currentColor',
@@ -42,7 +42,7 @@ import {
     null,
     -1,
   ),
-  J = e(
+  K = e(
     'path',
     {
       fill: 'currentColor',
@@ -51,13 +51,13 @@ import {
     null,
     -1,
   ),
-  K = [G, J]
-function O(t, l) {
-  return c(), i('svg', Y, [...K])
+  O = [J, K]
+function Q(t, l) {
+  return u(), r('svg', G, [...O])
 }
-const Q = { name: 'ep-edit', render: O },
-  W = { viewBox: '0 0 1024 1024', width: '1.2em', height: '1.2em' },
-  Z = e(
+const W = { name: 'ep-edit', render: Q },
+  Z = { viewBox: '0 0 1024 1024', width: '1.2em', height: '1.2em' },
+  ee = e(
     'path',
     {
       fill: 'currentColor',
@@ -66,7 +66,7 @@ const Q = { name: 'ep-edit', render: O },
     null,
     -1,
   ),
-  ee = e(
+  te = e(
     'path',
     {
       fill: 'currentColor',
@@ -75,7 +75,7 @@ const Q = { name: 'ep-edit', render: O },
     null,
     -1,
   ),
-  te = e(
+  ne = e(
     'path',
     {
       fill: 'currentColor',
@@ -84,27 +84,27 @@ const Q = { name: 'ep-edit', render: O },
     null,
     -1,
   ),
-  ne = [Z, ee, te]
-function oe(t, l) {
-  return c(), i('svg', W, [...ne])
+  oe = [ee, te, ne]
+function se(t, l) {
+  return u(), r('svg', Z, [...oe])
 }
-const se = { name: 'ep-add-location', render: oe },
-  le = g({
+const le = { name: 'ep-add-location', render: se },
+  ae = g({
     setup() {
       return {}
     },
   })
-function ae(t, l, u, a, v, x) {
+function ce(t, l, _, a, v, x) {
   return (
-    c(), i('div', null, '****这是自动引入的主键，都不需要import也不用注册*****')
+    u(), r('div', null, '****这是自动引入的主键，都不需要import也不用注册*****')
   )
 }
-const ce = y(le, [
-    ['render', ae],
+const ie = y(ae, [
+    ['render', ce],
     ['__scopeId', 'data-v-32a426e5'],
   ]),
-  ie = ['xlink:href', 'fill'],
-  ue = g({
+  ue = ['xlink:href', 'fill'],
+  re = g({
     __name: 'index',
     props: {
       prefix: { type: String, default: '#icon-' },
@@ -114,20 +114,20 @@ const ce = y(le, [
       height: { type: String, default: '16px' },
     },
     setup(t) {
-      return (l, u) => (
-        c(),
-        i('div', null, [
-          (c(),
-          i(
+      return (l, _) => (
+        u(),
+        r('div', null, [
+          (u(),
+          r(
             'svg',
-            { style: L({ width: t.width, height: t.height }) },
+            { style: N({ width: t.width, height: t.height }) },
             [
               e(
                 'use',
                 { 'xlink:href': t.prefix + t.name, fill: t.color },
                 null,
                 8,
-                ie,
+                ue,
               ),
             ],
             4,
@@ -136,53 +136,53 @@ const ce = y(le, [
       )
     },
   }),
-  re = (t) => R.post('/idpSys/login', t)
-function _e() {
+  _e = (t) => U.post('/idpSys/login', t)
+function he() {
   const t = f(0),
     l = f(0),
-    u = (a) => {
+    _ = (a) => {
       ;(t.value = a.pageX), (l.value = a.pageY)
     }
   return (
-    q(() => {
-      document.addEventListener('click', u)
+    T(() => {
+      document.addEventListener('click', _)
     }),
-    D(() => {
-      document.removeEventListener('click', u)
+    b(() => {
+      document.removeEventListener('click', _)
     }),
     { x: t, y: l }
   )
 }
-const n = (t) => (j('data-v-75ccec45'), (t = t()), P(), t),
-  he = n(() => e('hr', null, null, -1)),
-  de = n(() => e('hr', null, null, -1)),
-  pe = n(() =>
+const o = (t) => (P('data-v-0cf1cc6b'), (t = t()), R(), t),
+  de = o(() => e('hr', null, null, -1)),
+  pe = o(() => e('hr', null, null, -1)),
+  me = o(() =>
     e('h1', null, '测试svg,用xlink:herf执行哪一个图标#icon-图标名称', -1),
   ),
-  me = { style: { width: '30px', height: '30px' } },
-  fe = n(() =>
+  fe = { style: { width: '30px', height: '30px' } },
+  ge = o(() =>
     e('use', { 'xlink:href': '#icon-phone', fill: 'pink' }, null, -1),
   ),
-  ge = [fe],
-  ve = n(() => e('div', { class: 'testColor' }, 'lucky小维', -1)),
-  xe = n(() => e('hr', null, null, -1)),
-  ye = n(() => e('hr', null, null, -1)),
-  ke = n(() => e('hr', null, null, -1)),
-  Ce = n(() => e('hr', null, null, -1)),
-  $e = n(() => e('hr', null, null, -1)),
-  we = n(() => e('hr', null, null, -1)),
-  Ee = n(() => e('hr', null, null, -1)),
-  Se = g({
+  ve = [ge],
+  xe = o(() => e('div', { class: 'testColor' }, 'lucky小维', -1)),
+  ye = o(() => e('hr', null, null, -1)),
+  Ce = o(() => e('hr', null, null, -1)),
+  ke = o(() => e('hr', null, null, -1)),
+  $e = o(() => e('hr', null, null, -1)),
+  we = o(() => e('hr', null, null, -1)),
+  Ee = o(() => e('hr', null, null, -1)),
+  Se = o(() => e('hr', null, null, -1)),
+  Me = g({
     __name: 'index',
     setup(t) {
-      let l = U(),
-        u = f('ref类似定义data里的值'),
-        a = H()
-      N()
-      const { x: v, y: x } = _e(),
-        k = T({ username: 'admin', password: '111111' }),
-        C = () => {
-          b({ message: 'this is a message.', grouping: !0, type: 'success' })
+      let l = Y(),
+        _ = f('ref类似定义data里的值'),
+        a = q()
+      D()
+      const { x: v, y: x } = he(),
+        C = H({ username: 'admin', password: '111111' }),
+        k = () => {
+          A({ message: 'this is a message.', grouping: !0, type: 'success' })
         },
         $ = () => {
           a.push({ path: '/i18T' })
@@ -191,7 +191,10 @@ const n = (t) => (j('data-v-75ccec45'), (t = t()), P(), t),
           a.push({ path: '/chart' })
         },
         E = () => {
-          re({
+          a.push({ path: '/uNoCssT' })
+        },
+        S = () => {
+          _e({
             acc: 'luckyNwa',
             captcha: '',
             openCaptcha: !1,
@@ -203,48 +206,48 @@ const n = (t) => (j('data-v-75ccec45'), (t = t()), P(), t),
                 m({ type: 'success', message: '登录成功!', title: 'HI，小维' })
           })
         },
-        S = async () => {
+        M = async () => {
           try {
-            await l.userLogin(k),
+            await l.userLogin(C),
               a.push({ path: '/home' }),
               m({ type: 'success', message: '欢迎回来', title: 'HI' })
           } catch (h) {
             m({ type: 'error', message: h.message })
           }
         }
-      return (h, Me) => {
-        const r = A,
-          M = X,
-          F = ue,
-          I = ce,
-          z = se,
-          B = Q
+      return (h, Fe) => {
+        const c = X,
+          F = j,
+          I = re,
+          z = ie,
+          B = le,
+          L = W
         return (
-          c(),
-          i(
+          u(),
+          r(
             V,
             null,
             [
-              o(
-                r,
+              n(
+                c,
                 { type: 'primary', size: 'small', icon: 'plus' },
-                { default: _(() => [s(' 编辑2种自动引入的方法应用 ')]), _: 1 },
+                { default: i(() => [s(' 编辑2种自动引入的方法应用 ')]), _: 1 },
               ),
-              he,
+              de,
               s(' 默认是英文的，需要main那修改配置 '),
-              o(M, {
+              n(F, {
                 'page-size': 100,
                 layout: 'total, prev, pager, next',
                 total: 1e3,
               }),
-              de,
               pe,
-              (c(), i('svg', me, ge)),
-              o(F, { name: 'phone', color: 'blue' }),
-              ve,
+              me,
+              (u(), r('svg', fe, ve)),
+              n(I, { name: 'phone', color: 'blue' }),
               xe,
-              e('div', null, d(p(u)), 1),
               ye,
+              e('div', null, d(p(_)), 1),
+              Ce,
               e(
                 'div',
                 null,
@@ -255,41 +258,46 @@ const n = (t) => (j('data-v-75ccec45'), (t = t()), P(), t),
                 1,
               ),
               ke,
-              o(I),
-              Ce,
-              s(' 这是elementui图标按需导入也不要注册,不过有前缀 '),
-              o(z),
-              o(B),
+              n(z),
               $e,
-              s(' 这是elementui组件按需自动导入 '),
-              o(
-                r,
-                { plain: !0, onClick: C },
-                { default: _(() => [s('Show message')]), _: 1 },
-              ),
+              s(' 这是elementui图标按需导入也不要注册,不过有前缀 '),
+              n(B),
+              n(L),
               we,
-              s(' 这里测试mockjs模拟的数据 '),
-              o(
-                r,
-                { plain: !0, onClick: S },
-                { default: _(() => [s('Mock登录测试')]), _: 1 },
-              ),
-              o(
-                r,
-                { plain: !0, onClick: E },
-                { default: _(() => [s('线上登录测试')]), _: 1 },
-              ),
-              o(
-                r,
-                { plain: !0, onClick: $ },
-                { default: _(() => [s('牛逼i18n测试')]), _: 1 },
-              ),
-              o(
-                r,
-                { plain: !0, onClick: w },
-                { default: _(() => [s('echarts测试')]), _: 1 },
+              s(' 这是elementui组件按需自动导入 '),
+              n(
+                c,
+                { plain: !0, onClick: k },
+                { default: i(() => [s('Show message')]), _: 1 },
               ),
               Ee,
+              s(' 这里测试mockjs模拟的数据 '),
+              n(
+                c,
+                { plain: !0, onClick: M },
+                { default: i(() => [s('Mock登录测试')]), _: 1 },
+              ),
+              n(
+                c,
+                { plain: !0, onClick: S },
+                { default: i(() => [s('线上登录测试')]), _: 1 },
+              ),
+              n(
+                c,
+                { plain: !0, onClick: $ },
+                { default: i(() => [s('牛逼i18n测试')]), _: 1 },
+              ),
+              n(
+                c,
+                { plain: !0, onClick: w },
+                { default: i(() => [s('echarts测试')]), _: 1 },
+              ),
+              Se,
+              n(
+                c,
+                { plain: !0, onClick: E },
+                { default: i(() => [s('unocss测试')]), _: 1 },
+              ),
             ],
             64,
           )
@@ -297,5 +305,5 @@ const n = (t) => (j('data-v-75ccec45'), (t = t()), P(), t),
       }
     },
   }),
-  Le = y(Se, [['__scopeId', 'data-v-75ccec45']])
-export { Le as default }
+  Ne = y(Me, [['__scopeId', 'data-v-0cf1cc6b']])
+export { Ne as default }
