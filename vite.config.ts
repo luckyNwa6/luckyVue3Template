@@ -18,10 +18,10 @@ export default defineConfig(({ command, mode }) => {
   //获取各种环境下的对应的变量
   let env = loadEnv(mode, process.cwd())
   return {
-    base: '/luckyVue3Template/', // 在生产中服务时的基本公共路径
+    base: '/', // 在生产中服务时的基本公共路径
     publicDir: 'public', // 静态资源服务的文件夹, 默认"public"
     build: {
-      outDir: 'docs', //github部署那设置成这个即可
+      outDir: 'dist',
     },
     //--------------------------------------
     resolve: {
@@ -102,8 +102,8 @@ export default defineConfig(({ command, mode }) => {
       }),
       //---------------------------------------
       viteMockServe({
-        // localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
-        localEnabled: false, //开发关闭
+        localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
+        // localEnabled: false, //开发关闭
         // prodEnabled: false, //mock生产接口开关
       }),
     ],

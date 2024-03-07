@@ -20,6 +20,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
   nprogress.start()
   //获取token,去判断用户登录、还是未登录
   const token = userStore.token
+  console.log('🚀 ~ router.beforeEach ~ token:', token)
   //获取用户名字
   const username = userStore.username
   //用户登录判断
