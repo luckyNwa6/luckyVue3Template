@@ -47,15 +47,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-// import { Plus, Edit } from '@element-plus/icons-vue' //这种的需要手动导，TODO
-// import SvgIcon from '@/components/SvgIcon/index.vue'
-// import request from '@/utils/request'
-// import { reqLogin } from '@/api/user'
-import useMousePosition from '@/hooks/useMousePosition' //混入
-import { useRouter, useRoute } from 'vue-router'
-//引入用户相关的小仓库。请求再这里面异步请求
-import useUserStore from '@/store/modules/user'
+<script setup></script>
 
 let useStore = useUserStore()
 let luckyC = ref('ref类似定义data里的值')

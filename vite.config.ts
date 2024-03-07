@@ -1,7 +1,9 @@
 import { resolve } from 'path'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
+
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { viteMockServe } from 'vite-plugin-mock'
@@ -11,6 +13,7 @@ import Icons from 'unplugin-icons/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 const pathSrc = path.resolve(__dirname, 'src')
+
 // export default defineConfig({
 //   plugins: [vue(),createSvgIconsPlugin({
 //     // 阿里icon就放icons下了
@@ -33,8 +36,15 @@ const pathSrc = path.resolve(__dirname, 'src')
 //   },
 // })
 //改成箭头函数
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
+  //获取各种环境下的对应的变量
+  let env = loadEnv(mode, process.cwd())
   return {
+    base: '/luckyVue3Template/', // 在生产中服务时的基本公共路径
+    publicDir: 'public', // 静态资源服务的文件夹, 默认"public"
+    build: {
+      outDir: 'docs', //github部署那设置成这个即可
+    },
     //--------------------------------------
     resolve: {
       alias: {
@@ -56,13 +66,14 @@ export default defineConfig(({ command }) => {
     //---------------------------------------
     plugins: [
       vue(),
+      UnoCSS({}),
       //---------------------------------------
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
         imports: [
           'vue',
           '@vueuse/core',
-          { '@/hooks/web/useI18n': ['useI18n'] },
+          // { '@/hooks/web/useI18n': ['useI18n'] },//还能这样每个vue页都导入
         ],
         // dts: '/auto-import.d.ts',
         eslintrc: {
@@ -113,7 +124,23 @@ export default defineConfig(({ command }) => {
       //---------------------------------------
       viteMockServe({
         localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
+        // prodEnabled: false, //mock生产接口开关
       }),
     ],
+    //代理跨域
+    server: {
+      proxy: {
+        [env.VITE_APP_BASE_API]: {
+          //获取数据的服务器地址设置
+          target: env.VITE_SERVE,
+          //需要代理跨域
+          changeOrigin: true,
+          //路径重写
+          rewrite: (path) => {
+            return path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')
+          },
+        },
+      },
+    },
   }
 })

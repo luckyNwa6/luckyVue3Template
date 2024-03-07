@@ -13,7 +13,7 @@ import type { UserState } from './types/type'
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 
 //引入路由(常量路由)
-import { constantRoute, anyRoute } from '@/router/routes'
+import { constantRoute } from '@/router/routes'
 
 //创建用户小仓库
 const useUserStore = defineStore('User', {
@@ -43,6 +43,7 @@ const useUserStore = defineStore('User', {
         //本地存储持久化存储一份
         SET_TOKEN(result.data as string)
         //能保证当前async函数返回一个成功的promise
+
         return 'ok'
       } else {
         return Promise.reject(new Error(result.message))
