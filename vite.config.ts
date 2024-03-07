@@ -10,6 +10,7 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import Unocss from 'unocss/vite'
 const pathSrc = path.resolve(__dirname, 'src')
 // export default defineConfig({
 //   plugins: [vue(),createSvgIconsPlugin({
@@ -83,6 +84,7 @@ export default defineConfig(({ command }) => {
         vueTemplate: true, // 是否在 vue 模板中自动导入
         dts: path.resolve(pathSrc, 'typings', 'auto-imports.d.ts'), //自动导包的存放路径
       }),
+      Unocss({ configFile: '../uno.config.ts' }),
       //---------------------------------------
       Components({
         resolvers: [

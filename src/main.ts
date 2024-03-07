@@ -22,6 +22,9 @@ import { setupI18n } from '@/plugins/vueI18n'
 // 百度地图插件
 import baiduMap from 'vue3-baidu-map-gl'
 
+// Uno样式
+import 'uno.css'
+
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
   import('element-plus/dist/index.css')

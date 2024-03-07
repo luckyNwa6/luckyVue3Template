@@ -47,6 +47,11 @@ export const constantRoute = [
     component: () => import('@/views/map/index.vue'),
     name: 'map',
   },
+  {
+    path: '/uno',
+    component: () => import('@/views/unocss/index.vue'),
+    name: 'uno',
+  },
 ]
 
 //异步路由

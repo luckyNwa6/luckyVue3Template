@@ -43,6 +43,8 @@
     <el-button :plain="true" @click="iTest">牛逼i18n测试</el-button>
 
     <el-button :plain="true" @click="toMap">地图测试</el-button>
+
+    <el-button :plain="true" @click="toUno">UnoCSS</el-button>
     <hr />
   </div>
 </template>
@@ -84,6 +86,9 @@ const iTest = () => {
 
 const toMap = () => {
   $router.push({ path: '/map' })
+}
+const toUno = () => {
+  $router.push({ path: '/uno' })
 }
 
 const login = async () => {

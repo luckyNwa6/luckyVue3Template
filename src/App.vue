@@ -4,6 +4,15 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup>
+onMounted(() => {
+  // 禁用复制
+  // document.onselectstart = new Function('event.returnValue=false')
+})
+</script>
 
-<style scoped></style>
+<style>
+* {
+  user-select: none;
+}
+</style>

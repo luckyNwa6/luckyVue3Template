@@ -78,7 +78,7 @@
         />
       </BMap>
     </div>
-    <div class="textBox">当前所在地区：{{ cityName }}</div>
+    <div class="textBox mx-3 bg-red-800">当前所在地区：{{ cityName }}</div>
   </div>
 </template>
 <script lang="ts" setup>
