@@ -10,6 +10,9 @@ import '@/styles/index.scss' //重置样式
 import 'uno.css'
 import 'element-plus/dist/index.css'
 
+//引入路由鉴权文件
+import './permisstion'
+
 //导入svg插件，去阿里图标库，选择icon，copy它的Svg代码,并放到本项目的icons下，起个名字放入
 import 'virtual:svg-icons-register'
 
@@ -35,18 +38,9 @@ app.use(ElementPlus, {
   locale: zhCn,
 })
 
-// console.log(import.meta.env)
-
-//测试mock  可以
-// import axios from 'axios'
-// axios({
-//   url: '/api/user/login',
-//   method: 'post',
-//   data: {
-//     username: 'admin',
-//     password: '111111',
-//   },
-// })
+//引入自定义指令文件
+import { isHasButton } from '@/directive/has'
+isHasButton(app)
 
 app
   .use(router) //注册模板路由

@@ -1,6 +1,8 @@
+// import logo from '@/assets/images/error_images/401.png' // 使用相对路径导入图片
 //用于项目logo|标题配置
 export default {
-  title: '小维运营平台', //项目的标题
-  logo: '/logo.png', //项目logo设置
+  title: 'Lucky_Star', //项目的标题
+  logo: '/mushroom.svg', //项目public下的
+  // logo: logo, //项目logo设置
   logoHidden: true, //logo组件是否隐藏设置
 }
