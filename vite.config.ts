@@ -14,28 +14,6 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 const pathSrc = path.resolve(__dirname, 'src')
 
-// export default defineConfig({
-//   plugins: [vue(),createSvgIconsPlugin({
-//     // 阿里icon就放icons下了
-//     iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-//     symbolId: 'icon-[dir]-[name]',
-//   })],
-//   resolve: {
-//     alias: {
-//       '@': path.resolve('./src'), // 相对路径别名配置，使用 @ 代替 src
-//     },
-//   },
-//    //scss全局变量一个配置
-//   css: {
-//     preprocessorOptions: {
-//       scss: {
-//         javascriptEnabled: true,
-//         additionalData: '@import "./src/styles/variable.scss";',
-//       },
-//     },
-//   },
-// })
-//改成箭头函数
 export default defineConfig(({ command, mode }) => {
   //获取各种环境下的对应的变量
   let env = loadEnv(mode, process.cwd())
@@ -73,6 +51,7 @@ export default defineConfig(({ command, mode }) => {
         imports: [
           'vue',
           '@vueuse/core',
+          'vue-router',
           // { '@/hooks/web/useI18n': ['useI18n'] },//还能这样每个vue页都导入
         ],
         // dts: '/auto-import.d.ts',
@@ -123,7 +102,8 @@ export default defineConfig(({ command, mode }) => {
       }),
       //---------------------------------------
       viteMockServe({
-        localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
+        // localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
+        localEnabled: false, //开发关闭
         // prodEnabled: false, //mock生产接口开关
       }),
     ],
