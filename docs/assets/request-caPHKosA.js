@@ -1,4 +1,4 @@
-import { V as Ie, W as qe, E as He } from './index-DDmJ86zX.js'
+import { V as Ie, W as qe, E as He } from './index-CfViZvwD.js'
 function ye(e, t) {
   return function () {
     return e.apply(t, arguments)
@@ -1824,7 +1824,7 @@ const rn = (e) => U.post('/user/login', e),
     },
     getters: {},
   }),
-  U = y.create({ baseURL: '/idp', timeout: 5e3 })
+  U = y.create({ baseURL: '/api', timeout: 5e3 })
 U.interceptors.request.use((e) => {
   const t = ln()
   return t.token && (e.headers.token = t.token), e

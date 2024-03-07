@@ -4553,7 +4553,7 @@ function aC(e, t) {
 const oC = tC(nC, [['render', aC]])
 var rC = {
   VITE_APP_TITLE: 'luckyVue3Template',
-  VITE_APP_BASE_API: '/idp',
+  VITE_APP_BASE_API: '/api',
   VITE_SERVE: 'http://47.98.230.128:10086',
   VITE_USER_NODE_ENV: 'production',
   BASE_URL: '/luckyVue3Template/',
@@ -64798,7 +64798,7 @@ const jie = [
       path: '/login',
       component: () =>
         yl(
-          () => import('./index-DRj-iYVn.js'),
+          () => import('./index-B--HtPbd.js'),
           __vite__mapDeps([0, 1, 2, 3, 4, 5]),
         ),
       name: 'login',
@@ -64808,7 +64808,7 @@ const jie = [
       path: '/home',
       component: () =>
         yl(
-          () => import('./index-D1QPT7I_.js'),
+          () => import('./index-mzCLhlkc.js'),
           __vite__mapDeps([6, 7, 8, 1, 2, 9, 4, 5]),
         ),
       name: 'home',
@@ -64816,7 +64816,7 @@ const jie = [
     {
       path: '/404',
       component: () =>
-        yl(() => import('./index-D24sY2CD.js'), __vite__mapDeps([])),
+        yl(() => import('./index-D7woIenr.js'), __vite__mapDeps([])),
       name: '404',
     },
     {
@@ -64831,7 +64831,7 @@ const jie = [
       path: '/i18T',
       component: () =>
         yl(
-          () => import('./index-Drdrrt57.js'),
+          () => import('./index-D1RGwDsx.js'),
           __vite__mapDeps([10, 11, 4, 5]),
         ),
       name: 'i18T',
@@ -64840,7 +64840,7 @@ const jie = [
       path: '/chart',
       component: () =>
         yl(
-          () => import('./index-CnMA5Xsn.js'),
+          () => import('./index-6Efc9k41.js'),
           __vite__mapDeps([12, 7, 8, 11, 13, 4]),
         ),
       name: 'chart',
@@ -72745,19 +72745,19 @@ export {
 function __vite__mapDeps(indexes) {
   if (!__vite__mapDeps.viteFileDeps) {
     __vite__mapDeps.viteFileDeps = [
-      'assets/index-DRj-iYVn.js',
-      'assets/request-BOxElYen.js',
+      'assets/index-B--HtPbd.js',
+      'assets/request-caPHKosA.js',
       'assets/request-Pf2_pw4-.css',
       'assets/index-DiqZQvkY.css',
       'assets/el-button-C1Ahcwym.css',
       'assets/el-input-VK2FVdGg.css',
-      'assets/index-D1QPT7I_.js',
-      'assets/lodash-BUJGpPod.js',
+      'assets/index-mzCLhlkc.js',
+      'assets/lodash-C2EyRtQO.js',
       'assets/lodash-jddYD33L.css',
       'assets/index-9NR5n8pU.css',
-      'assets/index-Drdrrt57.js',
-      'assets/useExitLogin-FoMuCC98.js',
-      'assets/index-CnMA5Xsn.js',
+      'assets/index-D1RGwDsx.js',
+      'assets/useExitLogin-B-ziHzq2.js',
+      'assets/index-6Efc9k41.js',
       'assets/index-wmp_ezBs.css',
     ]
   }
