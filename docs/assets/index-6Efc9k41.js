@@ -50402,16 +50402,14 @@ function qU(r, e, t, a, n) {
           ? 'lineY'
           : 'rect'
     })
-  t._brushController
-    .setPanels(s)
-    .enableBrush(
-      i && s.length
-        ? {
-            brushType: 'auto',
-            brushStyle: r.getModel('brushStyle').getItemStyle(),
-          }
-        : !1,
-    )
+  t._brushController.setPanels(s).enableBrush(
+    i && s.length
+      ? {
+          brushType: 'auto',
+          brushStyle: r.getModel('brushStyle').getItemStyle(),
+        }
+      : !1,
+  )
 }
 OR('dataZoom', function (r) {
   var e = r.getComponent('toolbox', 0),

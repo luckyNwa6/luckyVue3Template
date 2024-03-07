@@ -42,6 +42,7 @@
   <el-button :plain="true" @click="i18T">牛逼i18n测试</el-button>
   <el-button :plain="true" @click="chart">echarts测试</el-button>
   <hr />
+  <el-button :plain="true" @click="uNoCssT">unocss测试</el-button>
 </template>
 
 <script setup lang="ts">
@@ -80,6 +81,9 @@ const i18T = () => {
 }
 const chart = () => {
   $router.push({ path: '/chart' })
+}
+const uNoCssT = () => {
+  $router.push({ path: '/uNoCssT' })
 }
 
 //下面是登录

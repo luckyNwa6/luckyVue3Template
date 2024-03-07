@@ -9,7 +9,7 @@
         <component :is="item.component" :com-title="item.title" />
       </el-col>
     </el-row>
-    <el-button :plain="true" @click="exitLogin">注销</el-button>
+    <exitButton />
   </div>
 </template>
 
@@ -18,8 +18,7 @@ import productType from './components/productType.vue' // 产品类型统计
 import { cloneDeep } from 'lodash'
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
-import useExitLogin from '@/hooks/useExitLogin'
-const { exitLogin } = useExitLogin()
+
 const componentsList = ref([
   {
     title: t('Product type statistics'),
