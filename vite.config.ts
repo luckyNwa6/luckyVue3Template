@@ -123,7 +123,7 @@ export default defineConfig(({ command, mode }) => {
       }),
       //---------------------------------------
       viteMockServe({
-        localEnabled: command == 'serve', //mock本地接口开关
+        localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
         // prodEnabled: false, //mock生产接口开关
       }),
     ],
