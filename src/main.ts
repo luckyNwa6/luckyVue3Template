@@ -3,15 +3,18 @@ import { createApp } from 'vue'
 import App from '@/App.vue'
 import { isDevMode } from '@/utils/env'
 import ElementPlus from 'element-plus'
-
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不需要这个了
-import '@/styles/index.scss'
-//引入路由
-import router from '@/router/index'
+
+//样式---------------------------------
+import '@/styles/index.scss' //重置样式
 import 'uno.css'
 import 'element-plus/dist/index.css'
+
 //导入svg插件，去阿里图标库，选择icon，copy它的Svg代码,并放到本项目的icons下，起个名字放入
 import 'virtual:svg-icons-register'
+
+//引入路由
+import router from '@/router/index'
 //引入仓库
 import pinia from './store'
 // 国际化

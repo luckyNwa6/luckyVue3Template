@@ -1,5 +1,5 @@
 <template>
-  <el-button :plain="true" @click="exitLogin">注销</el-button>
+  <exitButton />
   <hr />
   下面是组件的使用。首先是pagePack
   <div class="flex-1 w-full">
@@ -244,10 +244,6 @@ const {
   hooks_resetQueryTable,
   hooks_handleSearch,
 } = useTable(initTableQueryData, tableRef)
-
-const exitLogin = () => {
-  $router.push({ path: '/login' })
-}
 
 onMounted(() => {
   getTablePage()

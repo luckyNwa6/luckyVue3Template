@@ -50,4 +50,9 @@ export const testRoute = [
     component: () => import('@/views/iTest/chart/index.vue'),
     name: 'chart',
   },
+  {
+    path: '/unoCssT',
+    component: () => import('@/views/iTest/unoCssT/index.vue'),
+    name: 'unoCssT',
+  },
 ]
