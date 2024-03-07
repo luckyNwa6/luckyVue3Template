@@ -196,7 +196,7 @@
           </el-table-column>
         </el-table>
       </template>
-      <!-- <template #pagePagination>
+      <template #pagePagination>
         <Pagination
           v-if="totalPages > 0"
           v-model:total="totalPages"
@@ -204,7 +204,7 @@
           v-model:limit="tableQueryData.pageSize"
           @pagination="getTablePage"
         />
-      </template> -->
+      </template>
     </PagePack>
   </div>
 </template>
