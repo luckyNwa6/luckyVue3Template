@@ -9,12 +9,13 @@
           lng: 118.058301,
           lat: 24.613554,
         }"
-        :zoom="19"
+        :zoom="8"
         :minZoom="3"
-        :enableTraffic="true"
+        :enableTraffic="false"
         :enableScrollWheelZoom="true"
         @initd="initMapFinish"
       >
+        <BScale />
         <BNavigation3d />
         <BMarker
           v-for="(item, index) in markers"
@@ -39,6 +40,42 @@
             {{ content }}
           </div>
         </BInfoWindow>
+        <BPolyline
+          :path="polylinePath"
+          stroke-color="#ff8800"
+          :stroke-opacity="1"
+          :stroke-weight="10"
+          :enableEditing="false"
+        />
+        <BPolygon
+          :enableEditing="false"
+          :geodesic="true"
+          :path="PolygonPath"
+          stroke-color="#fa0"
+          fillColor="#f70"
+          :stroke-opacity="0.2"
+          :stroke-weight="3"
+        />
+        <!-- <BLabel
+          content="军事活动，禁止驶入"
+          :position="{ lng: 119.1, lat: 24.039563 }"
+          :style="{
+            color: '#f00',
+            backgroundColor: 'rgba(0,0,0,0)',
+            border: 'none',
+            padding: '5px 10px',
+            fontSize: '20px',
+          }"
+        /> -->
+        <BCircle
+          v-for="itemC in circleList"
+          stroke-style="dotted"
+          :center="{ lat: itemC.lat, lng: itemC.lng }"
+          :radius="itemC.radius"
+          strokeColor="#f00"
+          fillColor="#f00"
+          :fillOpacity="0.1"
+        />
       </BMap>
     </div>
     <div class="textBox">当前所在地区：{{ cityName }}</div>
@@ -76,6 +113,44 @@ let markers = ref([
     content: '这是地址二的信息窗',
   },
 ])
+let polylinePath = ref([
+  { lng: 118.058301, lat: 24.613554 },
+  { lng: 120.191561, lat: 23.69932 },
+])
+let PolygonPath = ref([
+  { lng: 118.41076, lat: 24.603296 },
+  { lng: 120.48908, lat: 24.201566 },
+  { lng: 120.056743, lat: 23.061642 },
+  { lng: 118.019242, lat: 24.433389 },
+])
+
+let circleList = ref([
+  {
+    lng: 121.47391,
+    lat: 25.571918,
+    radius: 50000,
+  },
+  {
+    lng: 122.69503,
+    lat: 24.650596,
+    radius: 90000,
+  },
+  {
+    lng: 121.347428,
+    lat: 21.673992,
+    radius: 70000,
+  },
+  {
+    lng: 119.63648,
+    lat: 22.334535,
+    radius: 100000,
+  },
+  {
+    lng: 120.911642,
+    lat: 25.003201,
+    radius: 30000,
+  },
+])
 const title = ref(markers.value[0].title)
 const position = ref(markers.value[0].position)
 const content = ref(markers.value[0].content)
@@ -95,7 +170,6 @@ onMounted(() => {
 })
 
 const initMapFinish = () => {
-  console.log('执行', location)
   get()
 }
 </script>

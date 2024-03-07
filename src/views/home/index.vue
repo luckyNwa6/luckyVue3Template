@@ -271,6 +271,8 @@ const getTablePage = async () => {
     console.log('getTablePage error')
   }
   tableLoading.value = false
+  hooks_getTableData(editData)
+  console.log('触发hook', hooks_getTableData)
 }
 
 const editData = () => {
