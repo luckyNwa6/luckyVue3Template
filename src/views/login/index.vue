@@ -10,16 +10,19 @@
           :rules="rules"
           ref="loginForms"
         >
-          <h1>Hello</h1>
-          <h2>标题</h2>
-          <el-form-item prop="acc">
-            <el-input prefix-icon="User" v-model="loginForm.acc"></el-input>
-          </el-form-item>
-          <el-form-item prop="pwd">
+          <h1>登录</h1>
+          <h2></h2>
+          <el-form-item prop="username">
             <el-input
-              type="pwd"
+              prefix-icon="User"
+              v-model="loginForm.username"
+            ></el-input>
+          </el-form-item>
+          <el-form-item prop="password">
+            <el-input
+              type="password"
               prefix-icon="Lock"
-              v-model="loginForm.pwd"
+              v-model="loginForm.password"
               show-password
             ></el-input>
           </el-form-item>
@@ -41,8 +44,6 @@
 </template>
 
 <script setup lang="ts">
-// import { useRouter, useRoute } from 'vue-router'
-
 //引入获取当前时间的函数
 import { getTime } from '@/utils/time'
 //引入用户相关的小仓库
@@ -57,7 +58,7 @@ let $route = useRoute()
 //定义变量控制按钮加载效果
 let loading = ref(false)
 //收集账号与密码的数据
-let loginForm = reactive({ acc: 'luckyNwa', pwd: 'nwa999' })
+let loginForm = reactive({ username: 'admin', password: '111111' })
 //登录按钮回调
 const login = async () => {
   //保证全部表单相校验通过再发请求
@@ -122,11 +123,11 @@ const rules = {
   //max:文本长度最多多少位
   //message:错误的提示信息
   //trigger:触发校验表单的时机 change->文本发生变化触发校验,blur:失去焦点的时候触发校验规则
-  acc: [
+  username: [
     // { required: true, min: 6, max: 10, message: '账号长度至少六位', trigger: 'change' }
     { trigger: 'change', validator: validatorUserName },
   ],
-  pwd: [
+  password: [
     // { required: true, min: 6, max: 15, message: '密码长度至少6位', trigger: 'change' }
     { trigger: 'change', validator: validatorPassword },
   ],

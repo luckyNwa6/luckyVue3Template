@@ -3,7 +3,6 @@
 export interface loginFormData {
   username: string
   password: string
-  yzm?: string
 }
 
 //定义全部接口返回数据都拥有ts类型
