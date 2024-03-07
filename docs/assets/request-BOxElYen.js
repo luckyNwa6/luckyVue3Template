@@ -1,4 +1,4 @@
-import { E as Ie, V as qe, W as He } from './index-B8XG2sDH.js'
+import { V as Ie, W as qe, E as He } from './index-DDmJ86zX.js'
 function ye(e, t) {
   return function () {
     return e.apply(t, arguments)
@@ -38,7 +38,7 @@ const Ve = H('string'),
   O = H('function'),
   we = H('number'),
   M = (e) => e !== null && typeof e == 'object',
-  $e = (e) => e === !0 || e === !1,
+  Ke = (e) => e === !0 || e === !1,
   B = (e) => {
     if (q(e) !== 'object') return !1
     const t = Y(e)
@@ -50,7 +50,7 @@ const Ve = H('string'),
       !(Symbol.iterator in e)
     )
   },
-  Ke = A('Date'),
+  $e = A('Date'),
   We = A('File'),
   Ge = A('Blob'),
   Xe = A('FileList'),
@@ -274,11 +274,11 @@ const wt = (e) => {
     isArrayBufferView: Je,
     isString: Ve,
     isNumber: we,
-    isBoolean: $e,
+    isBoolean: Ke,
     isObject: M,
     isPlainObject: B,
     isUndefined: F,
-    isDate: Ke,
+    isDate: $e,
     isFile: We,
     isBlob: Ge,
     isRegExp: ft,
@@ -804,7 +804,7 @@ function It(e) {
   return t
 }
 const qt = (e) => /^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(e.trim())
-function $(e, t, n, r, s) {
+function K(e, t, n, r, s) {
   if (a.isFunction(r)) return r.call(this, t, n)
   if ((s && (t = n), !!a.isString(t))) {
     if (a.isString(r)) return t.indexOf(r) !== -1
@@ -867,7 +867,7 @@ class J {
   has(t, n) {
     if (((t = _(t)), t)) {
       const r = a.findKey(this, t)
-      return !!(r && this[r] !== void 0 && (!n || $(this, this[r], r, n)))
+      return !!(r && this[r] !== void 0 && (!n || K(this, this[r], r, n)))
     }
     return !1
   }
@@ -877,7 +877,7 @@ class J {
     function o(i) {
       if (((i = _(i)), i)) {
         const c = a.findKey(r, i)
-        c && (!n || $(r, r[c], c, n)) && (delete r[c], (s = !0))
+        c && (!n || K(r, r[c], c, n)) && (delete r[c], (s = !0))
       }
     }
     return a.isArray(t) ? t.forEach(o) : o(t), s
@@ -888,7 +888,7 @@ class J {
       s = !1
     for (; r--; ) {
       const o = n[r]
-      ;(!t || $(this, this[o], o, t, !0)) && (delete this[o], (s = !0))
+      ;(!t || K(this, this[o], o, t, !0)) && (delete this[o], (s = !0))
     }
     return s
   }
@@ -966,7 +966,7 @@ a.reduceDescriptors(J.prototype, ({ value: e }, t) => {
 })
 a.freezeMethods(J)
 const T = J
-function K(e, t) {
+function $(e, t) {
   const n = this || ne,
     r = t || n,
     s = T.from(r.headers)
@@ -1033,13 +1033,13 @@ const Jt = R.hasStandardBrowserEnv
 function Vt(e) {
   return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(e)
 }
-function $t(e, t) {
+function Kt(e, t) {
   return t ? e.replace(/\/?\/$/, '') + '/' + t.replace(/^\/+/, '') : e
 }
 function Le(e, t) {
-  return e && !Vt(t) ? $t(e, t) : t
+  return e && !Vt(t) ? Kt(e, t) : t
 }
-const Kt = R.hasStandardBrowserEnv
+const $t = R.hasStandardBrowserEnv
   ? (function () {
       const t = /(msie|trident)/i.test(navigator.userAgent),
         n = document.createElement('a')
@@ -1221,7 +1221,7 @@ const Xt = typeof XMLHttpRequest < 'u',
               (u = null)
           }),
           R.hasStandardBrowserEnv &&
-            (c && a.isFunction(c) && (c = c(e)), c || (c !== !1 && Kt(E))))
+            (c && a.isFunction(c) && (c = c(e)), c || (c !== !1 && $t(E))))
         ) {
           const d =
             e.xsrfHeaderName && e.xsrfCookieName && Jt.read(e.xsrfCookieName)
@@ -1320,14 +1320,14 @@ function pe(e) {
   return (
     W(e),
     (e.headers = T.from(e.headers)),
-    (e.data = K.call(e, e.transformRequest)),
+    (e.data = $.call(e, e.transformRequest)),
     ['post', 'put', 'patch'].indexOf(e.method) !== -1 &&
       e.headers.setContentType('application/x-www-form-urlencoded', !1),
     Ue.getAdapter(e.adapter || ne.adapter)(e).then(
       function (r) {
         return (
           W(e),
-          (r.data = K.call(e, e.transformResponse, r)),
+          (r.data = $.call(e, e.transformResponse, r)),
           (r.headers = T.from(r.headers)),
           r
         )
@@ -1338,7 +1338,7 @@ function pe(e) {
             (W(e),
             r &&
               r.response &&
-              ((r.response.data = K.call(e, e.transformResponse, r.response)),
+              ((r.response.data = $.call(e, e.transformResponse, r.response)),
               (r.response.headers = T.from(r.response.headers)))),
           Promise.reject(r)
         )
@@ -1777,35 +1777,6 @@ y.formToJSON = (e) => Fe(a.isHTMLForm(e) ? new FormData(e) : e)
 y.getAdapter = Ue.getAdapter
 y.HttpStatusCode = nn
 y.default = y
-const U = y.create({ baseURL: '/prod-api', timeout: 5e3 })
-U.interceptors.request.use((e) => {
-  const t = fn()
-  return t.token && (e.headers.token = t.token), e
-})
-U.interceptors.response.use(
-  (e) => e.data,
-  (e) => {
-    let t = ''
-    switch (e.response.status) {
-      case 401:
-        t = 'TOKEN过期'
-        break
-      case 403:
-        t = '无权访问'
-        break
-      case 404:
-        t = '请求地址错误'
-        break
-      case 500:
-        t = '服务器出现问题'
-        break
-      default:
-        t = '网络出现问题'
-        break
-    }
-    return Ie({ type: 'error', message: t }), Promise.reject(e)
-  },
-)
 const rn = (e) => U.post('/user/login', e),
   sn = () => U.get('/admin/acl/index/info'),
   on = () => U.post('/admin/acl/index/logout'),
@@ -1816,10 +1787,10 @@ const rn = (e) => U.post('/user/login', e),
   un = () => {
     localStorage.removeItem('TOKEN')
   },
-  ln = qe('User', {
+  ln = Ie('User', {
     state: () => ({
       token: cn(),
-      menuRoutes: He,
+      menuRoutes: qe,
       username: '',
       avatar: '',
       buttons: [],
@@ -1853,5 +1824,33 @@ const rn = (e) => U.post('/user/login', e),
     },
     getters: {},
   }),
-  fn = ln
-export { U as r, fn as u }
+  U = y.create({ baseURL: '/idp', timeout: 5e3 })
+U.interceptors.request.use((e) => {
+  const t = ln()
+  return t.token && (e.headers.token = t.token), e
+})
+U.interceptors.response.use(
+  (e) => e.data,
+  (e) => {
+    let t = ''
+    switch (e.response.status) {
+      case 401:
+        t = 'TOKEN过期'
+        break
+      case 403:
+        t = '无权访问'
+        break
+      case 404:
+        t = '请求地址错误'
+        break
+      case 500:
+        t = '服务器出现问题'
+        break
+      default:
+        t = '网络出现问题'
+        break
+    }
+    return He({ type: 'error', message: t }), Promise.reject(e)
+  },
+)
+export { U as r, ln as u }

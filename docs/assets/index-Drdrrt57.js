@@ -1,16 +1,16 @@
-/* empty css                  */ /* empty css                 */ import { u as p } from './useExitLogin-POkStVSO.js'
+/* empty css                  */ /* empty css                 */ import { u as p } from './useExitLogin-FoMuCC98.js'
 import {
   r as c,
   o as m,
   c as d,
-  f as o,
-  e as l,
-  h as n,
+  i as o,
+  h as l,
+  j as n,
   H as _,
   w as f,
   L as x,
-  j as V,
-} from './index-B8XG2sDH.js'
+  l as V,
+} from './index-DDmJ86zX.js'
 const L = {
   __name: 'index',
   setup(k) {
@@ -18,7 +18,7 @@ const L = {
       e = c('')
     return (r, t) => {
       const s = x,
-        u = V
+        i = V
       return (
         m(),
         d('div', null, [
@@ -28,7 +28,7 @@ const L = {
             {
               modelValue: n(e),
               'onUpdate:modelValue':
-                t[0] || (t[0] = (i) => (_(e) ? (e.value = i) : null)),
+                t[0] || (t[0] = (u) => (_(e) ? (e.value = u) : null)),
               placeholder: r.$t('role'),
             },
             null,
@@ -36,7 +36,7 @@ const L = {
             ['modelValue', 'placeholder'],
           ),
           l(
-            u,
+            i,
             { plain: !0, onClick: n(a) },
             { default: f(() => [o('注销')]), _: 1 },
             8,
