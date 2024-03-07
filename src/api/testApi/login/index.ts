@@ -3,5 +3,5 @@ enum API {
   LOGIN_URL = '/idpSys/login',
 }
 
-export const reqLogin = (data: any) =>
+export const reqLoginX = (data: any) =>
   request.post<any, any>(API.LOGIN_URL, data)

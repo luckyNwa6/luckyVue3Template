@@ -13,7 +13,7 @@ import type { UserState } from './types/type'
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 
 //引入路由(常量路由)
-import { constantRoute, anyRoute } from '@/router/routes'
+import { constantRoute } from '@/router/routes'
 
 //创建用户小仓库
 const useUserStore = defineStore('User', {
