@@ -23,7 +23,7 @@ const componentsList = ref([
   {
     title: t('Product type statistics'),
     component: productType,
-    span: 8,
+    span: 12,
     index: 3,
   },
 ])

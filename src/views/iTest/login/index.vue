@@ -41,6 +41,7 @@
   <el-button :plain="true" @click="loginX">线上登录测试</el-button>
   <el-button :plain="true" @click="i18T">牛逼i18n测试</el-button>
   <el-button :plain="true" @click="chart">echarts测试</el-button>
+  <el-button :plain="true" @click="toMap">地图测试</el-button>
   <hr />
   <el-button :plain="true" @click="uNoCssT">unocss测试</el-button>
 </template>
@@ -81,6 +82,9 @@ const i18T = () => {
 }
 const chart = () => {
   $router.push({ path: '/chart' })
+}
+const toMap = () => {
+  $router.push({ path: '/map' })
 }
 const uNoCssT = () => {
   $router.push({ path: '/uNoCssT' })

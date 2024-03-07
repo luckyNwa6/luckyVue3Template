@@ -49,7 +49,7 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
 
 let useStore = useUserStore()
 let luckyC = ref('ref类似定义data里的值')
