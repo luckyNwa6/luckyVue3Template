@@ -73,7 +73,7 @@ export default {
 
     .scrollbar {
       width: 100%;
-      height: calc(100vh - $base-menu-logo-height);
+      height: calc(100vh - $base-menu-logo-height - 20px);
 
       .el-menu {
         border-right: none;
