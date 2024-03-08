@@ -56,54 +56,30 @@
           <el-table-column type="index" width="60" label="序号" fixed="left" align="center" />
           <el-table-column prop="username" :label="$t('systemManager.userManager.accountName')" show-overflow-tooltip min-width="100" />
           <el-table-column prop="nickname" label="姓名" show-overflow-tooltip min-width="100" />
-          <!-- <el-table-column
-            :label="$t('systemManager.userManager.accountType')"
-            show-overflow-tooltip
-            min-width="100"
-          >
+          <el-table-column :label="$t('systemManager.userManager.accountType')" show-overflow-tooltip min-width="100">
             <template v-slot="{ row }">
-              {{
-                row.primaryAccount
-                  ? $t('page.primaryAccount')
-                  : $t('page.bypassAccount')
-              }}
+              {{ row.primaryAccount ? $t('page.primaryAccount') : $t('page.bypassAccount') }}
             </template>
-          </el-table-column> -->
+          </el-table-column>
           <el-table-column prop="mobileNo" label="手机号" min-width="130" show-overflow-tooltip />
           <el-table-column prop="emailNo" :label="$t('page.email')" show-overflow-tooltip />
-          <!-- <el-table-column
-            prop="groupName"
-            :label="$t('systemManager.userManager.belongingGroup')"
-            show-overflow-tooltip
-            min-width="130"
-          />
-          <el-table-column
-            :label="$t('page.role')"
-            min-width="80"
-            show-overflow-tooltip
-          >
+          <el-table-column prop="groupName" :label="$t('systemManager.userManager.belongingGroup')" show-overflow-tooltip min-width="130" />
+          <el-table-column :label="$t('page.role')" min-width="80" show-overflow-tooltip>
             <template v-slot="{ row }">
               <span>
                 {{ row.roleName }}
               </span>
             </template>
-          </el-table-column> -->
-          <!-- <el-table-column prop="enabled" width="80" :label="$t('page.status')">
+          </el-table-column>
+
+          <el-table-column prop="enabled" width="80" :label="$t('page.status')">
             <template #default="scope">
-              <el-switch
-                v-if="scope.row.primaryAccount"
-                v-model="scope.row.enabled"
-                :disabled="true"
-              />
-              <div
-                v-else
-                class="com-mark cursor-pointer"
-                @click="handleChangeStatus(scope.row)"
-              >
+              <el-switch v-if="scope.row.primaryAccount" v-model="scope.row.enabled" :disabled="true" />
+              <div v-else class="com-mark cursor-pointer" @click="handleChangeStatus(scope.row)">
                 <el-switch v-model="scope.row.enabled" />
               </div>
             </template>
-          </el-table-column> -->
+          </el-table-column>
           <el-table-column prop="createdTimeSort" sortable="custom" width="150" label="创建时间">
             <template #default="scope">
               <span>{{ scope.row.createdTime }}</span>
@@ -113,22 +89,10 @@
             <template #default="scope">
               <div>
                 <el-link class="opreation-link" :underline="false" @click="editData()">编辑</el-link>
-                <!-- <el-link
-                  class="opreation-link"
-                  v-has-perms="16"
-                  :underline="false"
-                  @click="resetPwd(scope.row)"
-                >
-                  重置密码
-                </el-link>
-                <el-link
-                  class="opreation-link"
-                  v-has-perms="15"
-                  :underline="false"
-                  @click="handleDelete(scope.row)"
-                >
+                <el-link class="opreation-link" :underline="false" @click="resetPwd(scope.row)">重置密码</el-link>
+                <el-link class="opreation-link" :underline="false" @click="handleDelete(scope.row)">
                   {{ $t('page.delete') }}
-                </el-link> -->
+                </el-link>
               </div>
             </template>
           </el-table-column>
@@ -225,6 +189,64 @@ const sortData = reactive({
 const handleSort = () => {
   hooks_sortTableByProps(sortData, null, getTablePage)
 }
+
+const resetPwd = (params) => {
+  // await popResetPassword.value.handleOpen(params);
+}
+const handleDelete = (data) => {
+  CustomMessageBox.confirm(`${i18n.global.t('page.dialog.actionTip.sureToDelete')}?`, i18n.global.t('page.dialog.actionTip.tipText'), {
+    confirmButtonText: i18n.global.t('page.confirm'),
+    cancelButtonText: i18n.global.t('page.Cancel'),
+    type: 'warning',
+  })
+    .then(() => {
+      try {
+        // await deleteUser(data.userId)
+        ElMessage({
+          type: 'success',
+          message: i18n.global.t('page.dialog.actionFb.successfullyDeleted'),
+        })
+        _getTableData()
+      } catch {
+        ElMessage({
+          type: 'error',
+          message: i18n.global.t('page.dialog.actionFb.failedDeleted'),
+        })
+      }
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: i18n.global.t('page.dialog.actionFb.cancleDelete'),
+      })
+    })
+}
+
+const handleChangeStatus = (data) => {
+  // tableLoading.value = true;
+  // try {
+  //   await changeStatus({
+  //     userId: data.userId
+  //   });
+  //   ElMessage({
+  //     type: 'success',
+  //     message: i18n.global.t('page.dialog.actionFb.successfullyChange')
+  //   });
+  //   tableLoading.value = false;
+  //   _getTableData();
+  // } catch {
+  //   ElMessage({
+  //     type: 'error',
+  //     message: i18n.global.t('page.dialog.actionFb.failedChange')
+  //   });
+  //   tableLoading.value = false;
+  // }
+}
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.opreation-link {
+  margin-right: 10px;
+  color: var(--el-color-primary);
+}
+</style>

@@ -23,6 +23,10 @@ import pinia from './store'
 // 国际化
 import i18n from '@/lang/index'
 
+import $ from 'jquery'
+window.jQuery = $
+window.$ = $
+
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
   import('element-plus/dist/index.css')

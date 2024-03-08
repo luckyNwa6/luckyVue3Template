@@ -19,10 +19,13 @@
         </el-form>
       </el-col>
     </el-row>
+    <div id="captcha-div"></div>
   </div>
 </template>
 
 <script setup lang="ts">
+import '@/assets/captcha/css/tac.css' // 验证码css
+import '@/assets/captcha/js/tac.min.js' // 验证码js
 //引入获取当前时间的函数
 import { getTime } from '@/utils/time'
 //引入用户相关的小仓库
@@ -44,13 +47,29 @@ let loginForm = reactive({
   pwd: 'nwa999',
   uuid: '',
 })
+
 //登录按钮回调
 const login = async () => {
   //保证全部表单相校验通过再发请求
   await loginForms.value.validate()
+
+  const config = {
+    requestCaptchaDataUrl: 'http://47.98.230.128:10087/gen',
+    validCaptchaUrl: 'http://47.98.230.128:10087/check',
+    bindEl: '#captcha-div',
+    // 验证成功回调函数
+    validSuccess: (res: any, c: any, tac: any) => {
+      console.log('res的值是', res, 'c的值是', c)
+      loginAdmin()
+      tac.destroyWindow()
+    },
+  }
+  new window.TAC(config).init()
+}
+
+const loginAdmin = async () => {
   //加载效果:开始加载
   loading.value = true
-  //点击登录按钮以后干什么?
   //通知仓库发登录请求
   //请求成功->首页展示数据的地方
   //请求失败->弹出登录失败信息

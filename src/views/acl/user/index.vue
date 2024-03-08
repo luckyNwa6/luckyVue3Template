@@ -84,13 +84,13 @@
         <el-form-item label="用户姓名">
           <el-input v-model="userParams.username" :disabled="true"></el-input>
         </el-form-item>
-        <el-form-item label="职位列表">
+        <!-- <el-form-item label="职位列表">
           <el-checkbox @change="handleCheckAllChange" v-model="checkAll" :indeterminate="isIndeterminate">全选</el-checkbox>
-          <!-- 显示职位的的复选框 -->
+     
           <el-checkbox-group v-model="userRole" @change="handleCheckedCitiesChange">
             <el-checkbox v-for="(role, index) in allRole" :key="index" :label="role">{{ role.roleName }}</el-checkbox>
           </el-checkbox-group>
-        </el-form-item>
+        </el-form-item> -->
       </el-form>
     </template>
     <template #footer>
