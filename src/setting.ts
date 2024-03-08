@@ -2,7 +2,7 @@
 //用于项目logo|标题配置
 export default {
   title: 'Lucky_Star', //项目的标题
-  logo: '/mushroom.svg', //项目public下的
+  logo: '/logo.svg', //项目public下的
   // logo: logo, //项目logo设置
   logoHidden: true, //logo组件是否隐藏设置
 }
