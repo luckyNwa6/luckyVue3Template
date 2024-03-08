@@ -45,6 +45,8 @@
     <el-button :plain="true" @click="toMap">地图测试</el-button>
 
     <el-button :plain="true" @click="toUno">UnoCSS</el-button>
+
+    <el-button :plain="true" @click="toCpt">组件测试</el-button>
     <hr />
   </div>
 </template>
@@ -81,6 +83,9 @@ const toMap = () => {
 }
 const toUno = () => {
   $router.push({ path: '/uno' })
+}
+const toCpt = () => {
+  $router.push({ path: '/cpt' })
 }
 
 const login = async () => {

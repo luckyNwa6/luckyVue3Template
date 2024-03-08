@@ -42,6 +42,7 @@
   <el-button :plain="true" @click="i18T">牛逼i18n测试</el-button>
   <el-button :plain="true" @click="chart">echarts测试</el-button>
   <el-button :plain="true" @click="toMap">地图测试</el-button>
+  <el-button :plain="true" @click="toCpt">组件测试</el-button>
   <hr />
   <el-button :plain="true" @click="uNoCssT">unocss测试</el-button>
 </template>
@@ -88,6 +89,9 @@ const toMap = () => {
 }
 const uNoCssT = () => {
   $router.push({ path: '/uNoCssT' })
+}
+const toCpt = () => {
+  $router.push({ path: '/cpt' })
 }
 
 //下面是登录

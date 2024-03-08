@@ -40,6 +40,11 @@ export const constantRoute = [
     component: () => import('@/views/unocss/index.vue'),
     name: 'uno',
   },
+  {
+    path: '/cpt',
+    component: () => import('@/views/componentsTest/pagePackT/index.vue'),
+    name: 'cpt',
+  },
 ]
 
 //异步路由  性能优化
