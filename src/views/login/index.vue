@@ -1,6 +1,6 @@
 <template>
   <div class="login_container">
-    <PageHead show-language custom-class="login-head" :showLogo="false" />
+    <PageHead show-language="true" custom-class="login-head" :showLogo="false" />
     <el-row>
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">

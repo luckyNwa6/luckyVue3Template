@@ -2,7 +2,7 @@
   <div class="lang-select" :class="props.langSelectClass">
     <el-dropdown class="cursor-pointer" trigger="click" @command="handleLanguageChange">
       <div class="flex justify-center items-center px-5">
-        <svg-icon :class="props.iconClass" class="language-icon" icon-class="language" />
+        <svg-icon-k :class="props.iconClass" class="language-icon" icon-class="language" />
       </div>
       <template #dropdown>
         <el-dropdown-menu>

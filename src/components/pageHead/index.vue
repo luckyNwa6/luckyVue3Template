@@ -18,43 +18,41 @@
 </template>
 
 <script setup>
-import i18n from '@/lang';
-import logoImg from '@/assets/sx_logo.png';
+import i18n from '@/lang'
+import logoImg from '@/assets/sx_logo.png'
 
 // Props
 const props = defineProps({
   showLanguage: {
     type: Boolean,
-    default: true
+    default: true,
   },
   showLogo: {
     type: Boolean,
-    default: true
+    default: true,
   },
   showName: {
     type: Boolean,
-    default: true
+    default: true,
   },
   customClass: {
     type: String,
-    default: ''
+    default: '',
   },
   logo: {
     type: String,
-    default: logoImg
+    default: logoImg,
   },
   title: {
     type: String,
-    default: 'platforms.title'
-  }
-});
+    default: 'platforms.title',
+  },
+})
 
 // Computed
 const headTitle = computed(() => {
-  return import.meta.env.VITE_APP_NODE_ENV === 'productionByEn'
-    ? 'IOT Platform'
-    : i18n.global.t(props.title);
-});
+  return import.meta.env.VITE_APP_NODE_ENV === 'productionByEn' ? 'IOT Platform' : i18n.global.t(props.title)
+})
 </script>
 <style lang="scss" scoped>
 .head-content {
