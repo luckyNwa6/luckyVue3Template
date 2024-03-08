@@ -5,7 +5,7 @@
       <Logo></Logo>
       <!-- 展示菜单 -->
       <!-- 滚动组件 -->
-      <el-scrollbar class="scrollbar top-5">
+      <el-scrollbar class="scrollbar top-4">
         <!-- 菜单组件-->
         <el-menu
           :collapse="LayOutSettingStore.fold ? true : false"
@@ -80,7 +80,7 @@ export default {
       }
     }
     &.fold {
-      width: 50px;
+      width: 55px;
     }
   }
 
