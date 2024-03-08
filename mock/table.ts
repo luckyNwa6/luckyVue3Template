@@ -46,8 +46,9 @@ export default [
 
 // 模拟表格数据
 function createList() {
-  return createRandomData(120)
+  return dataForever
 }
+const dataForever = createRandomData(120) //这样数据就不会变了
 //数据的类型
 interface UserData {
   tenantId: string

@@ -1,28 +1,12 @@
 <template>
-  <el-button
-    size="small"
-    icon="Refresh"
-    circle
-    @click="updateRefsh"
-  ></el-button>
-  <el-button
-    size="small"
-    icon="FullScreen"
-    circle
-    @click="fullScreen"
-  ></el-button>
+  <el-button size="small" icon="Refresh" circle @click="updateRefsh"></el-button>
+  <el-button size="small" icon="FullScreen" circle @click="fullScreen"></el-button>
 
   <el-popover placement="bottom" title="主题设置" :width="300" trigger="hover">
     <!-- 表单元素 -->
     <el-form>
       <el-form-item label="主题颜色">
-        <el-color-picker
-          @change="setColor"
-          v-model="color"
-          size="small"
-          show-alpha
-          :predefine="predefineColors"
-        />
+        <el-color-picker @change="setColor" v-model="color" size="small" show-alpha :predefine="predefineColors" />
       </el-form-item>
       <el-form-item label="暗黑模式">
         <el-switch
@@ -40,10 +24,7 @@
       <el-button size="small" icon="Setting" circle></el-button>
     </template>
   </el-popover>
-  <img
-    :src="userStore.avatar"
-    style="width: 24px; height: 24px; margin: 0px 10px; border-radius: 50%"
-  />
+  <img :src="userStore.avatar" style="width: 24px; height: 24px; margin: 0px 10px; border-radius: 50%" />
   <!-- 下拉菜单 -->
   <el-dropdown>
     <span class="el-dropdown-link">
@@ -130,6 +111,8 @@ const changeDark = () => {
 //主题颜色的设置
 const setColor = () => {
   //通知js修改根节点的样式对象的属性与属性值
+  console.log('ZXCD')
+
   const html = document.documentElement
   html.style.setProperty('--el-color-primary', color.value)
 }

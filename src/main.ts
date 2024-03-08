@@ -9,7 +9,7 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不�
 import '@/styles/index.scss' //重置样式
 import 'uno.css'
 import 'element-plus/dist/index.css'
-
+import 'element-plus/theme-chalk/dark/css-vars.css' //暗黑模式需要的样式
 //引入路由鉴权文件
 import './permisstion'
 
