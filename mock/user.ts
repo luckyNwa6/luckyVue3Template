@@ -66,10 +66,10 @@ export default [
   },
   //获取用户菜单权限等
   {
-    url: 'api/admin/acl/index/logout',
+    url: '/api/admin/acl/index/info',
     method: 'get',
     response: (request) => {
-      console.log('🚀 ~ request:', request)
+      // console.log('🚀 ~ request:mock', request)
 
       //如果有返回成功信息
       return {
@@ -83,6 +83,7 @@ export default [
             'ActivityEdit',
             'CouponRule',
             'Product',
+            'product',
             'Activity',
             'CouponAdd',
             'Trademark',
@@ -114,6 +115,7 @@ export default [
             'x',
             'OrderList',
             'Sku',
+            'testD',
           ],
           buttons: [
             'cuser.detail',
@@ -173,9 +175,10 @@ export default [
   //退出
   {
     url: '/api/admin/acl/index/logout',
-    method: 'get',
+    method: 'post',
     response: (request) => {
       //如果有返回成功信息
+      // console.log('🚀 ~ request:mock+', request)
       return { code: 200, message: '成功', data: null, ok: true }
     },
   },

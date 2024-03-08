@@ -62,6 +62,8 @@ const useUserStore = defineStore('User', {
     //获取用户信息方法
     async userInfo() {
       //获取用户信息进行存储仓库当中[用户头像、名字]
+      console.log('获取用户信息')
+
       const result: userInfoReponseData = await reqUserInfo()
       //如果获取用户信息成功，存储一下用户信息
       if (result.code == 200) {
