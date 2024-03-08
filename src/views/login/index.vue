@@ -1,5 +1,6 @@
 <template>
   <div class="login_container">
+    <PageHead show-language custom-class="login-head" :showLogo="false" />
     <el-row>
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">
@@ -17,9 +18,9 @@
             <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">登录</el-button>
           </el-form-item>
         </el-form>
+        <div id="captcha-div"></div>
       </el-col>
     </el-row>
-    <div id="captcha-div"></div>
   </div>
 </template>
 
