@@ -38,9 +38,9 @@ const app = createApp(App)
 import ElementPlusIconsVue from '@/components'
 app.use(ElementPlusIconsVue)
 //国际化配置
-app.use(ElementPlus, {
-  locale: zhCn,
-})
+// app.use(ElementPlus, {
+//   locale: zhCn,
+// })
 
 //引入自定义指令文件
 import { isHasButton } from '@/directive/has'
