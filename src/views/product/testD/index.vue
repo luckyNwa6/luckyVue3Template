@@ -75,7 +75,7 @@
           <el-table-column prop="enabled" width="80" :label="$t('page.status')">
             <template #default="scope">
               <el-switch v-if="scope.row.primaryAccount" v-model="scope.row.enabled" :disabled="true" />
-              <div v-else class="com-mark cursor-pointer" @click="handleChangeStatus(scope.row)">
+              <div v-else class="com-mark cursor-pointer" @click="handleChangeStatus()">
                 <el-switch v-model="scope.row.enabled" />
               </div>
             </template>
@@ -89,10 +89,10 @@
             <template #default="scope">
               <div>
                 <el-link class="opreation-link" :underline="false" @click="editData()">编辑</el-link>
-                <el-link class="opreation-link" :underline="false" @click="resetPwd(scope.row)">重置密码</el-link>
+                <!-- <el-link class="opreation-link" :underline="false" @click="resetPwd(scope.row)">重置密码</el-link>
                 <el-link class="opreation-link" :underline="false" @click="handleDelete(scope.row)">
                   {{ $t('page.delete') }}
-                </el-link>
+                </el-link> -->
               </div>
             </template>
           </el-table-column>
@@ -190,39 +190,39 @@ const handleSort = () => {
   hooks_sortTableByProps(sortData, null, getTablePage)
 }
 
-const resetPwd = (params) => {
-  // await popResetPassword.value.handleOpen(params);
-}
-const handleDelete = (data) => {
-  CustomMessageBox.confirm(`${i18n.global.t('page.dialog.actionTip.sureToDelete')}?`, i18n.global.t('page.dialog.actionTip.tipText'), {
-    confirmButtonText: i18n.global.t('page.confirm'),
-    cancelButtonText: i18n.global.t('page.Cancel'),
-    type: 'warning',
-  })
-    .then(() => {
-      try {
-        // await deleteUser(data.userId)
-        ElMessage({
-          type: 'success',
-          message: i18n.global.t('page.dialog.actionFb.successfullyDeleted'),
-        })
-        _getTableData()
-      } catch {
-        ElMessage({
-          type: 'error',
-          message: i18n.global.t('page.dialog.actionFb.failedDeleted'),
-        })
-      }
-    })
-    .catch(() => {
-      ElMessage({
-        type: 'info',
-        message: i18n.global.t('page.dialog.actionFb.cancleDelete'),
-      })
-    })
-}
+// const resetPwd = (params) => {
+//   // await popResetPassword.value.handleOpen(params);
+// }
+// const handleDelete = (data) => {
+//   CustomMessageBox.confirm(`${i18n.global.t('page.dialog.actionTip.sureToDelete')}?`, i18n.global.t('page.dialog.actionTip.tipText'), {
+//     confirmButtonText: i18n.global.t('page.confirm'),
+//     cancelButtonText: i18n.global.t('page.Cancel'),
+//     type: 'warning',
+//   })
+//     .then(() => {
+//       try {
+//         // await deleteUser(data.userId)
+//         ElMessage({
+//           type: 'success',
+//           message: i18n.global.t('page.dialog.actionFb.successfullyDeleted'),
+//         })
+//         _getTableData()
+//       } catch {
+//         ElMessage({
+//           type: 'error',
+//           message: i18n.global.t('page.dialog.actionFb.failedDeleted'),
+//         })
+//       }
+//     })
+//     .catch(() => {
+//       ElMessage({
+//         type: 'info',
+//         message: i18n.global.t('page.dialog.actionFb.cancleDelete'),
+//       })
+//     })
+// }
 
-const handleChangeStatus = (data) => {
+const handleChangeStatus = () => {
   // tableLoading.value = true;
   // try {
   //   await changeStatus({

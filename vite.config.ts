@@ -104,7 +104,7 @@ export default defineConfig(({ command, mode }) => {
       viteMockServe({
         localEnabled: command === 'serve', //保证开发阶段可以使用mock接口
         // localEnabled: false, //开发关闭
-        // prodEnabled: false, //mock生产接口开关
+        prodEnabled: true, //mock生产接口开关
       }),
     ],
     //代理跨域
