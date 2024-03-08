@@ -4,38 +4,17 @@
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">
         <!-- 登录的表单 -->
-        <el-form
-          class="login_form"
-          :model="loginForm"
-          :rules="rules"
-          ref="loginForms"
-        >
+        <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
           <h1>登录</h1>
           <h2></h2>
-          <el-form-item prop="username">
-            <el-input
-              prefix-icon="User"
-              v-model="loginForm.username"
-            ></el-input>
+          <el-form-item prop="acc">
+            <el-input prefix-icon="User" v-model="loginForm.acc"></el-input>
           </el-form-item>
-          <el-form-item prop="password">
-            <el-input
-              type="password"
-              prefix-icon="Lock"
-              v-model="loginForm.password"
-              show-password
-            ></el-input>
+          <el-form-item prop="pwd">
+            <el-input type="password" prefix-icon="Lock" v-model="loginForm.pwd" show-password></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button
-              :loading="loading"
-              class="login_btn"
-              type="primary"
-              size="default"
-              @click="login"
-            >
-              登录
-            </el-button>
+            <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">登录</el-button>
           </el-form-item>
         </el-form>
       </el-col>
@@ -58,7 +37,13 @@ let $route = useRoute()
 //定义变量控制按钮加载效果
 let loading = ref(false)
 //收集账号与密码的数据
-let loginForm = reactive({ username: 'admin', password: '111111' })
+let loginForm = reactive({
+  acc: 'luckyNwa',
+  captcha: '',
+  openCaptcha: false,
+  pwd: 'nwa999',
+  uuid: '',
+})
 //登录按钮回调
 const login = async () => {
   //保证全部表单相校验通过再发请求
@@ -123,11 +108,11 @@ const rules = {
   //max:文本长度最多多少位
   //message:错误的提示信息
   //trigger:触发校验表单的时机 change->文本发生变化触发校验,blur:失去焦点的时候触发校验规则
-  username: [
+  acc: [
     // { required: true, min: 6, max: 10, message: '账号长度至少六位', trigger: 'change' }
     { trigger: 'change', validator: validatorUserName },
   ],
-  password: [
+  pwd: [
     // { required: true, min: 6, max: 15, message: '密码长度至少6位', trigger: 'change' }
     { trigger: 'change', validator: validatorPassword },
   ],
