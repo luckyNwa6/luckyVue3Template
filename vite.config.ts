@@ -109,6 +109,7 @@ export default defineConfig(({ command, mode }) => {
     ],
     //代理跨域
     server: {
+      port: 8000,
       proxy: {
         [env.VITE_APP_BASE_API]: {
           //获取数据的服务器地址设置
@@ -118,6 +119,16 @@ export default defineConfig(({ command, mode }) => {
           //路径重写
           rewrite: (path) => {
             return path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')
+          },
+        },
+        [env.VITE_APP_BASE_API_YZM]: {
+          //获取数据的服务器地址设置
+          target: env.VITE_SERVE_YZM,
+          //需要代理跨域
+          changeOrigin: true,
+          //路径重写
+          rewrite: (path) => {
+            return path.replace(new RegExp('^' + env.VITE_APP_BASE_API_YZM), '')
           },
         },
       },

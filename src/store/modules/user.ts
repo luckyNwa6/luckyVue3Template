@@ -50,9 +50,9 @@ const useUserStore = defineStore('User', {
       if (result.code === 0) {
         //pinia仓库存储一下token
         //由于pinia|vuex存储数据其实利用js对象
-        this.token = result.luckyToken as string
+        this.token = result.token as string
         //本地存储持久化存储一份
-        SET_TOKEN(result.luckyToken as string)
+        SET_TOKEN(result.token as string)
         //能保证当前async函数返回一个成功的promise
         return 'ok'
       } else {

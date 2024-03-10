@@ -1,6 +1,6 @@
 <template>
   <div class="login_container">
-    <PageHead show-language="true" custom-class="login-head" :showLogo="false" />
+    <PageHead show-language custom-class="login-head" :showLogo="false" />
     <el-row>
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">
@@ -8,11 +8,11 @@
         <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
           <h1>登录</h1>
           <h2></h2>
-          <el-form-item prop="acc">
-            <el-input prefix-icon="User" v-model="loginForm.acc"></el-input>
+          <el-form-item prop="username">
+            <el-input prefix-icon="User" v-model="loginForm.username"></el-input>
           </el-form-item>
-          <el-form-item prop="pwd">
-            <el-input type="password" prefix-icon="Lock" v-model="loginForm.pwd" show-password></el-input>
+          <el-form-item prop="password">
+            <el-input type="password" prefix-icon="Lock" v-model="loginForm.password" show-password></el-input>
           </el-form-item>
           <el-form-item>
             <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">登录</el-button>
@@ -42,10 +42,10 @@ let $route = useRoute()
 let loading = ref(false)
 //收集账号与密码的数据
 let loginForm = reactive({
-  acc: 'luckyNwa',
+  username: 'admin',
   captcha: '',
   openCaptcha: false,
-  pwd: 'nwa999',
+  password: 'admin',
   uuid: '',
 })
 
@@ -55,8 +55,8 @@ const login = async () => {
   await loginForms.value.validate()
 
   const config = {
-    requestCaptchaDataUrl: 'http://47.98.230.128:10087/gen',
-    validCaptchaUrl: 'http://47.98.230.128:10087/check',
+    requestCaptchaDataUrl: '/yzm/luckyAdmin/LuckyYzm/gen',
+    validCaptchaUrl: '/yzm/luckyAdmin/LuckyYzm/check',
     bindEl: '#captcha-div',
     // 验证成功回调函数
     validSuccess: (res: any, c: any, tac: any) => {
@@ -113,10 +113,10 @@ const validatorUserName = (rule: any, value: any, callback: any) => {
 }
 
 const validatorPassword = (rule: any, value: any, callback: any) => {
-  if (value.length >= 6) {
+  if (value.length >= 5) {
     callback()
   } else {
-    callback(new Error('密码长度至少六位'))
+    callback(new Error('密码长度至少5位'))
   }
 }
 
@@ -128,11 +128,11 @@ const rules = {
   //max:文本长度最多多少位
   //message:错误的提示信息
   //trigger:触发校验表单的时机 change->文本发生变化触发校验,blur:失去焦点的时候触发校验规则
-  acc: [
+  username: [
     // { required: true, min: 6, max: 10, message: '账号长度至少六位', trigger: 'change' }
     { trigger: 'change', validator: validatorUserName },
   ],
-  pwd: [
+  password: [
     // { required: true, min: 6, max: 15, message: '密码长度至少6位', trigger: 'change' }
     { trigger: 'change', validator: validatorPassword },
   ],
