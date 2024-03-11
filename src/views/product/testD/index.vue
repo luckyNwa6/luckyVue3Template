@@ -159,8 +159,8 @@ const getTablePage = async () => {
   try {
     // tableQueryData.groupId = currentNode.value.id;
     // if (tableQueryData.starEndDate) {
-    //   tableQueryData.startDateTime = tableQueryData.starEndDate[0];
-    //   tableQueryData.endDateTime = tableQueryData.starEndDate[1];
+    //   tableQueryData.startDateTime = tableQueryData.starEndDate[0]
+    //   tableQueryData.endDateTime = tableQueryData.starEndDate[1]
     // }
     // delete tableQueryData.starEndDate;
     const res = await reqTablePage(tableQueryData)
