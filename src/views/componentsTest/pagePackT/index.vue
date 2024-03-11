@@ -19,17 +19,15 @@
             </div>
           </div>
           <div class="flex items-center p-3">
-            <div class="mr-3">用户名</div>
+            <div class="mr-3">(问题组件)</div>
             <div>
               <CustomInputNumber
-                v-model="value"
-                min="-100"
-                max="100"
-                precision="2"
-                step="0.1"
-                size="small"
+                v-model="inputNum"
+                :min="-10"
+                :max="10"
+                :precision="3"
+                :step="0.1"
               />
-              (问题组件)
             </div>
           </div>
         </div>
@@ -48,7 +46,18 @@
           <el-table :data="tableData" stripe style="width: 100%" height="560px">
             <el-table-column prop="date" label="Date" width="180" />
             <el-table-column prop="name" label="Name" width="180" />
-            <el-table-column prop="address" label="Address" />
+            <el-table-column prop="address" label="Address">
+              <template #default="scope">
+                <PopInfoTitlePopover :title="scope.row.name + '`s Address'">
+                  <template #content>
+                    {{ `${scope.row.name}\`s Address:${scope.row.address}` }}
+                  </template>
+                  <template #referenceDom>
+                    {{ scope.row.address }}
+                  </template>
+                </PopInfoTitlePopover>
+              </template>
+            </el-table-column>
           </el-table>
         </div>
       </template>
@@ -74,9 +83,8 @@
           <div class="verify-box">
             <drag-verify-img-chip
               ref="dragVerifyImgChipRef"
-              :imgsrc="img"
+              :imgsrc="imageList[0]"
               :width="360"
-              v-model:isPassing="isPassing"
               :showRefresh="true"
               :showTips="true"
               :text="$t('login.dragVerify.text')"
@@ -95,12 +103,28 @@
         </div>
       </template>
     </PagePack>
-    <div style="width: 200px; height: 200px; background-color: aqua">
+    <!-- <div style="width: 200px; height: 200px; background-color: aqua">
       <img
         style="width: 200px; height: 200px"
         src="https://echarts.apache.org/zh/asset/lottie/json/images/img_0.png"
         @click="showImg = true"
       />
+    </div> -->
+    <div>
+      <!-- <DeviceStatusTag :statusData="0"></DeviceStatusTag> -->
+      <PopInfoTitlePopover title="测试标题">
+        <template #content>测-试</template>
+        <template #referenceDom>测试触发区域</template>
+      </PopInfoTitlePopover>
+    </div>
+    <div class="mt-4">
+      <ProductBelongTag
+        productBelongName="测试测试"
+        productBelong="15"
+      ></ProductBelongTag>
+    </div>
+    <div class="mt-4">
+      <PromptContent cueText="@/assets/home/gis_bg.png"></PromptContent>
     </div>
   </div>
 </template>
@@ -118,6 +142,7 @@ const tableQueryData = reactive({
   pageNum: 5,
   pageSize: 10,
 })
+const inputNum = ref('5')
 const showImg = ref(false)
 const imageList = ref([
   'https://echarts.apache.org/zh/asset/lottie/json/images/img_0.png',

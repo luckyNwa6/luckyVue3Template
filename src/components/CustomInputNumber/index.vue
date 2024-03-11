@@ -152,14 +152,20 @@ const processValue = (value) => {
   // 移除开头多余的零
   valueNumber = valueNumber.replace(/^0+(?=\d)/, '')
 
+  // 移除数字末尾以及多余的负号
+  valueNumber = valueNumber.replace(/(?!^)-/g, '')
+
   const decimalIndex = valueNumber.indexOf('.')
   if (decimalIndex !== -1) {
     valueNumber = processDecimal(valueNumber, decimalIndex)
   }
 
-  // 移除末尾的 .0
-  valueNumber = valueNumber.replace(/\.0$/, '')
-  // }
+  // 移除末尾.0的触发条件需要讨论
+  if (props.precision <= 1) {
+    // 移除末尾的 .0
+    valueNumber = valueNumber.replace(/\.0$/, '')
+    // }
+  }
 
   return valueNumber
 }

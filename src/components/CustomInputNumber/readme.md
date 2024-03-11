@@ -8,13 +8,20 @@
 
 ```vue
 <template>
-  <CustomInputNumber v-model="value" min="1" max="100" precision="2" step="0.1" size="small" />
+  <CustomInputNumber
+    v-model="value"
+    min="1"
+    max="100"
+    precision="2"
+    step="0.1"
+    size="small"
+  />
 </template>
 
 <script setup>
-import CustomInputNumber from '@/components/CustomInputNumber.vue';
+import CustomInputNumber from '@/components/CustomInputNumber.vue'
 
-const value = ref(0);
+const value = ref(0)
 </script>
 ```
 
