@@ -22,11 +22,21 @@ export interface loginResponseData extends ResponseData {
 
 //定义获取用户信息返回数据类型
 export interface userInfoReponseData extends ResponseData {
-  data: {
-    routes: string[]
-    buttons: string[]
-    roles: string[]
-    name: string
-    avatar: string
+  user: {
+    userId: number
+    username: string
+    password: string
+    salt: string
+    email: string
+    mobile: string
+    status: number
+    roleIdList: null
+    createUserId: number
+    createTime: string
+    openId: string
+    headUrl: string
+    age: number
+    sex: string
+    nickname: string
   }
 }

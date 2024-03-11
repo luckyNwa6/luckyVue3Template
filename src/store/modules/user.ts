@@ -32,7 +32,7 @@ const useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(), //用户唯一标识token
-      menuRoutes: constantRoute, //仓库存储生成菜单需要数组(路由)
+      menuRoutes: [...constantRoute, ...asnycRoute, anyRoute], //仓库存储生成菜单需要数组(路由)
       username: '',
       avatar: '',
       //存储当前用户是否包含某一个按钮
@@ -66,22 +66,22 @@ const useUserStore = defineStore('User', {
 
       const result: userInfoReponseData = await reqUserInfo()
       //如果获取用户信息成功，存储一下用户信息
-      if (result.code == 200) {
-        this.username = result.data.name
-        this.avatar = result.data.avatar
-        this.buttons = result.data.buttons
+      if (result.code == 0) {
+        this.username = result.user.nickname
+        this.avatar = result.user.headUrl
+        // this.buttons = result.user.buttons
         //计算当前用户需要展示的异步路由
-        const userAsyncRoute = filterAsyncRoute(cloneDeep(asnycRoute), result.data.routes)
-        console.log('处理完的', userAsyncRoute)
+        // const userAsyncRoute = filterAsyncRoute(cloneDeep(asnycRoute), result.data.routes)
+        // console.log('处理完的', userAsyncRoute)
 
-        //菜单需要的数据整理完毕
-        this.menuRoutes = [...constantRoute, ...userAsyncRoute, anyRoute]
-        console.log('🚀 ~ userInfo ~ this.menuRoutes:', this.menuRoutes)
-        //目前路由器管理的只有常量路由:用户计算完毕异步路由、任意路由动态追加
-        ;[...userAsyncRoute, anyRoute].forEach((route: any) => {
-          router.addRoute(route)
-        })
-        console.log('🚀 ~ ;[...userAsyncRoute,anyRoute].forEach ~ router:', router)
+        // //菜单需要的数据整理完毕
+        // this.menuRoutes = [...constantRoute, ...userAsyncRoute, anyRoute]
+        // console.log('🚀 ~ userInfo ~ this.menuRoutes:', this.menuRoutes)
+        // //目前路由器管理的只有常量路由:用户计算完毕异步路由、任意路由动态追加
+        // ;[...userAsyncRoute, anyRoute].forEach((route: any) => {
+        //   router.addRoute(route)
+        // })
+        // console.log('🚀 ~ ;[...userAsyncRoute,anyRoute].forEach ~ router:', router)
         return 'ok'
       } else {
         return Promise.reject(new Error(result.msg))
