@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 enum API {
-  LOGIN_URL = '/idpSys/login',
+  LOGIN_URL = '/sys/login',
 }
 
 export const reqLoginX = (data: any) =>

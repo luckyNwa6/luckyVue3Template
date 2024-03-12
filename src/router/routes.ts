@@ -2,7 +2,7 @@
 export const constantRoute = [
   {
     path: '/login',
-    component: () => import('@/views/iTest/login/index.vue'),
+    component: () => import('@/views/login/index.vue'),
     name: 'login',
   },
   {
@@ -11,7 +11,7 @@ export const constantRoute = [
   },
   {
     path: '/home',
-    component: () => import('@/views/iTest/home/index.vue'),
+    component: () => import('@/views/home/index.vue'),
     name: 'home',
   },
 
@@ -42,17 +42,17 @@ export const constantRoute = [
 export const testRoute = [
   {
     path: '/i18T',
-    component: () => import('@/views/iTest/i18T/index.vue'),
+    component: () => import('@/views/i18T/index.vue'),
     name: 'i18T',
   },
   {
     path: '/chart',
-    component: () => import('@/views/iTest/chart/index.vue'),
+    component: () => import('@/views/chart/index.vue'),
     name: 'chart',
   },
   {
     path: '/unoCssT',
-    component: () => import('@/views/iTest/unoCssT/index.vue'),
+    component: () => import('@/views/unoCssT/index.vue'),
     name: 'unoCssT',
   },
 ]
