@@ -54,7 +54,7 @@ export const asnycRoute = [
     component: () => import('@/layout/index.vue'),
     name: 'Acl',
     meta: {
-      title: '权限管理',
+      title: '系统管理',
       icon: 'Lock',
     },
     redirect: '/acl/user',
