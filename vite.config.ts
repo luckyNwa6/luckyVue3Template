@@ -73,7 +73,8 @@ export default defineConfig(({ command, mode }) => {
         imports: [
           'vue',
           '@vueuse/core',
-          // { '@/hooks/web/useI18n': ['useI18n'] },//还能这样每个vue页都导入
+          'vue-router',
+          // { '@/hooks/useExitLogin': ['useExitLogin'] }, //还能这样每个vue页都导入，发现引入组件就行
         ],
         // dts: '/auto-import.d.ts',
         eslintrc: {

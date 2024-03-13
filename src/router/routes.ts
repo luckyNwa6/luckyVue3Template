@@ -9,11 +9,6 @@ export const constantRoute = [
     path: '/',
     redirect: '/login',
   },
-  {
-    path: '/home',
-    component: () => import('@/views/home/index.vue'),
-    name: 'home',
-  },
 
   {
     path: '/404',
@@ -32,12 +27,6 @@ export const constantRoute = [
   },
 ]
 
-//异步路由  性能优化
-// export const asnycRoute = [
-
-//   },
-// ]
-
 //测试路由    同级index.ts再设置一下
 export const testRoute = [
   {
@@ -54,5 +43,21 @@ export const testRoute = [
     path: '/unoCssT',
     component: () => import('@/views/unoCssT/index.vue'),
     name: 'unoCssT',
+  },
+
+  {
+    path: '/tableT',
+    component: () => import('@/views/tableT/index.vue'),
+    name: 'tableT',
+  },
+  {
+    path: '/iconT',
+    component: () => import('@/views/iconT/index.vue'),
+    name: 'iconT',
+  },
+  {
+    path: '/conT',
+    component: () => import('@/views/conT/index.vue'),
+    name: 'conT',
   },
 ]
