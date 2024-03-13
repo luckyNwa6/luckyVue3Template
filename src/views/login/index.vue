@@ -3,7 +3,9 @@
     <!-- <i-ep-edit /> -->
     编辑2种自动引入的方法应用
   </el-button>
-
+  <el-tooltip class="item" effect="dark" content=" 隐藏查询" placement="top">
+    <el-button size="small" circle icon="Refresh" />
+  </el-tooltip>
   <hr />
   默认是英文的，需要main那修改配置
   <el-pagination
