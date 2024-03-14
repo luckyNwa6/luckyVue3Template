@@ -60,4 +60,9 @@ export const testRoute = [
     component: () => import('@/views/conT/index.vue'),
     name: 'conT',
   },
+  {
+    path: '/mapT',
+    component: () => import('@/views/mapT/index.vue'),
+    name: 'mapT',
+  },
 ]

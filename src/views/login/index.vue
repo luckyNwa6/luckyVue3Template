@@ -14,7 +14,7 @@
   <hr />
   <el-button @click="iconT">icon测试</el-button>
   <el-button @click="conT">组件测试</el-button>
-
+  <el-button @click="mapT">地图测试</el-button>
   <hr />
 </template>
 
@@ -56,6 +56,10 @@ const iconT = () => {
 }
 const conT = () => {
   $router.push({ path: '/conT' })
+}
+
+const mapT = () => {
+  $router.push({ path: '/mapT' })
 }
 
 //下面是登录
