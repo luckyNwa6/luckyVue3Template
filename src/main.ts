@@ -4,7 +4,7 @@ import App from '@/App.vue'
 import { isDevMode } from '@/utils/env'
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不需要这个了
-import baiduMap from 'vue3-baidu-map-gl'
+import baiduMap from 'vue3-baidu-map-gl' //百度地图
 //样式---------------------------------
 import '@/styles/index.scss' //重置样式
 import 'uno.css'
@@ -48,11 +48,12 @@ app.use(ElementPlus, {
 //   },
 // })
 
+app.use(baiduMap, {
+  ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
+  plugins: ['TrackAnimation'],
+})
+
 app
-  .use(baiduMap, {
-    ak: '4f8bca37413d6394c1352a013063d658',
-    plugins: ['TrackAnimation'],
-  })
   .use(router) //注册模板路由
   .use(i18n) //中英切换
   .use(ElementPlus) //安装element-plus插件

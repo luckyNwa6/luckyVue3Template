@@ -1,5 +1,7 @@
 <template>
   <div>
+    <exitButton />
+    <hr />
     <div class="mapBox">
       <BMap
         height="700px"
@@ -78,28 +80,14 @@
         />
       </BMap>
     </div>
-    <div class="textBox mx-3 bg-red-800">当前所在地区：{{ cityName }}</div>
+    <div class="bg-red-300 mt-2 p-[20px]">当前所在地区：{{ cityName }}</div>
   </div>
 </template>
-<script lang="ts" setup>
-import { ref, UnwrapRef } from 'vue'
-import { MapType, MapProps, useIpLocation } from 'vue3-baidu-map-gl'
+<script setup lang="ts">
+import { useIpLocation } from 'vue3-baidu-map-gl'
 
-const type = ref<MapType>('BMAP_NORMAL_MAP')
-const mapSetting = ref<MapProps>({
-  enableDragging: true,
-  enableInertialDragging: true,
-  enableScrollWheelZoom: false,
-  enableContinuousZoom: true,
-  enableResizeOnCenter: true,
-  enableDoubleClickZoom: false,
-  enableKeyboard: true,
-  enablePinchToZoom: true,
-  enableAutoResize: true,
-  enableTraffic: false,
-})
 let cityName = ref('')
-let count = ref(0)
+
 let showTip = ref(true)
 let markers = ref([
   {
@@ -163,7 +151,7 @@ function handleClick(item: UnwrapRef<typeof markers>[0]) {
 const { get, location, isLoading } = useIpLocation((res) => {
   console.log('返回定位数据', res)
   cityName.value = res._rawValue.name
-  // console.log('加载信息2', isLoading)
+  console.log('加载信息2', isLoading)
 })
 onMounted(() => {
   // console.log('加载信息1', isLoading)
