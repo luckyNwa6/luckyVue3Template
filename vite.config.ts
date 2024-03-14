@@ -40,7 +40,7 @@ export default defineConfig(({ command, mode }) => {
   //获取各种环境下的对应的变量
   let env = loadEnv(mode, process.cwd())
   return {
-    base: '/luckyVue3Template/', // 在生产中服务时的基本公共路径
+    // base: '/luckyVue3Template/', // 对应github静态路径
     publicDir: 'public', // 静态资源服务的文件夹, 默认"public"
     build: {
       outDir: 'docs', //github部署那设置成这个即可
