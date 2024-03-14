@@ -66,6 +66,10 @@ const login = async () => {
     },
   }
   new window.TAC(config).init()
+  var elementToRemove: any = document.getElementById('tianai-captcha-logo')
+  if (elementToRemove) {
+    elementToRemove.parentNode.removeChild(elementToRemove)
+  }
 }
 
 const loginAdmin = async () => {

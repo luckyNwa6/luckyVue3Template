@@ -13,11 +13,8 @@
             <div class="space-x-2 ml-2 flex button-area">
               <div>
                 <el-button v-if="showToggleButton" text @click="changeToggle">
-                  <i-ep-arrow-down
-                    :class="showSeniorSearch ? 'down-icon' : ''"
-                    class="change-icon mr-1"
-                  />
-                  {{ showSeniorSearch }}
+                  <i-ep-arrow-down :class="showSeniorSearch ? 'down-icon' : ''" class="change-icon mr-1" />
+                  {{ showSeniorSearch ? $t('general.collapse') : $t('general.expand') }}
                 </el-button>
               </div>
               <slot name="searchButton"></slot>

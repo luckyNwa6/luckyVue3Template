@@ -37,7 +37,7 @@
       </template>
       <template #pageTable>
         <div class="btn-content">
-          <el-button :icon="Plus" type="primary" @click="editData()">
+          <el-button :icon="Plus" type="primary" @click="editData({ type: 'create' })">
             {{ $t('page.add') }}
           </el-button>
         </div>
@@ -88,7 +88,7 @@
           <el-table-column width="210" label="操作" fixed="right">
             <template #default="scope">
               <div>
-                <el-link class="opreation-link" :underline="false" @click="editData()">编辑</el-link>
+                <el-link class="opreation-link" :underline="false" @click="editData({ type: 'edit', data: scope.row })">编辑</el-link>
                 <!-- <el-link class="opreation-link" :underline="false" @click="resetPwd(scope.row)">重置密码</el-link>
                 <el-link class="opreation-link" :underline="false" @click="handleDelete(scope.row)">
                   {{ $t('page.delete') }}
@@ -108,6 +108,7 @@
         />
       </template>
     </PagePack>
+    <PopEditerUser ref="popEditerUser" @actionUpdatePage="actionUpdatePage" />
   </div>
 </template>
 
@@ -115,7 +116,8 @@
 import useTable from '@/hooks/useTable'
 import { reqTablePage } from '@/api/home'
 import { Plus } from '@element-plus/icons-vue'
-import router from '@/router'
+
+import PopEditerUser from './components/popEditerUser.vue'
 
 let $router = useRouter()
 
@@ -133,7 +135,7 @@ const initTableQueryData = () => ({
   startDateTime: '',
   endDateTime: '',
 })
-
+const popEditerUser = ref<any>('popEditerUser')
 const {
   tableQueryData,
   searchData,
@@ -173,21 +175,30 @@ const getTablePage = async () => {
   tableLoading.value = false
 }
 
-const editData = () => {
+const editData = ({ type, data }: { type: String; data?: any }) => {
   console.log('编辑')
 
-  // popEditerUser.value.handleOpen({
-  //   type: type,
-  //   data: data,
-  //   groupId: currentNode.value.id
-  // });
+  popEditerUser.value.handleOpen({
+    type: type,
+    data: data,
+    groupId: 1,
+  })
 }
+
 const sortData = reactive({
   pageNum: 1,
   createdTimeSort: null,
 })
-const handleSort = () => {
-  hooks_sortTableByProps(sortData, null, getTablePage)
+const handleSort = (data: any) => {
+  hooks_sortTableByProps(sortData, data, getTablePage)
+}
+
+const actionUpdatePage = () => {
+  _getTableData()
+}
+// 获取表格数据
+const _getTableData = () => {
+  hooks_getTableData(getTablePage)
 }
 
 // const resetPwd = (params) => {
