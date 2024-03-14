@@ -88,7 +88,6 @@ import { useIpLocation } from 'vue3-baidu-map-gl'
 
 let cityName = ref('')
 
-let showTip = ref(true)
 let markers = ref([
   {
     position: { lat: 24.613554, lng: 118.058301 },
@@ -143,12 +142,12 @@ const title = ref(markers.value[0].title)
 const position = ref(markers.value[0].position)
 const content = ref(markers.value[0].content)
 const show = ref<boolean>(false)
-function handleClick(item: UnwrapRef<typeof markers>[0]) {
+function handleClick(item: any) {
   position.value = item.position
   title.value = item.title
   show.value = true
 }
-const { get, location, isLoading } = useIpLocation((res) => {
+const { get, location, isLoading } = useIpLocation((res: any) => {
   console.log('返回定位数据', res)
   cityName.value = res._rawValue.name
   console.log('加载信息2', isLoading)
