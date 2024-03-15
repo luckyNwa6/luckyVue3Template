@@ -22,6 +22,7 @@
     <!-- 顶部导航 -->
     <div class="layout_tabbar" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <!-- layout组件的顶部导航tabbar -->
+
       <Tabbar></Tabbar>
     </div>
     <!-- 内容展示区域 -->

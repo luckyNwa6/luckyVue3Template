@@ -38,7 +38,7 @@ const props = defineProps({
   },
   layout: {
     type: String,
-    default: 'total, sizes, prev, pager, next, jumper',
+    default: '  prev, pager, next,sizes, jumper,total',
   },
   background: {
     type: Boolean,

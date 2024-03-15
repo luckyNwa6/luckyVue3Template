@@ -5,7 +5,7 @@ export default {
   logo: '/logo.svg', //项目public下的
   // logo: logo, //项目logo设置
   logoHidden: true, //logo组件是否隐藏设置
-  language: 'zh', // zh-cn| en
+  language: 'zh', // zh| en
   fixedHeader: true,
   tagsView: false,
   sidebarLogo: true,

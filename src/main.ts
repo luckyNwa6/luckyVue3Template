@@ -3,7 +3,7 @@ import { createApp } from 'vue'
 import App from '@/App.vue'
 import { isDevMode } from '@/utils/env'
 import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不需要这个了
+// import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不需要这个了
 
 //样式---------------------------------
 import '@/styles/index.scss' //重置样式
@@ -38,9 +38,9 @@ const app = createApp(App)
 import ElementPlusIconsVue from '@/components'
 app.use(ElementPlusIconsVue)
 //国际化配置
-app.use(ElementPlus, {
-  locale: zhCn,
-})
+// app.use(ElementPlus, {
+//   locale: zhCn,
+// })
 
 //引入自定义指令文件
 import { isHasButton } from '@/directive/has'

@@ -10,9 +10,11 @@ import en from 'element-plus/es/locale/lang/en'
 export const useAppStore = defineStore('app', () => {
   // state
   const device = useStorage('device', 'desktop')
-  console.log('aaaaaaaaaaaaa')
+
   const size = useStorage('size', defaultSettings.size)
+  console.log('🚀初始化的 ~ useAppStore ~ defaultSettings.language:', defaultSettings.language)
   const language = useStorage('language', defaultSettings.language)
+  console.log('🚀初始化的 ~ useAppStore ~ language:', language)
   const sidebarStatus = useStorage('sidebarStatus', 'closed')
   const sidebar = reactive({
     opened: sidebarStatus.value !== 'closed',
@@ -21,7 +23,7 @@ export const useAppStore = defineStore('app', () => {
   // const documentTitle = useStorage('documentTitle', defaultSettings.title);
   document.title = defaultSettings.title
   const activeTopMenu = useStorage('activeTop', '')
-  console.log('dcccccc')
+
   /**
    * 根据语言标识读取对应的语言包
    */

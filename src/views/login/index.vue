@@ -6,7 +6,7 @@
       <el-col :span="12" :xs="24">
         <!-- 登录的表单 -->
         <el-form class="login_form" :model="loginForm" :rules="rules" ref="loginForms">
-          <h1>登录</h1>
+          <h1>{{ $t('login.login') }}</h1>
           <h2></h2>
           <el-form-item prop="username">
             <el-input prefix-icon="User" v-model="loginForm.username"></el-input>
@@ -15,7 +15,7 @@
             <el-input type="password" prefix-icon="Lock" v-model="loginForm.password" show-password></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">登录</el-button>
+            <el-button :loading="loading" class="login_btn" type="primary" size="default" @click="login">{{ $t('login.login') }}</el-button>
           </el-form-item>
         </el-form>
         <div id="captcha-div"></div>

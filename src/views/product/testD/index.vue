@@ -3,24 +3,24 @@
     <PagePack permissionName="USER_MANAGER_LIST_PAGE" v-model:toggleValue="showSeniorSearch">
       <template #searchForm>
         <el-form :model="searchData" ref="queryForm" :inline="true">
-          <el-form-item label="用户名" prop="username">
+          <el-form-item :label="$t('systemManager.userManager.accountName')" prop="username">
             <el-input
               v-model="searchData.username"
-              placeholder="请输入用户名"
+              :placeholder="$t('systemManager.userManager.accountName')"
               clearable
               @keyup.enter.native="hooks_handleSearch(getTablePage)"
             />
           </el-form-item>
 
-          <el-form-item label="昵称" prop="nickname">
+          <el-form-item :label="$t('systemManager.userManager.username')" prop="nickname">
             <el-input
               v-model="searchData.nickname"
-              placeholder="请输入昵称"
+              :placeholder="$t('systemManager.userManager.username')"
               clearable
               @keyup.enter.native="hooks_handleSearch(getTablePage)"
             />
           </el-form-item>
-          <el-form-item label="创建时间" prop="starEndDate">
+          <el-form-item :label="$t('page.createTime')" prop="starEndDate">
             <el-date-picker
               v-model="searchData.starEndDate"
               type="daterange"
@@ -32,7 +32,7 @@
               :default-time="[new Date(0, 0, 0, 0, 0, 0), new Date(0, 0, 0, 23, 59, 59)]"
             />
           </el-form-item>
-          <el-form-item label="状态" prop="nickname">
+          <el-form-item :label="$t('systemManager.userManager.status')" prop="nickname">
             <el-select v-model="searchData.status" style="width: 100px" :placeholder="$t('systemManager.userManager.status')">
               <el-option :value="1" :label="$t('systemManager.userManager.normal')" />
               <el-option :value="0" :label="$t('systemManager.userManager.disabled')" />
@@ -42,21 +42,24 @@
       </template>
 
       <template #searchButton>
-        <el-button type="primary" @click="hooks_handleSearch(getTablePage)">搜索</el-button>
+        <el-button type="warning" @click="changeLanZ">中文</el-button>
+        <el-button type="info" @click="changeLanE">en</el-button>
+
+        <el-button type="primary" @click="hooks_handleSearch(getTablePage)">{{ $t('page.search') }}</el-button>
         <el-button @click="hooks_resetQueryTable(getTablePage)">
           {{ $t('page.reset') }}
         </el-button>
       </template>
 
-      <template #topName>测试管理</template>
+      <template #topName>{{ $t('page.userManage.title') }}</template>
       <template #topNameBtn>
-        <el-button plain size="small" :icon="Plus" type="primary" @click="editData({ type: 'create' })">
+        <el-button plain size="small" icon="Plus" type="primary" @click="editData({ type: 'create' })">
           {{ $t('page.add') }}
         </el-button>
       </template>
       <template #pageTable>
         <el-table ref="tableRef" height="485px" v-loading="tableLoading" :data="tablePage" @sort-change="handleSort">
-          <el-table-column label="序号" ixed="left" align="center" width="60">
+          <el-table-column :label="$t('page.index')" ixed="left" align="center" width="70">
             <template #default="scope">
               {{ scope.$index + 1 + (tableQueryData.pageNum - 1) * tableQueryData.pageSize }}
             </template>
@@ -69,13 +72,19 @@
             show-overflow-tooltip
             min-width="100"
           />
-          <el-table-column prop="nickname" align="center" label="姓名" show-overflow-tooltip min-width="100" />
+          <el-table-column
+            prop="nickname"
+            align="center"
+            :label="$t('systemManager.userManager.username')"
+            show-overflow-tooltip
+            min-width="100"
+          />
           <el-table-column :label="$t('systemManager.userManager.accountType')" show-overflow-tooltip min-width="100">
             <template v-slot="{ row }">
               {{ row.primaryAccount ? $t('page.primaryAccount') : $t('page.bypassAccount') }}
             </template>
           </el-table-column>
-          <el-table-column prop="mobileNo" align="center" label="手机号" min-width="130" show-overflow-tooltip />
+          <el-table-column prop="mobileNo" align="center" :label="$t('page.mobilePhone')" min-width="130" show-overflow-tooltip />
           <el-table-column prop="emailNo" align="center" :label="$t('page.email')" show-overflow-tooltip />
           <el-table-column
             prop="groupName"
@@ -100,20 +109,22 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="createdTimeSort" align="center" sortable="custom" width="150" label="创建时间">
+          <el-table-column prop="createdTimeSort" align="center" sortable="custom" width="150" :label="$t('page.createTime')">
             <template #default="scope">
               <span>{{ scope.row.createdTime }}</span>
             </template>
           </el-table-column>
-          <el-table-column width="210" label="操作" align="center" fixed="right">
+          <el-table-column width="210" :label="$t('page.operate')" align="center" fixed="right">
             <template #default="scope">
               <div>
-                <el-link class="opreation-link" :underline="false" @click="editData({ type: 'edit', data: scope.row })">编辑</el-link>
-                <!-- <el-link class="opreation-link" :underline="false" @click="resetPwd(scope.row)">重置密码</el-link>
+                <el-link class="opreation-link" :underline="false" @click="editData({ type: 'edit', data: scope.row })">
+                  {{ $t('page.edit') }}
+                </el-link>
+                <!-- <el-link class="opreation-link" :underline="false" @click="resetPwd(scope.row)">    {{ $t('systemManager.userManager.resetPwd') }}</el-link>
                 <el-link class="opreation-link" :underline="false" @click="handleDelete(scope.row)">
                   {{ $t('page.delete') }}
                 </el-link> -->
-                <el-button size="small" link type="primary" icon="el-icon-delete">删除</el-button>
+                <el-button size="small" link type="primary" icon="el-icon-delete">{{ $t('page.delete') }}</el-button>
               </div>
             </template>
           </el-table-column>
@@ -136,7 +147,27 @@
 <script setup lang="ts">
 import useTable from '@/hooks/useTable'
 import { reqTablePage } from '@/api/home'
-import { Plus } from '@element-plus/icons-vue'
+
+import i18n from '@/lang'
+
+import { useAppStore } from '@/store/modules/app.js'
+import { useI18n } from 'vue-i18n'
+const { locale } = useI18n()
+const appStore = useAppStore()
+
+const changeLanZ = () => {
+  console.log('切为中文')
+  locale.value = 'zh'
+  i18n.global.locale.value = 'zh'
+  appStore.changeLanguage('zh')
+}
+
+const changeLanE = () => {
+  locale.value = 'en'
+  console.log('切为英文')
+  i18n.global.locale.value = 'en'
+  appStore.changeLanguage('en')
+}
 
 import PopEditerUser from './components/popEditerUser.vue'
 
