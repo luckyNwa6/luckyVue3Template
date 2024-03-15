@@ -39,33 +39,6 @@
             </el-select>
           </el-form-item>
         </el-form>
-
-        <!-- <el-row :gutter="12">
-          <el-col :span="7">
-            <el-input v-model="searchData.username" placeholder="请输入用户名" clearable />
-          </el-col>
-          <el-col :span="7">
-            <el-input v-model="searchData.nickname" :placeholder="$t('systemManager.userManager.username')" clearable />
-          </el-col>
-          <el-col :span="10">
-            <el-date-picker
-              v-model="searchData.starEndDate"
-              type="daterange"
-              range-separator="-"
-              :start-placeholder="$t('systemManager.userManager.startDate')"
-              :end-placeholder="$t('systemManager.userManager.endDate')"
-              value-format="YYYY-MM-DD"
-            />
-          </el-col>
-        </el-row>
-        <el-row :gutter="12" v-if="showSeniorSearch" class="mt-3">
-          <el-col :span="7">
-            <el-select v-model="searchData.status" :placeholder="$t('systemManager.userManager.status')">
-              <el-option :value="1" :label="$t('systemManager.userManager.normal')" />
-              <el-option :value="0" :label="$t('systemManager.userManager.disabled')" />
-            </el-select>
-          </el-col>
-        </el-row> -->
       </template>
 
       <template #searchButton>
@@ -75,41 +48,43 @@
         </el-button>
       </template>
 
-      <template #topName>
-        <div class="table-top">
-          <el-row :gutter="10">
-            <el-col :span="12">
-              <div class="table-title">测试管理</div>
-            </el-col>
-
-            <el-col :span="12" style="text-align: right">
-              <el-button plain :icon="Plus" type="primary" @click="editData({ type: 'create' })">
-                {{ $t('page.add') }}
-              </el-button>
-            </el-col>
-          </el-row>
-        </div>
+      <template #topName>测试管理</template>
+      <template #topNameBtn>
+        <el-button plain size="small" :icon="Plus" type="primary" @click="editData({ type: 'create' })">
+          {{ $t('page.add') }}
+        </el-button>
       </template>
-
       <template #pageTable>
-        <el-table ref="tableRef" height="590px" v-loading="tableLoading" :data="tablePage" @sort-change="handleSort">
+        <el-table ref="tableRef" height="485px" v-loading="tableLoading" :data="tablePage" @sort-change="handleSort">
           <el-table-column label="序号" ixed="left" align="center" width="60">
-            <template v-slot="scope">
-              {{ scope.$index + 1 + (tableQueryData.pageNo - 1) * tableQueryData.pageSize }}
+            <template #default="scope">
+              {{ scope.$index + 1 + (tableQueryData.pageNum - 1) * tableQueryData.pageSize }}
             </template>
           </el-table-column>
 
-          <el-table-column prop="username" :label="$t('systemManager.userManager.accountName')" show-overflow-tooltip min-width="100" />
-          <el-table-column prop="nickname" label="姓名" show-overflow-tooltip min-width="100" />
+          <el-table-column
+            prop="username"
+            align="center"
+            :label="$t('systemManager.userManager.accountName')"
+            show-overflow-tooltip
+            min-width="100"
+          />
+          <el-table-column prop="nickname" align="center" label="姓名" show-overflow-tooltip min-width="100" />
           <el-table-column :label="$t('systemManager.userManager.accountType')" show-overflow-tooltip min-width="100">
             <template v-slot="{ row }">
               {{ row.primaryAccount ? $t('page.primaryAccount') : $t('page.bypassAccount') }}
             </template>
           </el-table-column>
-          <el-table-column prop="mobileNo" label="手机号" min-width="130" show-overflow-tooltip />
-          <el-table-column prop="emailNo" :label="$t('page.email')" show-overflow-tooltip />
-          <el-table-column prop="groupName" :label="$t('systemManager.userManager.belongingGroup')" show-overflow-tooltip min-width="130" />
-          <el-table-column :label="$t('page.role')" min-width="80" show-overflow-tooltip>
+          <el-table-column prop="mobileNo" align="center" label="手机号" min-width="130" show-overflow-tooltip />
+          <el-table-column prop="emailNo" align="center" :label="$t('page.email')" show-overflow-tooltip />
+          <el-table-column
+            prop="groupName"
+            align="center"
+            :label="$t('systemManager.userManager.belongingGroup')"
+            show-overflow-tooltip
+            min-width="130"
+          />
+          <el-table-column :label="$t('page.role')" align="center" min-width="80" show-overflow-tooltip>
             <template v-slot="{ row }">
               <span>
                 {{ row.roleName }}
@@ -117,7 +92,7 @@
             </template>
           </el-table-column>
 
-          <el-table-column prop="enabled" width="80" :label="$t('page.status')">
+          <el-table-column prop="enabled" align="center" width="80" :label="$t('page.status')">
             <template #default="scope">
               <el-switch v-if="scope.row.primaryAccount" v-model="scope.row.enabled" :disabled="true" />
               <div v-else class="com-mark cursor-pointer" @click="handleChangeStatus()">
@@ -125,12 +100,12 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="createdTimeSort" sortable="custom" width="150" label="创建时间">
+          <el-table-column prop="createdTimeSort" align="center" sortable="custom" width="150" label="创建时间">
             <template #default="scope">
               <span>{{ scope.row.createdTime }}</span>
             </template>
           </el-table-column>
-          <el-table-column width="210" label="操作" fixed="right">
+          <el-table-column width="210" label="操作" align="center" fixed="right">
             <template #default="scope">
               <div>
                 <el-link class="opreation-link" :underline="false" @click="editData({ type: 'edit', data: scope.row })">编辑</el-link>

@@ -21,7 +21,18 @@
         </el-form>
       </el-card>
       <el-card class="table-card">
-        <slot name="topName"></slot>
+        <div class="table-top">
+          <el-row :gutter="10">
+            <el-col :span="12">
+              <div class="table-title"><slot name="topName"></slot></div>
+            </el-col>
+            <el-col :span="12" style="text-align: right">
+              <slot name="topNameBtn"></slot>
+            </el-col>
+          </el-row>
+        </div>
+
+        <!-- <slot name="topName"></slot> -->
         <slot name="pageTable"></slot>
         <div class="pagination-box">
           <slot name="pagePagination"></slot>

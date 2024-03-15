@@ -51,7 +51,7 @@ function createList() {
 const dataForever = createRandomData(120) //这样数据就不会变了
 //数据的类型
 interface UserData {
-  tenantId: string
+  id: string
   userId: string
   username: string
   nickname: string
@@ -74,7 +74,7 @@ function createRandomData(num: Number): UserData[] {
 
   for (let i = 0; i < num; i++) {
     const randomUser: UserData = {
-      tenantId: '1390101533310976',
+      id: '1390101533310976',
       userId: Math.floor(Math.random() * 1000000000000000000).toString(),
       username: `user${i}`,
       nickname: `nickname${i}`,
