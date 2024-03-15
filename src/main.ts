@@ -12,6 +12,8 @@ import 'element-plus/dist/index.css'
 
 //导入svg插件，去阿里图标库，选择icon，copy它的Svg代码,并放到本项目的icons下，起个名字放入
 import 'virtual:svg-icons-register'
+//全局注册ep图标
+import ElementPlusIconsVue from '@/components'
 
 //引入路由
 import router from '@/router/index'
@@ -24,16 +26,34 @@ import i18n from '@/lang/index'
 if (isDevMode()) {
   import('element-plus/dist/index.css')
 }
+// 扩展
+import modal from '@/plugins/modal'
+// // 创建实例
+// const setupAll = async () => {
+//   const app = createApp(App)
 
-//获取应用实例对象
-const app = createApp(App)
-//全局注册ep图标
-import ElementPlusIconsVue from '@/components'
-app.use(ElementPlusIconsVue)
-//国际化配置
-app.use(ElementPlus, {
-  locale: zhCn,
-})
+//   app.use(ElementPlusIconsVue)
+//   //国际化配置
+//   app.use(ElementPlus, {
+//     locale: zhCn,
+//   })
+//   app
+//     .use(baiduMap, {
+//       ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
+//       plugins: ['TrackAnimation'],
+//     })
+//     .use(pinia) //安装仓库
+
+//   app
+//     .use(router) //注册模板路由
+//     .use(i18n) //中英切换
+//     .use(ElementPlus) //安装element-plus插件
+
+//     .use(plugins)
+//     .mount('#app')
+// }
+
+// setupAll()
 
 // console.log(import.meta.env)
 
@@ -47,15 +67,25 @@ app.use(ElementPlus, {
 //     password: '111111',
 //   },
 // })
+//获取应用实例对象
+const app = createApp(App)
+
+app.use(ElementPlusIconsVue)
+//国际化配置
+app.use(ElementPlus, {
+  locale: zhCn,
+})
 
 app.use(baiduMap, {
   ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
   plugins: ['TrackAnimation'],
 })
-
+app.config.globalProperties.$modal = modal
 app
+
   .use(router) //注册模板路由
   .use(i18n) //中英切换
   .use(ElementPlus) //安装element-plus插件
   .use(pinia) //安装仓库
+  // .use(plugins)
   .mount('#app') //将应用挂载道节点上
