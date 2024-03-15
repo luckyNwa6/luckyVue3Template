@@ -63,7 +63,7 @@ const pageSize = useVModel(props, 'limit', emit)
 function handleSizeChange(val) {
   emit('pagination', { page: currentPage, limit: val })
   if (props.autoScroll) {
-    console.log('滚动到起始点1')
+    console.log('切换分页码数调用滚动条方法')
     scrollTo(0, 800)
   }
 }
@@ -72,7 +72,7 @@ function handleCurrentChange(val) {
   currentPage.value = val
   emit('pagination', { page: val, limit: props.limit })
   if (props.autoScroll) {
-    console.log('滚动到起始点2')
+    console.log('切换上下页调用滚动条方法')
     scrollTo(0, 800)
   }
 }

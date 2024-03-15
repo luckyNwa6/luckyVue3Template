@@ -1,8 +1,46 @@
 <template>
   <div class="flex-1 w-full">
-    <PagePack permissionName="USER_MANAGER_LIST_PAGE" showToggleButton v-model:toggleValue="showSeniorSearch">
+    <PagePack permissionName="USER_MANAGER_LIST_PAGE" v-model:toggleValue="showSeniorSearch">
       <template #searchForm>
-        <el-row :gutter="12">
+        <el-form :model="searchData" ref="queryForm" :inline="true">
+          <el-form-item label="用户名" prop="username">
+            <el-input
+              v-model="searchData.username"
+              placeholder="请输入用户名"
+              clearable
+              @keyup.enter.native="hooks_handleSearch(getTablePage)"
+            />
+          </el-form-item>
+
+          <el-form-item label="昵称" prop="nickname">
+            <el-input
+              v-model="searchData.nickname"
+              placeholder="请输入昵称"
+              clearable
+              @keyup.enter.native="hooks_handleSearch(getTablePage)"
+            />
+          </el-form-item>
+          <el-form-item label="创建时间" prop="starEndDate">
+            <el-date-picker
+              v-model="searchData.starEndDate"
+              type="daterange"
+              range-separator="-"
+              :start-placeholder="$t('systemManager.userManager.startDate')"
+              :end-placeholder="$t('systemManager.userManager.endDate')"
+              format="YYYY-MM-DD"
+              value-format="YYYY-MM-DD HH:mm:ss"
+              :default-time="[new Date(0, 0, 0, 0, 0, 0), new Date(0, 0, 0, 23, 59, 59)]"
+            />
+          </el-form-item>
+          <el-form-item label="状态" prop="nickname">
+            <el-select v-model="searchData.status" style="width: 100px" :placeholder="$t('systemManager.userManager.status')">
+              <el-option :value="1" :label="$t('systemManager.userManager.normal')" />
+              <el-option :value="0" :label="$t('systemManager.userManager.disabled')" />
+            </el-select>
+          </el-form-item>
+        </el-form>
+
+        <!-- <el-row :gutter="12">
           <el-col :span="7">
             <el-input v-model="searchData.username" placeholder="请输入用户名" clearable />
           </el-col>
@@ -27,33 +65,40 @@
               <el-option :value="0" :label="$t('systemManager.userManager.disabled')" />
             </el-select>
           </el-col>
-        </el-row>
+        </el-row> -->
       </template>
+
       <template #searchButton>
         <el-button type="primary" @click="hooks_handleSearch(getTablePage)">搜索</el-button>
         <el-button @click="hooks_resetQueryTable(getTablePage)">
           {{ $t('page.reset') }}
         </el-button>
       </template>
-      <template #pageTable>
-        <div class="btn-content">
-          <el-button :icon="Plus" type="primary" @click="editData({ type: 'create' })">
-            {{ $t('page.add') }}
-          </el-button>
+
+      <template #topName>
+        <div class="table-top">
+          <el-row :gutter="10">
+            <el-col :span="12">
+              <div class="table-title">测试管理</div>
+            </el-col>
+
+            <el-col :span="12" style="text-align: right">
+              <el-button plain :icon="Plus" type="primary" @click="editData({ type: 'create' })">
+                {{ $t('page.add') }}
+              </el-button>
+            </el-col>
+          </el-row>
         </div>
-        <el-table
-          ref="tableRef"
-          height="100%"
-          v-loading="tableLoading"
-          :data="tablePage"
-          stripe
-          :header-cell-style="{
-            background: '#FAFAFA',
-            color: '#333',
-          }"
-          @sort-change="handleSort"
-        >
-          <el-table-column type="index" width="60" label="序号" fixed="left" align="center" />
+      </template>
+
+      <template #pageTable>
+        <el-table ref="tableRef" height="590px" v-loading="tableLoading" :data="tablePage" @sort-change="handleSort">
+          <el-table-column label="序号" ixed="left" align="center" width="60">
+            <template v-slot="scope">
+              {{ scope.$index + 1 + (tableQueryData.pageNo - 1) * tableQueryData.pageSize }}
+            </template>
+          </el-table-column>
+
           <el-table-column prop="username" :label="$t('systemManager.userManager.accountName')" show-overflow-tooltip min-width="100" />
           <el-table-column prop="nickname" label="姓名" show-overflow-tooltip min-width="100" />
           <el-table-column :label="$t('systemManager.userManager.accountType')" show-overflow-tooltip min-width="100">
@@ -93,6 +138,7 @@
                 <el-link class="opreation-link" :underline="false" @click="handleDelete(scope.row)">
                   {{ $t('page.delete') }}
                 </el-link> -->
+                <el-button size="small" link type="primary" icon="el-icon-delete">删除</el-button>
               </div>
             </template>
           </el-table-column>
@@ -121,7 +167,7 @@ import PopEditerUser from './components/popEditerUser.vue'
 
 let $router = useRouter()
 
-const tableRef = ref('tableRef')
+const tableRef = ref<any>('tableRef')
 const showSeniorSearch = ref(false)
 
 const initTableQueryData = () => ({
@@ -148,10 +194,6 @@ const {
   hooks_handleSearch,
 } = useTable(initTableQueryData, tableRef)
 
-const exitLogin = () => {
-  $router.push({ path: '/login' })
-}
-
 onMounted(() => {
   getTablePage()
 })
@@ -169,6 +211,9 @@ const getTablePage = async () => {
     console.log('🚀 ~ getTablePage ~ res:', res)
     tablePage.value = res.data.records
     totalPages.value = res.data.total * 1
+    nextTick(() => {
+      tableRef.value.setScrollTop(0)
+    })
   } catch {
     console.log('getTablePage error')
   }

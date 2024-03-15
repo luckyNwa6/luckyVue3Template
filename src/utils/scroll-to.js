@@ -44,9 +44,14 @@ const position = () => {
  * @param {Function} callback - 动画完成后的回调函数.
  */
 export const scrollTo = (to, duration, callback) => {
+  console.log('🚀 ~ position ~ document.body.scrollTop:', document.body.scrollTop)
+  console.log('🚀 ~ position ~ document.body.parentNode.scrollTop :', window.scrollY)
+  console.log('🚀 ~ position ~ document.documentElement.scrollTop :', window.pageYOffset)
   console.log('xxxxxxxxxxxxxxxxx')
   const start = position()
+  console.log('🚀 ~ scrollTo ~ start:', start)
   const change = to - start
+  console.log('🚀 ~ scrollTo ~ change:', change)
   const increment = 20
   let currentTime = 0
   duration = typeof duration === 'undefined' ? 500 : duration
