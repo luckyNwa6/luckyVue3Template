@@ -17,9 +17,12 @@
   <el-button @click="mapT">地图测试</el-button>
 
   <hr />
+  <img :src="emptyImage" class="h-50 w-50" />
 </template>
 
 <script setup lang="ts">
+import emptyImage from '@/assets/home/yd_4.png'
+
 // import request from '@/utils/request'
 // import { reqLogin } from '@/api/user'
 import { reqLoginX } from '@/api/login/index'
