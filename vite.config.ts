@@ -52,7 +52,10 @@ export default defineConfig(({ command, mode }) => {
           'vue',
           '@vueuse/core',
           'vue-router',
-          // { '@/hooks/web/useI18n': ['useI18n'] },//还能这样每个vue页都导入
+
+          {
+            '@/hooks/web/useMessage': ['useMessage'], //这样每个vue页都导入
+          },
         ],
         // dts: '/auto-import.d.ts',
         eslintrc: {

@@ -47,6 +47,7 @@
       <template #searchButton>
         <el-button type="warning" @click="changeLanZ">中文</el-button>
         <el-button type="info" @click="changeLanE">en</el-button>
+        <el-button type="info" @click="tanK">弹框</el-button>
 
         <el-button type="primary" @click="hooks_handleSearch(getTablePage)">{{ $t('page.search') }}</el-button>
         <el-button @click="hooks_resetQueryTable(getTablePage)">
@@ -161,6 +162,13 @@ import { useAppStore } from '@/store/modules/app.js'
 import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 const appStore = useAppStore()
+
+const message = useMessage()
+
+const tanK = () => {
+  console.log('弹框')
+  message.confirm('该消息已存在，请修改id后重新保存')
+}
 
 const changeLanZ = () => {
   console.log('切为中文')
