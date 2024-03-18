@@ -1,6 +1,7 @@
 //路由鉴权:鉴权,项目当中路由能不能被的权限的设置(某一个路由什么条件下可以访问、什么条件下不可以访问)
 import router from '@/router'
 import setting from './setting'
+import useDictStore from '@/store/modules/dict'
 //@ts-ignore
 import nprogress from 'nprogress'
 //引入进度条样式
@@ -39,6 +40,12 @@ router.beforeEach(async (to: any, from: any, next: any) => {
         try {
           //获取用户信息
           await userStore.userInfo()
+
+          // 获取所有字典
+          const dictStore = useDictStore()
+          if (!dictStore.getIsSetDict) {
+            await dictStore.setDictMap()
+          }
           //放行
           //万一:刷新的时候是异步路由,有可能获取到用户信息、异步路由还没有加载完毕,出现空白的效果
           next({ ...to })

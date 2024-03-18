@@ -33,10 +33,13 @@
             />
           </el-form-item>
           <el-form-item :label="$t('systemManager.userManager.status')" prop="nickname">
-            <el-select v-model="searchData.status" style="width: 100px" :placeholder="$t('systemManager.userManager.status')">
+            <el-select v-model="searchData.status" placeholder="请选择租户状态" clearable style="width: 240px">
+              <el-option v-for="dict in getDictDatas(DICT_TYPE.COMMON_STATUS)" :key="dict.value" :label="dict.label" :value="dict.value" />
+            </el-select>
+            <!-- <el-select v-model="searchData.status" style="width: 100px" :placeholder="$t('systemManager.userManager.status')">
               <el-option :value="1" :label="$t('systemManager.userManager.normal')" />
               <el-option :value="0" :label="$t('systemManager.userManager.disabled')" />
-            </el-select>
+            </el-select> -->
           </el-form-item>
         </el-form>
       </template>
@@ -100,7 +103,11 @@
               </span>
             </template>
           </el-table-column>
-
+          <el-table-column prop="enabled" align="center" width="80" :label="$t('page.status')">
+            <template #default="scope">
+              <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
+            </template>
+          </el-table-column>
           <el-table-column prop="enabled" align="center" width="80" :label="$t('page.status')">
             <template #default="scope">
               <el-switch v-if="scope.row.primaryAccount" v-model="scope.row.enabled" :disabled="true" />

@@ -65,6 +65,7 @@ interface UserData {
   primaryAccount: boolean
   createdTime: string
   remark: string | null
+  status: string
 }
 //循环创建假数据
 function createRandomData(num: Number): UserData[] {
@@ -88,6 +89,7 @@ function createRandomData(num: Number): UserData[] {
       primaryAccount: Math.random() > 0.5,
       createdTime: generateRandomDate(),
       remark: Math.random() > 0.5 ? `remark${i}` : null,
+      status: Math.random() > 0.5 ? '1' : '0',
     }
 
     data.push(randomUser)
