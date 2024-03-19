@@ -8,7 +8,7 @@ import { ElConfigProvider } from 'element-plus'
 import { useAppStore } from '@/store/modules/app.js'
 const appStore = useAppStore()
 
-console.log('ep的语言为：', appStore.locale.name)
+lucky.star('初始化的语言为：', appStore.locale.name)
 </script>
 
 <style lang="sass" scoped></style>

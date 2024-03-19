@@ -12,9 +12,9 @@ export const useAppStore = defineStore('app', () => {
   const device = useStorage('device', 'desktop')
 
   const size = useStorage('size', defaultSettings.size)
-  console.log('🚀初始化的 ~ useAppStore ~ defaultSettings.language:', defaultSettings.language)
+  // console.log('🚀初始化的 ~ useAppStore ~ defaultSettings.language:', defaultSettings.language)
   const language = useStorage('language', defaultSettings.language)
-  console.log('🚀初始化的 ~ useAppStore ~ language:', language)
+  // console.log('🚀初始化的 ~ useAppStore ~ language:', language)
   const sidebarStatus = useStorage('sidebarStatus', 'closed')
   const sidebar = reactive({
     opened: sidebarStatus.value !== 'closed',

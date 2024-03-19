@@ -96,12 +96,15 @@ luckyLogPrint.red = function (title?: any, ...text: any) {
 luckyLogPrint.white = function (title: any, ...text: any) {
   text.forEach((t: any) => this.pretty('info', title, t))
 }
-luckyLogPrint.star = function (con: any) {
+luckyLogPrint.star = function (con: any, con1?: any) {
   if (typeof con === 'object') {
-    console.group('⭐️⭐️⭐️⭐️⭐️⭐️Object：', con)
+    console.group('⭐️⭐️⭐️ ~ res：', con)
     // isArray(con) ? console.table(con) : console.dir(con)
     console.groupEnd()
     return
+  }
+  if (con1 !== undefined) {
+    con += con1
   }
   console.log(
     `%c  ${con}  `,

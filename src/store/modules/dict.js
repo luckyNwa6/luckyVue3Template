@@ -12,7 +12,7 @@ const useDictStore = defineStore('dict', {
   getters: {
     getDictMap() {
       const dictMap = wsCache.get(CACHE_KEY.DICT_CACHE)
-      console.log('🚀 ~ getDictMap ~ dictMap:', dictMap)
+      // console.log('🚀 ~ getDictMap ~ dictMap:', dictMap)
       if (dictMap) {
         this.dictMap = dictMap
       }
@@ -30,7 +30,7 @@ const useDictStore = defineStore('dict', {
         this.isSetDict = true
       } else {
         const res = await listSimpleDictDatas()
-        console.log('🚀 ~ setDictMap ~ res:字典回显', res)
+        // console.log('🚀 ~ setDictMap ~ res:字典回显', res)
         // 设置数据
         const dictDataMap = new Map()
         res.data.forEach((dictData) => {
