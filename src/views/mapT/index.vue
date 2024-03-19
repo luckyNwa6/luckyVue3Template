@@ -25,17 +25,17 @@
       >
         <BScale />
         <BNavigation3d />
-        <!-- <BMarker
+        <BMarker
           v-for="(item, index) in markers"
           :title="item.title"
           :position="item.position"
           :icon="{
-            imageUrl: testI,
+            imageUrl: getAssetsFile(item.icon),
             imageSize: item.size,
           }"
           @click="() => handleClick(item)"
           enableClicking
-        /> -->
+        />
         <BInfoWindow
           v-model:show="show"
           :position="position"
@@ -103,7 +103,10 @@ let cityName = ref('')
 // })
 
 const getAssetsFile = (url: string) => {
-  return new URL(`/src/assets/home/${url}`, import.meta.url).href
+  console.log('🚀 ~ getAssetsFile ~ url:', url)
+  let imgH = new URL(`/src/assets/home/${url}`, import.meta.url).href
+  console.log('🚀 ~ getAssetsFile ~ imgH:', imgH)
+  return imgH
 }
 
 let markers = ref([
@@ -111,7 +114,7 @@ let markers = ref([
     position: { lat: 24.613554, lng: 118.058301 },
     title: '地址一',
     content: '这是地址一的信息窗',
-    icon: '@/assets/home/yd_4.png',
+    icon: 'yd_4.png',
     size: {
       width: 100,
       height: 100,
@@ -121,7 +124,7 @@ let markers = ref([
     position: { lat: 24.613854, lng: 118.058301 },
     title: '地址二',
     content: '这是地址二的信息窗',
-    icon: '@/assets/home/yd_3.png',
+    icon: 'yd_3.png',
     size: {
       width: 100,
       height: 100,
