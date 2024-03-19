@@ -22,12 +22,12 @@ import pinia from './store'
 // 国际化
 import i18n from '@/lang/index'
 
-import log from '@/utils/log'
+import luckyLogPrint from '@/utils/luckyLogPrint'
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
   import('element-plus/dist/index.css')
 }
-
+window.lucky = luckyLogPrint
 // // 创建实例
 // const setupAll = async () => {
 //   const app = createApp(App)
@@ -89,4 +89,4 @@ app
   .use(pinia) //安装仓库
 
   .mount('#app') //将应用挂载道节点上
-log.green(`欢迎使用`, import.meta.env.VITE_APP_TITLE + '系统')
+lucky.blue(`欢迎使用`, import.meta.env.VITE_APP_TITLE + '后台管理系统')
