@@ -22,7 +22,7 @@ import pinia from './store'
 // 国际化
 import i18n from '@/lang/index'
 
-import Logger from '@/utils/Logger'
+import log from '@/utils/log'
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
   import('element-plus/dist/index.css')
@@ -89,4 +89,4 @@ app
   .use(pinia) //安装仓库
 
   .mount('#app') //将应用挂载道节点上
-Logger.prettyPrimary(`欢迎使用`, import.meta.env.VITE_APP_TITLE + '系统')
+log.green(`欢迎使用`, import.meta.env.VITE_APP_TITLE + '系统')
