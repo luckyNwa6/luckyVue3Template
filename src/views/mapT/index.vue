@@ -104,7 +104,8 @@ let cityName = ref('')
 
 const getAssetsFile = (url: string) => {
   console.log('🚀 ~ getAssetsFile ~ url:', url)
-  let imgH = new URL(`/src/assets/home/${url}`, import.meta.url).href
+  console.log('接收', url, 'SSS', window.location.href)
+  let imgH = new URL(`/src/assets/home/${url}`, window.location.href).href
   console.log('🚀 ~ getAssetsFile ~ imgH:', imgH)
   return imgH
 }

@@ -17,7 +17,7 @@
   <el-button @click="mapT">地图测试</el-button>
 
   <hr />
-  <img :src="emptyImage" class="h-50 w-50" />
+  <img :src="emptyImage" class="h-10 w-10" />
 </template>
 
 <script setup lang="ts">
