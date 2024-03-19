@@ -1,13 +1,12 @@
 <template>
   <div>
-    <exitButton />
-    <div v-for="(item, index) in markers">
+    <!-- <div v-for="(item, index) in markers">
       <span>{{ item.icon }}</span>
       <img :src="getAssetsFile('yd_4.png')" />
       ||
       <span>{{ index }}</span>
     </div>
-    <hr />
+    <hr /> -->
     <div class="mapBox">
       <BMap
         height="700px"

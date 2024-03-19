@@ -44,7 +44,8 @@ app.config.globalProperties.DICT_TYPE = DICT_TYPE
 app.config.globalProperties.getDictDatas = getDictDatas
 //百度地图配置
 app.use(baiduMap, {
-  ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
+  // ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
+  ak: 'GJ8xyU5HNKcdm3ypQTUMQ6dVqMgUI75o',
   plugins: ['TrackAnimation'],
 })
 
