@@ -16,7 +16,8 @@ import router from '@/router/index' //引入路由
 import pinia from './store' //引入仓库
 import i18n from '@/lang/index' // 国际化
 import ElementPlusIconsVue from '@/components' //全局注册ep图标
-
+import baiduMap from 'vue3-baidu-map-gl' //百度地图
+import { isHasButton } from '@/directive/has' //引入自定义指令文件
 //全局工具类---------------------------------
 import { DICT_TYPE } from '@/utils/dict'
 import { getDictDatas } from '@/utils/dict'
@@ -36,13 +37,16 @@ const app = createApp(App)
 
 app.use(ElementPlusIconsVue)
 
-//引入自定义指令文件
-import { isHasButton } from '@/directive/has'
 isHasButton(app)
 
 //工具类挂载
 app.config.globalProperties.DICT_TYPE = DICT_TYPE
 app.config.globalProperties.getDictDatas = getDictDatas
+//百度地图配置
+app.use(baiduMap, {
+  ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
+  plugins: ['TrackAnimation'],
+})
 
 app
   .use(router) //注册模板路由
