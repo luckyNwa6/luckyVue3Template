@@ -84,7 +84,7 @@ export const getDictLabel = (dictType, value) => {
 export function getDictData(dictType, value) {
   // 获取 dictType 对应的数据字典数组
   const dictDatas = getDictDatas(dictType)
-  console.log('🚀 ~ getDictData ~ dictDatas:', dictDatas)
+  // console.log('🚀 ~ getDictData ~ dictDatas:', dictDatas)
   if (!dictDatas || dictDatas.length === 0) {
     return ''
   }
@@ -110,7 +110,7 @@ export function getDictDataLabel(dictType, value) {
  * @returns {*|Array} 数据字典数组
  */
 export function getDictDatas(dictType) {
-  console.log('xxxxx', dictStore.getDictMap[dictType])
+  // console.log('xxxxx', dictStore.getDictMap[dictType])
   return dictStore.getDictMap[dictType] || []
 }
 
@@ -122,15 +122,15 @@ export function getDictDatas(dictType) {
  * @returns {*|Array} 数据字典数组
  */
 export function getDictDatas2(dictType, values) {
-  console.log('进来了xxxssssssssssssssssssssssssssssxx', dictType, values)
+  // console.log('进来了xxxssssssssssssssssssssssssssssxx', dictType, values)
   if (values === undefined) {
     return []
   }
   // 如果是单个元素，则转换成数组
   if (!Array.isArray(values)) {
-    console.log('xaaaaaaaaaaaaaaaaa')
+    // console.log('xaaaaaaaaaaaaaaaaa')
     values = [values]
-    console.log('🚀 ~ getDictDatas2 ~ values:', values)
+    // console.log('🚀 ~ getDictDatas2 ~ values:', values)
   }
   // 获得字典数据
   const results = []

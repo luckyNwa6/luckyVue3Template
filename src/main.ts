@@ -21,12 +21,12 @@ import { isHasButton } from '@/directive/has' //引入自定义指令文件
 //全局工具类---------------------------------
 import { DICT_TYPE } from '@/utils/dict'
 import { getDictDatas } from '@/utils/dict'
-
+import luckyLogPrint from '@/utils/luckyLogPrint'
 //特殊配置声明---------------------------------
 import $ from 'jquery'
 window.jQuery = $
 window.$ = $
-
+window.lucky = luckyLogPrint
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
   import('element-plus/dist/index.css')
@@ -42,6 +42,7 @@ isHasButton(app)
 //工具类挂载
 app.config.globalProperties.DICT_TYPE = DICT_TYPE
 app.config.globalProperties.getDictDatas = getDictDatas
+
 //百度地图配置
 app.use(baiduMap, {
   // ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
@@ -55,3 +56,4 @@ app
   .use(ElementPlus) //安装element-plus插件
   .use(pinia) //安装仓库
   .mount('#app') //将应用挂载道节点上
+lucky.blue(`欢迎使用`, import.meta.env.VITE_APP_TITLE + '后台管理系统')

@@ -218,6 +218,7 @@ const {
 onMounted(() => {
   getTablePage()
 })
+
 // 当前页真正获取表格页数据的方法
 const getTablePage = async () => {
   tableLoading.value = true
@@ -229,6 +230,7 @@ const getTablePage = async () => {
     // }
     // delete tableQueryData.starEndDate;
     const res = await reqTablePage(tableQueryData)
+    lucky.star(res)
     console.log('🚀 ~ getTablePage ~ res:', res)
     tablePage.value = res.data.records
     totalPages.value = res.data.total * 1
