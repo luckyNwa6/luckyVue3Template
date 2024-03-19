@@ -340,7 +340,7 @@ const search = () => {
 }
 //重置按钮
 const reset = () => {
-  settingStore.refsh = !settingStore.refsh
+  settingStore.refresh = !settingStore.refresh
 }
 </script>
 

@@ -35,6 +35,9 @@
     </span>
     <template #dropdown>
       <el-dropdown-menu>
+        <el-dropdown-item @click="rePwd">修改密码</el-dropdown-item>
+      </el-dropdown-menu>
+      <el-dropdown-menu>
         <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </template>
@@ -56,7 +59,11 @@ let $route = useRoute()
 let dark = ref<boolean>(false)
 //刷新按钮点击回调
 const updateRefsh = () => {
-  layoutSettingStore.refsh = !layoutSettingStore.refsh
+  layoutSettingStore.refresh = !layoutSettingStore.refresh
+}
+//重置密码
+const rePwd = () => {
+  lucky.star('密码修改，弹框！')
 }
 //全屏按钮点击的回调
 const fullScreen = () => {
