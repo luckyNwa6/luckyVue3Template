@@ -12,7 +12,7 @@ export default [
           (!nickname || user.nickname.includes(nickname)) &&
           (!groupId || user.groupId === groupId) &&
           (!username || user.username.includes(username)) &&
-          (!status || (user.enabled ? 'enabled' : 'disabled') === status)
+          (status === undefined || user.status === status)
         )
       })
       const total = userList.length
