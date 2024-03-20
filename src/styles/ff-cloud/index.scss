@@ -1,0 +1,240 @@
+@font-face {
+  font-family: AliMedium;
+  src: url('./font/AlibabaPuHuiTi-2-65-Medium.ttf');
+}
+// 版本更新弹窗
+.version-special-dialog {
+  .dialog-content {
+    padding-top: 50px;
+    min-height: 210px;
+  }
+  .el-dialog__header {
+    padding: 0;
+  }
+  .el-dialog__body {
+    padding: 0 !important;
+  }
+  .el-dialog__footer {
+    padding: 0 !important;
+    border-top: none;
+  }
+}
+
+.el-dialog__header {
+  margin-right: 0;
+}
+
+.page-wrap {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.customDialog {
+  width: 98%;
+  height: 96vh;
+  // overflow: auto;
+  // margin: 10px auto;
+  .el-dialog__body {
+    max-height: max-content;
+    height: calc(100% - 60px);
+    padding: 0;
+  }
+}
+
+.special-custom-dialog {
+  position: absolute;
+  right: 20px;
+  margin-right: 12px;
+  margin-left: auto;
+  top: 60px;
+  transform: translateY(0);
+  margin-right: 10px !important;
+  .el-dialog__body {
+    padding: 0;
+  }
+}
+
+.custom-input {
+  width: 230px;
+}
+
+// 状态卡片自定义Descriptions样式
+.status-card-descriptions {
+  .el-descriptions__body {
+    background-color: transparent;
+
+    .el-descriptions__cell {
+      padding-right: 20px;
+
+      &:nth-last-child(1) {
+        padding-right: 0;
+      }
+
+      .status-card-descriptions-label,
+      .status-card-descriptions-value {
+        font-size: 14px;
+        color: #475467;
+        min-height: 40px;
+
+        // display: flex;
+        // align-items: center;
+        &.hover-info {
+          min-height: 20px;
+        }
+      }
+
+      .status-card-descriptions-label {
+        font-weight: bold;
+        margin-right: 15px;
+        // min-width: 80px;
+      }
+    }
+  }
+}
+.el-button:focus-visible {
+  outline: none;
+}
+
+// form 表单样式
+.el-form {
+  .el-form-item {
+    .el-form-item__label-wrap {
+      font-weight: bold;
+    }
+  }
+}
+
+// el-link
+.el-link {
+  &:nth-last-child(1) {
+    margin-right: 0;
+  }
+}
+
+// 自定义tag
+.ff-tag {
+  display: inline-block;
+  border-radius: 4px;
+  min-width: 68px;
+  text-align: center;
+  min-height: 24px;
+  line-height: 24px;
+  padding: 0 5px;
+  background: #eff6ff;
+  color: #2e90fa;
+
+  &.success {
+    background: #effaf8;
+    color: #39bfa4;
+  }
+  &.info {
+    background: #f2f4f7;
+    color: #98a2b3;
+  }
+  &.warning {
+    background: #fff9ee;
+    color: #fdb022;
+  }
+  &.danger {
+    background: #fff4f3;
+    color: #f97066;
+  }
+
+  &.plain {
+    background: #ffffff;
+    color: #2e90fa;
+    border: 1px solid;
+    border-color: #2e90fa;
+  }
+  &.plain.success {
+    background: #ffffff;
+    color: #39bfa4;
+    border-color: #39bfa4;
+  }
+  &.plain.info {
+    background: #ffffff;
+    color: #98a2b3;
+    border-color: #98a2b3;
+  }
+  &.plain.warning {
+    background: #ffffff;
+    color: #fdb022;
+    border-color: #fdb022;
+  }
+  &.plain.danger {
+    background: #ffffff;
+    color: #f97066;
+    border-color: #f97066;
+  }
+
+  &.dark {
+    color: #ffffff;
+    background: #2e90fa;
+  }
+  &.dark.success {
+    color: #ffffff;
+    background: #39bfa4;
+  }
+  &.dark.info {
+    color: #ffffff;
+    background: #98a2b3;
+  }
+  &.dark.warning {
+    color: #ffffff;
+    background: #fdb022;
+  }
+  &.dark.danger {
+    color: #ffffff;
+    background: #f97066;
+  }
+}
+// 组件遮罩=>阻止组件默认行为.如开关点击后直接修改状态
+.com-mark {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+}
+
+.text-status {
+  position: relative;
+  font-size: 14px;
+  color: #22d125;
+  line-height: 1;
+
+  &.status-danger {
+    color: #f8544b;
+  }
+
+  &.status-warning {
+    color: #ffba03;
+  }
+
+  &.status-primary {
+    color: #1492ff;
+  }
+
+  &.status-info {
+    color: #909399;
+  }
+
+  &.dot:before {
+    position: absolute;
+    content: '';
+    right: calc(100% + 5px);
+    top: 50%;
+    background-color: currentColor;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+  }
+}
+
+.el-table td.el-table__cell {
+  font-size: 14px;
+  padding: 12px 0;
+}

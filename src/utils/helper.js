@@ -65,3 +65,23 @@ export function randomPassword() {
 
   return code.join('')
 }
+
+/**
+ * 根据给定类型，从指定字符集中生成一个随机字符。
+ *
+ * @param {string} code - 要检查的代码字符串。
+ * @param {number} [type=0] - 生成字符的字符集类型，默认为0。
+ * @return {string} - 从字符集中生成的随机字符。
+ * @author ShowPenZ
+ */
+export function getCodeChart(code, type = 0) {
+  const charts = ['ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzr', '0123456789', '~`!@#$%^&*()_-+=<>?:"{}|,./;\'[]·~@#%&*']
+
+  const randomNum = Math.floor(Math.random() * charts[type].length)
+  let chart = charts[type].charAt(randomNum)
+
+  if (code.includes(chart)) {
+    chart = getCodeChart(code)
+  }
+  return chart
+}

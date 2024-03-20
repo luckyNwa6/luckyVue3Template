@@ -22,11 +22,13 @@ import { isHasButton } from '@/directive/has' //引入自定义指令文件
 import { DICT_TYPE } from '@/utils/dict'
 import { getDictDatas } from '@/utils/dict'
 import luckyLogPrint from '@/utils/luckyLogPrint'
+import eventBus from '@/utils/eventBus'
 //特殊配置声明---------------------------------
 import $ from 'jquery'
 window.jQuery = $
 window.$ = $
 window.lucky = luckyLogPrint
+window.bus = new eventBus()
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
   import('element-plus/dist/index.css')

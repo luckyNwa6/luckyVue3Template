@@ -5,7 +5,7 @@
     width="500px"
     :append-to-body="true"
     :close-on-click-modal="false"
-    :before-close="dialogCancel"
+    :before-close="dialogClose"
     :title="$t('page.dialog.title.changePassword')"
   >
     <el-form ref="formRef" v-loading="submitLoading" label-width="auto" :model="formData" :rules="rules">
@@ -63,7 +63,7 @@ import { valid_9, validatenull } from '@/utils/helper'
 
 import useDialog from '@/hooks/useDialog'
 
-import { updateUserPwd } from '@/api/system/user'
+// import { updateUserPwd } from '@/api/system/user'
 
 const formRef = ref('formRef')
 const { dialogVisible, dialogOpen, dialogCancel, dialogClose, submitLoading, formData } = useDialog(formRef, { emitName: 'changePwd' })
@@ -140,20 +140,24 @@ const submit = () => {
   })
 }
 
-const changePassword = async () => {
-  try {
-    await updateUserPwd(formData.value)
-    ElMessage.success(i18n.global.t('page.dialog.actionFb.successfullyChange'))
-    dialogClose()
-  } catch {
-    console.log('修改失败')
-  }
-  submitLoading.value = false
-}
+const changePassword = () => {}
 
-window.$bus.on('dialogBeforeClose', (data) => {
+// const changePassword = async () => {
+//   try {
+//     await updateUserPwd(formData.value)
+//     ElMessage.success(i18n.global.t('page.dialog.actionFb.successfullyChange'))
+//     dialogClose()
+//   } catch {
+//     console.log('修改失败')
+//   }
+//   submitLoading.value = false
+// }
+
+window.bus.on('dialogBeforeClose', (data) => {
+  lucky.star('进入了')
   if (data.emitName === 'changePwd') {
     oldPasswordShow.value = 'password'
+    lucky.star('进入了zzz')
     newPasswordShoww.value = 'password'
     confirmPasswordShow.value = 'password'
   }

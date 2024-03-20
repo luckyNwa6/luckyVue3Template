@@ -37,6 +37,8 @@ export default defineConfig(({ command, mode }) => {
           javascriptEnabled: true,
           additionalData: `
               @use "./src/styles/variable.scss" as * ;
+              @use '@/styles/ff-cloud/index.scss' as *;
+
               `,
         },
       },

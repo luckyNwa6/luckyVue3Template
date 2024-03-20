@@ -10,6 +10,7 @@ declare interface Window {
   $: any
   TAC: any
   lucky: any
+  bus: any
 }
 
 declare module 'lodash' //声明.防止爆红,不再声明可以用注释 //@ts-expect-error 忽略当前文件ts类型的检测否则有红色提示(打包会失败)

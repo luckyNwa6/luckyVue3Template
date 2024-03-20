@@ -42,6 +42,7 @@
       </el-dropdown-menu>
     </template>
   </el-dropdown>
+  <ChangePwd ref="changePwdRef" />
 </template>
 
 <script setup lang="ts">
@@ -51,6 +52,9 @@ import useUserStore from '@/store/modules/user'
 import useLayOutSettingStore from '@/store/modules/setting'
 let layoutSettingStore = useLayOutSettingStore()
 let userStore = useUserStore()
+
+const changePwdRef = ref<any>('changePwdRef')
+
 //获取路由器对象
 let $router = useRouter()
 //获取路由对向
@@ -64,6 +68,7 @@ const updateRefsh = () => {
 //重置密码
 const rePwd = () => {
   lucky.star('密码修改，弹框！')
+  changePwdRef.value.handleOpen()
 }
 //全屏按钮点击的回调
 const fullScreen = () => {
