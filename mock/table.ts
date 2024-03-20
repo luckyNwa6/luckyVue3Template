@@ -3,8 +3,8 @@ export default [
   {
     url: '/api/home-list/page',
     method: 'get',
-    response: (request) => {
-      const { pageNum, pageSize, nickname, groupId, username, status } = request.query
+    response: (req) => {
+      const { pageNum, pageSize, nickname, groupId, username, status } = req.query
 
       // 模拟数据库查询数据
       const userList = createList().filter((user) => {
@@ -12,9 +12,10 @@ export default [
           (!nickname || user.nickname.includes(nickname)) &&
           (!groupId || user.groupId === groupId) &&
           (!username || user.username.includes(username)) &&
-          (status === undefined || user.status === status)
+          (!status || user.status === status)
         )
       })
+
       const total = userList.length
       const start = (pageNum - 1) * pageSize
       const end = pageNum * pageSize

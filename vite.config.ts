@@ -186,6 +186,11 @@ export default defineConfig(({ command, mode }) => {
         'echarts',
         'vue-i18n',
         'jquery',
+        'lodash-es',
+        'nprogress',
+        'dayjs',
+        'sass',
+        'qs',
       ],
     },
   }

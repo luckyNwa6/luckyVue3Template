@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _ from 'lodash-es'
 
 // 必须包含数字、英文、下划线 6-20位
 export function valid_9(str) {

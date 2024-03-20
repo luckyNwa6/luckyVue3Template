@@ -98,7 +98,7 @@ luckyLogPrint.white = function (title: any, ...text: any) {
 }
 luckyLogPrint.star = function (con: any, con1?: any) {
   if (typeof con === 'object') {
-    console.group('⭐️⭐️⭐️ ~ res：', con)
+    console.group('⭐️⭐️⭐️obj ~ res：', con)
     // isArray(con) ? console.table(con) : console.dir(con)
     console.groupEnd()
     return

@@ -10,8 +10,8 @@ import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 import { constantRoute, asnycRoute, anyRoute } from '@/router/routes'
 
 //引入深拷贝方法
-//@ts-expect-error
-import cloneDeep from 'lodash/cloneDeep'
+
+import { cloneDeep } from 'lodash-es'
 import router from '@/router'
 //用于过滤当前用户需要展示的异步路由
 function filterAsyncRoute(asnycRoute: any, routes: any) {
