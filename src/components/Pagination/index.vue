@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { scrollTo } from '@/utils/scroll-to.js'
+// import { scrollTo } from '@/utils/scroll-to.js'
 
 const props = defineProps({
   total: {
@@ -64,7 +64,7 @@ function handleSizeChange(val) {
   emit('pagination', { page: currentPage, limit: val })
   if (props.autoScroll) {
     console.log('切换分页码数调用滚动条方法')
-    scrollTo(0, 800)
+    // scrollTo(0, 800)
   }
 }
 
@@ -73,7 +73,7 @@ function handleCurrentChange(val) {
   emit('pagination', { page: val, limit: props.limit })
   if (props.autoScroll) {
     console.log('切换上下页调用滚动条方法')
-    scrollTo(0, 800)
+    // scrollTo(0, 800)
   }
 }
 </script>

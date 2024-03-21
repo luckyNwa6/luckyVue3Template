@@ -1,7 +1,9 @@
 <template>
-  <el-config-provider :locale="appStore.locale" :size="appStore.size">
-    <router-view />
-  </el-config-provider>
+  <div>
+    <el-config-provider :locale="appStore.locale" :size="appStore.size">
+      <router-view />
+    </el-config-provider>
+  </div>
 </template>
 <script setup>
 import { ElConfigProvider } from 'element-plus'

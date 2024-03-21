@@ -47,6 +47,7 @@ isHasButton(app)
 //工具类挂载
 app.config.globalProperties.DICT_TYPE = DICT_TYPE
 app.config.globalProperties.getDictDatas = getDictDatas
+
 // app.config.globalProperties.echarts = echarts
 //百度地图配置
 app.use(baiduMap, {
@@ -61,4 +62,5 @@ app
   .use(ElementPlus) //安装element-plus插件
   .use(pinia) //安装仓库
   .mount('#app') //将应用挂载道节点上
-lucky.blue(`欢迎使用`, import.meta.env.VITE_APP_TITLE + '后台管理系统')
+
+lucky.welcome()

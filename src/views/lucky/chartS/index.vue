@@ -2,15 +2,18 @@
   <el-card>
     <div id="lucky_chart" style="width: 100%; height: 470px"></div>
   </el-card>
+  <el-card class="m-6">
+    <ChartE :options="lineOptionsData" />
+  </el-card>
   <el-card>
-    <Echart :options="dataOpt" :height="280" width="100%" />
+    <ChartE :options="pieOptionsData" />
   </el-card>
 </template>
 
 <script setup>
 import { onMounted } from 'vue'
 import dataZoom from './common/dataZoom'
-import { lineOptions } from './common/data'
+import { lineOptions, pieOptions } from './common/data'
 import _ from 'lodash-es'
 import * as echarts from 'echarts'
 
@@ -19,22 +22,8 @@ let xLabel = ref(null)
 let dataValue = ref(null)
 let dataValue1 = ref(null)
 let dataValue2 = ref(null)
-let dataOpt = reactive({
-  xAxis: {
-    type: 'category',
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  },
-  yAxis: {
-    type: 'value',
-  },
-  series: [
-    {
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
-      type: 'line',
-      smooth: true,
-    },
-  ],
-})
+let lineOptionsData = reactive(lineOptions)
+let pieOptionsData = reactive(pieOptions)
 
 onMounted(() => {
   initLuckyChar()
