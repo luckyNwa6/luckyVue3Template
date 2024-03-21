@@ -24,6 +24,7 @@
       <!-- layout组件的顶部导航tabbar -->
 
       <Tabbar></Tabbar>
+      <Tags />
     </div>
     <!-- 内容展示区域 -->
     <div class="layout_main" :class="{ fold: LayOutSettingStore.fold ? true : false }">
@@ -43,6 +44,8 @@ import Menu from './menu/index.vue'
 import Main from './main/index.vue'
 //引入顶部tabbar组件
 import Tabbar from './tabbar/index.vue'
+
+import Tags from './tags/index.vue'
 //获取用户相关的小仓库
 import useUserStore from '@/store/modules/user'
 import useLayOutSettingStore from '@/store/modules/setting'

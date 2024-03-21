@@ -125,6 +125,15 @@ export const asnycRoute = [
           icon: 'StarFilled',
         },
       },
+      {
+        path: '/lucky/tabD',
+        component: () => import('@/views/lucky/tabD/index.vue'),
+        name: 'tabD',
+        meta: {
+          title: 'tab测试',
+          icon: 'StarFilled',
+        },
+      },
     ],
   },
 ]

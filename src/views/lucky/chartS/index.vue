@@ -2,12 +2,12 @@
   <el-card>
     <div id="lucky_chart" style="width: 100%; height: 470px"></div>
   </el-card>
-  <el-card class="m-6">
+  <!-- <el-card class="m-6">
     <ChartE :options="lineOptionsData" />
-  </el-card>
-  <el-card>
+  </el-card> -->
+  <!-- <el-card>
     <ChartE :options="pieOptionsData" />
-  </el-card>
+  </el-card> -->
 </template>
 
 <script setup>
