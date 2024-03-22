@@ -55,8 +55,8 @@ const login = async () => {
   await loginForms.value.validate()
 
   const config = {
-    requestCaptchaDataUrl: '/yzm/luckyAdmin/LuckyYzm/gen',
-    validCaptchaUrl: '/yzm/luckyAdmin/LuckyYzm/check',
+    requestCaptchaDataUrl: '/yzm/LuckyYzm/gen',
+    validCaptchaUrl: '/yzm/LuckyYzm/check',
     bindEl: '#captcha-div',
     // 验证成功回调函数
     validSuccess: (res: any, c: any, tac: any) => {

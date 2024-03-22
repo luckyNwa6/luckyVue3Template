@@ -1,12 +1,42 @@
 <template>
-  <el-tabs v-model="editableTabsValue" type="card" editable class="demo-tabs" @edit="handleTabsEdit">
-    <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name">
-      {{ item.content }}
-    </el-tab-pane>
+  <el-tabs v-model="editableTabsValue" type="card" editable class="demo-tabs" @edit="handleTabsEdit" @tab-click="handleClick()">
+    <el-tab-pane v-for="tag in tags" :key="tag.name" :label="tag.title" :name="tag.name"></el-tab-pane>
   </el-tabs>
+  <!-- <router-view></router-view> -->
 </template>
+
 <script lang="ts" setup>
 import type { TabPaneName } from 'element-plus'
+
+const tags = ref([
+  {
+    title: '首页',
+    name: '1',
+    path: '/',
+  },
+  {
+    title: '用户管理',
+    name: '2',
+    path: '/user',
+  },
+  {
+    title: '权限管理',
+    name: '3',
+    path: '/power',
+  },
+  {
+    title: '商品管理',
+    name: '4',
+    path: '/goods',
+  },
+])
+//获取路由器
+let $router = useRouter()
+//路由对象
+let $route = useRoute()
+onMounted(() => {
+  // lucky.star($route.meta.title)
+})
 
 let tabIndex = 2
 const editableTabsValue = ref('2')
@@ -22,6 +52,10 @@ const editableTabs = ref([
     content: 'Tab 2 content',
   },
 ])
+
+const handleClick = () => {
+  $router.push({ path: '/' })
+}
 
 const handleTabsEdit = (targetName: TabPaneName | undefined, action: 'remove' | 'add') => {
   if (action === 'add') {
