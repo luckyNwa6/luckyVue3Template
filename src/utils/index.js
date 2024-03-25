@@ -7,7 +7,7 @@
  * @author ShowPenZ
  */
 export function hasClass(ele, cls) {
-  return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+  return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'))
 }
 
 /**
@@ -18,7 +18,7 @@ export function hasClass(ele, cls) {
  * @author ShowPenZ
  */
 export function addClass(ele, cls) {
-  if (!hasClass(ele, cls)) ele.className += ' ' + cls;
+  if (!hasClass(ele, cls)) ele.className += ' ' + cls
 }
 
 /**
@@ -30,8 +30,8 @@ export function addClass(ele, cls) {
  */
 export function removeClass(ele, cls) {
   if (hasClass(ele, cls)) {
-    const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-    ele.className = ele.className.replace(reg, ' ');
+    const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)')
+    ele.className = ele.className.replace(reg, ' ')
   }
 }
 
@@ -43,52 +43,52 @@ export function removeClass(ele, cls) {
  * @author ShowPenZ
  */
 export function isExternal(path) {
-  const isExternal = /^(https?:|http?:|mailto:|tel:)/.test(path);
-  return isExternal;
+  const isExternal = /^(https?:|http?:|mailto:|tel:)/.test(path)
+  return isExternal
 }
 // 深拷贝对象
 // add by fourfaith源码 https://github.com/JakHuang/form-generator/blob/dev/src/utils/index.js#L107
 export function deepClone(obj) {
-  const _toString = Object.prototype.toString;
+  const _toString = Object.prototype.toString
 
   // null, undefined, non-object, function
   if (!obj || typeof obj !== 'object') {
-    return obj;
+    return obj
   }
 
   // DOM Node
   if (obj.nodeType && 'cloneNode' in obj) {
-    return obj.cloneNode(true);
+    return obj.cloneNode(true)
   }
 
   // Date
   if (_toString.call(obj) === '[object Date]') {
-    return new Date(obj.getTime());
+    return new Date(obj.getTime())
   }
 
   // RegExp
   if (_toString.call(obj) === '[object RegExp]') {
-    const flags = [];
+    const flags = []
     if (obj.global) {
-      flags.push('g');
+      flags.push('g')
     }
     if (obj.multiline) {
-      flags.push('m');
+      flags.push('m')
     }
     if (obj.ignoreCase) {
-      flags.push('i');
+      flags.push('i')
     }
 
-    return new RegExp(obj.source, flags.join(''));
+    return new RegExp(obj.source, flags.join(''))
   }
 
-  const result = Array.isArray(obj) ? [] : obj.constructor ? new obj.constructor() : {};
+  const result = Array.isArray(obj) ? [] : obj.constructor ? new obj.constructor() : {}
 
   for (const key in obj) {
-    result[key] = deepClone(obj[key]);
+    result[key] = deepClone(obj[key])
   }
 
-  return result;
+  return result
 }
 
 /**
@@ -98,30 +98,30 @@ export function deepClone(obj) {
  * @param {*} pid
  */
 export function treeDataTranslate(data, id = 'id', pid = 'parentId') {
-  var lang = 'zh';
-  var res = [];
-  var temp = {};
-  for (var i = 0; i < data.length; i++) {
+  let lang = 'zh'
+  let res = []
+  let temp = {}
+  for (let i = 0; i < data.length; i++) {
     if (lang === 'zh') {
-      temp[data[i][id]] = data[i];
+      temp[data[i][id]] = data[i]
     } else {
-      data[i].name = data[i].otherLanguage == undefined ? data[i].name : data[i].otherLanguage;
-      temp[data[i][id]] = data[i];
+      data[i].name = data[i].otherLanguage == undefined ? data[i].name : data[i].otherLanguage
+      temp[data[i][id]] = data[i]
     }
   }
-  for (var k = 0; k < data.length; k++) {
+  for (let k = 0; k < data.length; k++) {
     if (temp[data[k][pid]] && data[k][id] !== data[k][pid]) {
       if (!temp[data[k][pid]]['children']) {
-        temp[data[k][pid]]['children'] = [];
+        temp[data[k][pid]]['children'] = []
       }
       if (!temp[data[k][pid]]['_level']) {
-        temp[data[k][pid]]['_level'] = 1;
+        temp[data[k][pid]]['_level'] = 1
       }
-      data[k]['_level'] = temp[data[k][pid]]._level + 1;
-      temp[data[k][pid]]['children'].push(data[k]);
+      data[k]['_level'] = temp[data[k][pid]]._level + 1
+      temp[data[k][pid]]['children'].push(data[k])
     } else {
-      res.push(data[k]);
+      res.push(data[k])
     }
   }
-  return res;
+  return res
 }

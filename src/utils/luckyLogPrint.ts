@@ -46,7 +46,7 @@ luckyLogPrint.print = function (type = 'default', text: any, back = false) {
       `%c ${text} `,
       `border: 1px solid ${luckyLogPrint.typeColor(type)};
         padding: 2px; border-radius: 4px;
-        color: ${luckyLogPrint.typeColor(type)};`
+        color: ${luckyLogPrint.typeColor(type)};`,
     )
   }
 }
@@ -61,7 +61,7 @@ luckyLogPrint.pretty = function (type = 'primary', title: any, text: any) {
     console.log(
       `%c ${title}`,
       `background:${luckyLogPrint.typeColor(type)};border:1px solid ${luckyLogPrint.typeColor(type)};
-        padding: 1px; border-radius: 4px; color: #fff;`
+        padding: 1px; border-radius: 4px; color: #fff;`,
     )
     isArray(text) ? console.table(text) : console.dir(text)
     console.groupEnd()
@@ -73,7 +73,7 @@ luckyLogPrint.pretty = function (type = 'primary', title: any, text: any) {
       padding: 1px; border-radius: 4px 0 0 4px; color: #fff;`,
     `border:1px solid ${luckyLogPrint.typeColor(type)};
       padding: 1px; border-radius: 0 4px 4px 0; color: ${luckyLogPrint.typeColor(type)};`,
-    'background:transparent'
+    'background:transparent',
   )
 }
 
@@ -109,7 +109,7 @@ luckyLogPrint.star = function (con: any, con1?: any) {
   console.log(
     `%c  ${con}  `,
     `background:${luckyLogPrint.typeColor('pink')};border:2px solid #8A2BE2;
-      padding: 1px; border-radius: 4px; color: #fff;`
+      padding: 1px; border-radius: 4px; color: #fff;`,
   )
 }
 export default luckyLogPrint

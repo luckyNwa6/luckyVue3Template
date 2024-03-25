@@ -4,7 +4,7 @@
       <div class="item" style="height: 128px">
         <div class="collectTime">数据采集时间 : {{ reportTime ? formatDateLucky(reportTime) : '-' }}</div>
         <div class="swiper-contain" v-if="statList.length">
-          <Swiper ref="mySwiper" :options="swiperOptions">
+          <Swiper ref="mySwiper" v-bind="swiperOptions" :modules="modules">
             <SwiperSlide class="stat-content" v-for="(stat, index) in statList" :key="index">
               <div class="stat-title">
                 <div class="title-icon">
@@ -22,9 +22,7 @@
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
         </div>
-        <!-- <div style="width:100%" class="stat-content" v-if="statList == null || statList.length == 0">
-                <div class="stat-title">暂无站点实时数据</div>
-            </div> -->
+
         <el-empty v-else :image-size="30" style="padding: 0" :image="empty" description="暂无站点实时数据"></el-empty>
       </div>
     </div>
@@ -35,17 +33,19 @@
 import empty from '@/assets/images/empty.png'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
-
+import 'swiper/css/navigation'
+import { Navigation } from 'swiper/modules'
 export default {
   data() {
     return {
+      modules: [Navigation],
       showControl: false,
-
       swiperOptions: {
-        slidesPerView: 3,
+        slidesPerView: 3, // 一屏显示的slide个数  'auto'
         spaceBetween: 10,
-        slidesPerGroup: 3,
-        loop: false,
+        slidesPerGroup: 3, //每组多少个swiper滑块
+        loop: false, // 循环播放, 可有无限滚动效果，初始加载即是滚动后的效果
+
         loopFillGroupWithBlank: true,
         pagination: false,
         navigation: {
