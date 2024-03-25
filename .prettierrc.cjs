@@ -9,4 +9,5 @@ module.exports = {
   trailingComma: 'es5', // 每个键值对后面是否一定有尾随逗号，默认es5，保持默认即可
   quoteProps: 'as-needed', // 给对象里的属性名是否要加上引号，默认为as-needed，即根据需要决定，如果不加引号会报错则加，否则不加
   arrowParens: 'avoid', //箭头函数只有一个参数的时候可以忽略括号
+  endOfLine: 'auto', // 文件换行格式 LF/CRLF
 }
