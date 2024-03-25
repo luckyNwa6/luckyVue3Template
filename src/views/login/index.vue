@@ -36,9 +36,12 @@ let luckyC = ref('ref类似定义data里的值') //下面使用它的值luckyC.v
 //获取路由器
 let $router = useRouter()
 //路由对象
-let $route = useRoute()
+let $routes = useRoute()
 const { x, y } = useMousePosition()
-
+onMounted(() => {
+  const allRoutes = $router.options.routes
+  console.log(allRoutes)
+})
 const form = reactive({
   //一般表单用这个
   username: 'admin',

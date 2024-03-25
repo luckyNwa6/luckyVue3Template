@@ -87,6 +87,5 @@ app
   .use(i18n) //中英切换
   .use(ElementPlus) //安装element-plus插件
   .use(pinia) //安装仓库
-
   .mount('#app') //将应用挂载道节点上
 lucky.blue(`欢迎使用`, import.meta.env.VITE_APP_TITLE + '后台管理系统')

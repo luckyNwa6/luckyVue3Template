@@ -12,6 +12,8 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+// @ts-ignore
+import Pages from 'vite-plugin-pages'
 const pathSrc = path.resolve(__dirname, 'src')
 
 // export default defineConfig({
@@ -67,6 +69,11 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       vue(),
       UnoCSS({}),
+      Pages({
+        //路由自动引入
+        pagesDir: 'src/p',
+        extensions: ['vue'],
+      }),
       //---------------------------------------
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
