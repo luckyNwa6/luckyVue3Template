@@ -43,7 +43,7 @@ const initChart = () => {
 
 watch(
   () => props.options.value,
-  (options) => {
+  options => {
     if (echartRef) {
       echartRef?.setOption(options)
     }

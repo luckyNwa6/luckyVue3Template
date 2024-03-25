@@ -8,5 +8,5 @@ module.exports = {
   bracketSpacing: true, // 对象大括号直接是否有空格，默认为true，效果：{ foo: bar }
   trailingComma: 'es5', // 每个键值对后面是否一定有尾随逗号，默认es5，保持默认即可
   quoteProps: 'as-needed', // 给对象里的属性名是否要加上引号，默认为as-needed，即根据需要决定，如果不加引号会报错则加，否则不加
-  bracketSpacing: true, // 将 > 多行元素放在最后一行的末尾，而不是单独放在下一行 (true：放末尾，false：单独一行)
+  arrowParens: 'avoid', //箭头函数只有一个参数的时候可以忽略括号
 }

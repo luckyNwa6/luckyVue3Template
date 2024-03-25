@@ -5,7 +5,7 @@ export function listType(query) {
   return request({
     url: '/system/dict-type/page',
     method: 'get',
-    params: query
+    params: query,
   })
 }
 
@@ -13,7 +13,7 @@ export function listType(query) {
 export function getType(dictId) {
   return request({
     url: '/system/dict-type/get?id=' + dictId,
-    method: 'get'
+    method: 'get',
   })
 }
 
@@ -22,7 +22,7 @@ export function addType(data) {
   return request({
     url: '/system/dict-type/create',
     method: 'post',
-    data: data
+    data: data,
   })
 }
 
@@ -31,7 +31,7 @@ export function updateType(data) {
   return request({
     url: '/system/dict-type/update',
     method: 'put',
-    data: data
+    data: data,
   })
 }
 
@@ -39,7 +39,7 @@ export function updateType(data) {
 export function delType(dictId) {
   return request({
     url: '/system/dict-type/delete?id=' + dictId,
-    method: 'delete'
+    method: 'delete',
   })
 }
 
@@ -49,7 +49,7 @@ export function exportType(query) {
     url: '/system/dict-type/export',
     method: 'get',
     params: query,
-    responseType: 'blob'
+    responseType: 'blob',
   })
 }
 
@@ -57,6 +57,6 @@ export function exportType(query) {
 export function listAllSimple() {
   return request({
     url: '/system/dict-type/list-all-simple',
-    method: 'get'
+    method: 'get',
   })
 }

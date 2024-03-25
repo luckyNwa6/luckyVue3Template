@@ -34,16 +34,6 @@ export const constantRoute = [
       },
     ],
   },
-  {
-    //工具
-    path: '/tool',
-    component: () => import('@/views/tool/index.vue'),
-    name: 'tool',
-    meta: {
-      title: '工具', //工具
-      hidden: true, //代表路由标题在菜单中是否隐藏  true:隐藏 false:不隐藏
-    },
-  },
 
   {
     //404

@@ -47,7 +47,7 @@ const handleTabsEdit = (targetName: TabPaneName | undefined, action: 'remove' | 
     }
 
     editableTabsValue.value = activeName
-    editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
+    editableTabs.value = tabs.filter(tab => tab.name !== targetName)
   }
 }
 </script>

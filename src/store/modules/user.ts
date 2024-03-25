@@ -2,29 +2,25 @@
 import { defineStore } from 'pinia'
 //引入接口
 import { reqLogin, reqUserInfo, reqLogout } from '@/api/sys/user'
-import type { loginFormData, loginResponseData, userInfoReponseData } from '@/api/user/type'
+import type { loginFormData, loginResponseData, userInfoResponseData } from '@/api/sys/user/type'
 import type { UserState } from './types/type'
 //引入操作本地存储的工具方法
 import { SET_TOKEN, GET_TOKEN, REMOVE_TOKEN } from '@/utils/token'
 //引入路由(常量路由)
 import { constantRoute, asnycRoute, anyRoute } from '@/router/routes'
 
-//引入深拷贝方法
-
-import { cloneDeep } from 'lodash-es'
-import router from '@/router'
 //用于过滤当前用户需要展示的异步路由
-function filterAsyncRoute(asnycRoute: any, routes: any) {
-  return asnycRoute.filter((item: any) => {
-    if (routes.includes(item.name)) {
-      if (item.children && item.children.length > 0) {
-        //硅谷333账号:product\trademark\attr\sku
-        item.children = filterAsyncRoute(item.children, routes)
-      }
-      return true
-    }
-  })
-}
+// function filterAsyncRoute(asnycRoute: any, routes: any) {
+//   return asnycRoute.filter((item: any) => {
+//     if (routes.includes(item.name)) {
+//       if (item.children && item.children.length > 0) {
+//         //硅谷333账号:product\trademark\attr\sku
+//         item.children = filterAsyncRoute(item.children, routes)
+//       }
+//       return true
+//     }
+//   })
+// }
 
 //创建用户小仓库
 const useUserStore = defineStore('User', {
@@ -45,6 +41,7 @@ const useUserStore = defineStore('User', {
     async userLogin(data: loginFormData) {
       //登录请求
       const result: loginResponseData = await reqLogin(data)
+      console.log('🚀 ~ userLogin ~ result:', result)
       //登录请求:成功200->token
       //登录请求:失败201->登录失败错误的信息
       if (result.code === 0) {
@@ -64,7 +61,7 @@ const useUserStore = defineStore('User', {
       //获取用户信息进行存储仓库当中[用户头像、名字]
       // console.log('获取用户信息')
 
-      const result: userInfoReponseData = await reqUserInfo()
+      const result: userInfoResponseData = await reqUserInfo()
       //如果获取用户信息成功，存储一下用户信息
       if (result.code == 0) {
         this.username = result.user.nickname

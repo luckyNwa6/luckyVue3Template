@@ -207,7 +207,7 @@ const rules = {
 
 const emit = defineEmits(['actionUpdatePage'])
 
-const initAction = async (params) => {
+const initAction = async params => {
   // try {
   //   await _getRoleList()
   // } catch (error) {
@@ -227,7 +227,7 @@ const initAction = async (params) => {
   dialogOpen()
 }
 
-const handleOpen = async (params) => {
+const handleOpen = async params => {
   _handleOpen(() => initAction(params))
 }
 
@@ -244,7 +244,7 @@ const handleOpen = async (params) => {
 
 const submit = () => {
   // submitLoading.value = true;
-  formRef.value.validate((valid) => {
+  formRef.value.validate(valid => {
     if (valid) {
       if (dialogModel.value === 'create') {
         createData()

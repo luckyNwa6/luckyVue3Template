@@ -4,6 +4,15 @@ module.exports = {
   globals: {
     jQuery: 'readonly',
     $: 'readonly',
+    lucky: true,
+    reactive: true,
+    computed: true,
+    ref: true,
+    watch: true,
+    onMounted: true,
+    onUpdated: true,
+    onUnmounted: true,
+    watchEffect: true,
   },
   env: {
     browser: true,

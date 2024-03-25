@@ -2,9 +2,8 @@
 import router from '@/router'
 import setting from './setting'
 import useDictStore from '@/store/modules/dict'
-//@ts-ignore
+//@ts-expect-error //引入进度条
 import nprogress from 'nprogress'
-//引入进度条样式
 import 'nprogress/nprogress.css'
 nprogress.configure({ showSpinner: false })
 //获取用户相关的小仓库内部token数据,去判断用户是否登录成功
@@ -68,7 +67,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
   }
 })
 //全局后置守卫
-router.afterEach((to: any, from: any) => {
+router.afterEach(() => {
   nprogress.done()
 })
 

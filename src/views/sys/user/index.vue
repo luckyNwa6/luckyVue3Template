@@ -78,11 +78,11 @@
 <script setup lang="ts">
 import useTable from '@/hooks/useTable'
 import { reqTablePage } from '@/api/sys/user'
-
 import { deleteUser } from '@/api/sys/user'
-import i18n from '@/lang/index'
-import PopEditerUser from './components/popEditerUser.vue'
 
+import PopEditerUser from './components/popEditerUser.vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 let $router = useRouter()
 
 const tableRef = ref<any>('tableRef')
@@ -155,11 +155,11 @@ const _getTableData = () => {
 // const resetPwd = (params) => {
 //   // await popResetPassword.value.handleOpen(params);
 // }
-const handleDelete = (data) => {
+const handleDelete = (data: any) => {
   console.log('🚀 ~ handleDelete ~ data:', data)
-  ElMessageBox.confirm(`${i18n.global.t('page.dialog.actionTip.sureToDelete')}?`, i18n.global.t('page.dialog.actionTip.tipText'), {
-    confirmButtonText: i18n.global.t('page.confirm'),
-    cancelButtonText: i18n.global.t('page.Cancel'),
+  ElMessageBox.confirm(`t('page.dialog.actionTip.sureToDelete')}?`, t('page.dialog.actionTip.tipText'), {
+    confirmButtonText: t('page.confirm'),
+    cancelButtonText: t('page.Cancel'),
     type: 'warning',
   })
     .then(async () => {
@@ -167,20 +167,20 @@ const handleDelete = (data) => {
         await deleteUser(data.userId)
         ElMessage({
           type: 'success',
-          message: i18n.global.t('page.dialog.actionFb.successfullyDeleted'),
+          message: t('page.dialog.actionFb.successfullyDeleted'),
         })
         _getTableData()
       } catch {
         ElMessage({
           type: 'error',
-          message: i18n.global.t('page.dialog.actionFb.failedDeleted'),
+          message: t('page.dialog.actionFb.failedDeleted'),
         })
       }
     })
     .catch(() => {
       ElMessage({
         type: 'info',
-        message: i18n.global.t('page.dialog.actionFb.cancleDelete'),
+        message: t('page.dialog.actionFb.cancleDelete'),
       })
     })
 }
@@ -193,14 +193,14 @@ const handleChangeStatus = () => {
   //   });
   //   ElMessage({
   //     type: 'success',
-  //     message: i18n.global.t('page.dialog.actionFb.successfullyChange')
+  //     message: t('page.dialog.actionFb.successfullyChange')
   //   });
   //   tableLoading.value = false;
   //   _getTableData();
   // } catch {
   //   ElMessage({
   //     type: 'error',
-  //     message: i18n.global.t('page.dialog.actionFb.failedChange')
+  //     message: t('page.dialog.actionFb.failedChange')
   //   });
   //   tableLoading.value = false;
   // }

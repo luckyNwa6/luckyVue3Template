@@ -37,7 +37,7 @@ export default [
       //获取请求体携带过来的用户名与密码
       const { username, password } = body
       //调用获取用户信息函数,用于判断是否有此用户
-      const checkUser = createUserList().find((item) => item.username === username && item.password === password)
+      const checkUser = createUserList().find(item => item.username === username && item.password === password)
       //没有用户返回失败信息
       if (!checkUser) {
         return { code: 201, message: '账号或者密码不正确' }
@@ -51,11 +51,11 @@ export default [
   {
     url: '/api/user/info',
     method: 'get',
-    response: (request) => {
+    response: request => {
       //获取请求头携带token
       const token = request.headers.token
       //查看用户信息是否包含有次token用户
-      const checkUser = createUserList().find((item) => item.token === token)
+      const checkUser = createUserList().find(item => item.token === token)
       //没有返回失败的信息
       if (!checkUser) {
         return { code: 201, data: { message: '获取用户信息失败' } }
@@ -68,7 +68,7 @@ export default [
   {
     url: '/api/admin/acl/index/info',
     method: 'get',
-    response: (request) => {
+    response: request => {
       // console.log('🚀 ~ request:mock', request)
 
       //如果有返回成功信息
@@ -176,7 +176,7 @@ export default [
   {
     url: '/api/admin/acl/index/logout',
     method: 'post',
-    response: (request) => {
+    response: request => {
       //如果有返回成功信息
       // console.log('🚀 ~ request:mock+', request)
       return { code: 200, message: '成功', data: null, ok: true }

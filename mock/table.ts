@@ -3,11 +3,11 @@ export default [
   {
     url: '/api/home-list/page',
     method: 'get',
-    response: (req) => {
+    response: req => {
       const { pageNum, pageSize, nickname, groupId, username, status } = req.query
 
       // 模拟数据库查询数据
-      const userList = createList().filter((user) => {
+      const userList = createList().filter(user => {
         return (
           (!nickname || user.nickname.includes(nickname)) &&
           (!groupId || user.groupId === groupId) &&

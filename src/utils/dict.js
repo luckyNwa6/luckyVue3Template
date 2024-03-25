@@ -5,17 +5,17 @@ import useDictStore from '@/store/modules/dict'
 
 const dictStore = useDictStore()
 
-export const getDictOptions = (dictType) => {
+export const getDictOptions = dictType => {
   return dictStore.getDictByType(dictType) || []
 }
 
-export const getIntDictOptions = (dictType) => {
+export const getIntDictOptions = dictType => {
   // 获得通用的 DictDataType 列表
   const dictOptions = getDictOptions(dictType)
   // 转换成 number 类型的 NumberDictDataType 类型
   // why 需要特殊转换：避免 IDEA 在 v-for="dict in getIntDictOptions(...)" 时，el-option 的 key 会告警
   const dictOption = []
-  dictOptions.forEach((dict) => {
+  dictOptions.forEach(dict => {
     dictOption.push({
       ...dict,
       value: parseInt(dict.value + ''),
@@ -24,10 +24,10 @@ export const getIntDictOptions = (dictType) => {
   return dictOption
 }
 
-export const getStrDictOptions = (dictType) => {
+export const getStrDictOptions = dictType => {
   const dictOption = []
   const dictOptions = getDictOptions(dictType)
-  dictOptions.forEach((dict) => {
+  dictOptions.forEach(dict => {
     dictOption.push({
       ...dict,
       value: dict.value + '',
@@ -36,10 +36,10 @@ export const getStrDictOptions = (dictType) => {
   return dictOption
 }
 
-export const getBoolDictOptions = (dictType) => {
+export const getBoolDictOptions = dictType => {
   const dictOption = []
   const dictOptions = getDictOptions(dictType)
-  dictOptions.forEach((dict) => {
+  dictOptions.forEach(dict => {
     dictOption.push({
       ...dict,
       value: dict.value + '' === 'true',
@@ -73,7 +73,7 @@ export const getDictObj = (dictType, value) => {
 export const getDictLabel = (dictType, value) => {
   const dictOptions = getDictOptions(dictType)
   const dictLabel = ref('')
-  dictOptions.forEach((dict) => {
+  dictOptions.forEach(dict => {
     if (dict.value === value + '') {
       dictLabel.value = dict.label
     }

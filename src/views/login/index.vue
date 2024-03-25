@@ -60,7 +60,6 @@ const login = async () => {
     bindEl: '#captcha-div',
     // 验证成功回调函数
     validSuccess: (res: any, c: any, tac: any) => {
-      console.log('res的值是', res, 'c的值是', c)
       loginAdmin()
       tac.destroyWindow()
     },

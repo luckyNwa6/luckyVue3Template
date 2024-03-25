@@ -1,4 +1,4 @@
-import _ from 'lodash-es'
+// import _ from 'lodash-es'
 
 // 必须包含数字、英文、下划线 6-20位
 export function valid_9(str) {
@@ -21,7 +21,7 @@ export function validatenull(val) {
   if (val instanceof Array) {
     if (val.length === 0) return true
   } else if (val instanceof Object) {
-    for (var o in val) {
+    for (let o in val) {
       return false
     }
     return true

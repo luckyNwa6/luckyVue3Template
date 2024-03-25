@@ -8,7 +8,7 @@ const request = axios.create({
   timeout: 5000, //超时的时间的设置
 })
 //第二步:request实例添加请求与响应拦截器
-request.interceptors.request.use((config) => {
+request.interceptors.request.use(config => {
   //获取用户相关的小仓库:获取仓库内部token,登录成功以后携带给服务器
   const userStore = useUserStore()
   if (userStore.token) {
@@ -21,12 +21,12 @@ request.interceptors.request.use((config) => {
 
 //第三步:响应拦截器
 request.interceptors.response.use(
-  (response) => {
+  response => {
     //成功回调
     //简化数据
     return response.data
   },
-  (error) => {
+  error => {
     //失败回调:处理http网络错误的
     //定义一个变量:存储网络错误信息
     let message = ''
@@ -55,7 +55,7 @@ request.interceptors.response.use(
       message,
     })
     return Promise.reject(error)
-  },
+  }
 )
 //对外暴露
 export default request

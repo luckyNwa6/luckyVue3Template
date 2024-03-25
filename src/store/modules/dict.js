@@ -33,7 +33,7 @@ const useDictStore = defineStore('dict', {
         // console.log('🚀 ~ setDictMap ~ res:字典回显', res)
         // 设置数据
         const dictDataMap = new Map()
-        res.data.forEach((dictData) => {
+        res.data.forEach(dictData => {
           // 获得 dictType 层级
           const enumValueObj = dictDataMap[dictData.dictType]
           if (!enumValueObj) {
@@ -64,7 +64,7 @@ const useDictStore = defineStore('dict', {
       const res = await listSimpleDictDatas()
       // 设置数据
       const dictDataMap = new Map()
-      res.forEach((dictData) => {
+      res.forEach(dictData => {
         // 获得 dictType 层级
         const enumValueObj = dictDataMap[dictData.dictType]
         if (!enumValueObj) {

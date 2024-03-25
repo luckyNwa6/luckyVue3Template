@@ -11,15 +11,15 @@ export const CACHE_KEY = {
   THEME: 'theme',
   LAYOUT: 'layout',
   ROLE_ROUTERS: 'roleRouters',
-  DICT_CACHE: 'dictCache'
+  DICT_CACHE: 'dictCache',
 }
 
 export const useCache = (type = 'localStorage') => {
   const wsCache = new WebStorageCache({
-    storage: type
+    storage: type,
   })
 
   return {
-    wsCache
+    wsCache,
   }
 }

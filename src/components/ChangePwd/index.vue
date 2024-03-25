@@ -131,7 +131,7 @@ const handleOpen = () => {
 
 const submit = () => {
   submitLoading.value = true
-  formRef.value.validate((valid) => {
+  formRef.value.validate(valid => {
     if (valid) {
       changePassword()
     } else {
@@ -153,7 +153,7 @@ const changePassword = () => {}
 //   submitLoading.value = false
 // }
 
-window.bus.on('dialogBeforeClose', (data) => {
+window.bus.on('dialogBeforeClose', data => {
   lucky.star('进入了')
   if (data.emitName === 'changePwd') {
     oldPasswordShow.value = 'password'

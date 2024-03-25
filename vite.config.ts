@@ -122,7 +122,7 @@ export default defineConfig(({ command, mode }) => {
           //需要代理跨域
           changeOrigin: true,
           //路径重写
-          rewrite: (path) => {
+          rewrite: path => {
             return path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')
           },
         },
@@ -132,7 +132,7 @@ export default defineConfig(({ command, mode }) => {
           //需要代理跨域
           changeOrigin: true,
           //路径重写
-          rewrite: (path) => {
+          rewrite: path => {
             return path.replace(new RegExp('^' + env.VITE_APP_BASE_API_YZM), '')
           },
         },
