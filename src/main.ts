@@ -82,7 +82,6 @@ app.use(baiduMap, {
 })
 
 app
-
   .use(router) //注册模板路由
   .use(i18n) //中英切换
   .use(ElementPlus) //安装element-plus插件
