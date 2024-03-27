@@ -24,11 +24,11 @@ const setFirstNode = ref(false)
 setFirstNode.value = true
 
 //树形点击传值
-const selectFunc = (value, node, flag) => {
+const selectFunc = (value: any, node: any, flag: any) => {
   // value--被勾选的树节点数组 node-- 当前被选择的节点 flag--勾选 or 取消勾选
   console.log('多选', value, node)
 }
-const nodeClick = (data, node) => {
+const nodeClick = (data: any, node: any) => {
   // data = deepClone(data);
   // if ('0' === data.type) {
   //   this.$message.error('请选择站点节点');
