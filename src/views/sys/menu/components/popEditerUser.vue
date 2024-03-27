@@ -112,14 +112,14 @@ import useDialog from '@/hooks/useDialog'
 import { validPhone, validatenull, randomPassword } from '@/utils/helper'
 
 // import MenuTypeEnum from '@/enums/authTypes';
-import { useI18n } from 'vue-i18n'
+
+import i18n from '@/lang/index'
 
 // import { getRoleList } from '@/api/roleManager'
-
 import { addUserInfo, updateUserInfo } from '@/api/sys/user'
 
 // const { ROLE_MANAGER_LIST_PAGE } = MenuTypeEnum;
-const { t } = useI18n()
+
 const initFormData = () => ({
   username: '',
   mobile: '',
@@ -139,7 +139,7 @@ const validatePhone = (rule, value, callback) => {
   if (validatenull(value)) {
     callback()
   } else if (!validPhone(value)) {
-    callback(new Error(t('page.dialog.input.rightPhoneNumber')))
+    callback(new Error(i18n.global.t('page.dialog.input.rightPhoneNumber')))
   } else {
     callback()
   }
@@ -152,7 +152,7 @@ const rules = {
   username: [
     {
       required: true,
-      message: t('systemManager.userManager.accountNameTip1'),
+      message: i18n.global.t('systemManager.userManager.accountNameTip1'),
       trigger: ['change', 'blur'],
     },
   ],
@@ -167,27 +167,27 @@ const rules = {
   email: [
     {
       type: 'email',
-      message: t('page.dialog.input.rightEmail'),
+      message: i18n.global.t('page.dialog.input.rightEmail'),
       trigger: ['blur', 'change'],
     },
   ],
   roleId: [
     {
       required: true,
-      message: t('systemManager.userManager.roleTip'),
+      message: i18n.global.t('systemManager.userManager.roleTip'),
       trigger: ['blur', 'change'],
     },
   ],
   password: [
     {
       required: true,
-      message: t('systemManager.userManager.pwdTip'),
+      message: i18n.global.t('systemManager.userManager.pwdTip'),
       trigger: ['blur', 'change'],
     },
     {
       min: 6,
       max: 20,
-      message: `${t('page.dialog.input.pwdLimit')}：6~20`,
+      message: `${i18n.global.t('page.dialog.input.pwdLimit')}：6~20`,
       trigger: ['blur', 'change'],
     },
   ],
@@ -247,7 +247,7 @@ const submit = () => {
 const createData = async () => {
   try {
     await addUserInfo(formData.value)
-    ElMessage.success(t('page.dialog.actionFb.successfullyAdd'))
+    ElMessage.success(i18n.global.t('page.dialog.actionFb.successfullyAdd'))
     emit('actionUpdatePage')
     dialogClose()
   } catch {
@@ -258,7 +258,7 @@ const createData = async () => {
 const updateData = async () => {
   try {
     await updateUserInfo(formData.value)
-    ElMessage.success(t('page.dialog.actionFb.successfullyUpdate'))
+    ElMessage.success(i18n.global.t('page.dialog.actionFb.successfullyUpdate'))
     emit('actionUpdatePage')
     dialogClose()
   } catch {
@@ -269,7 +269,7 @@ const updateData = async () => {
 
 // const goRole = () => {
 //   if (!hasPermission(ROLE_MANAGER_LIST_PAGE)) {
-//     ElMessage.error(t('page.permission.rules1'));
+//     ElMessage.error(i18n.global.t('page.permission.rules1'));
 //     return;
 //   }
 //   router.push({

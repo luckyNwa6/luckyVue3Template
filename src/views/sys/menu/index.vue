@@ -2,21 +2,14 @@
   <div class="flex-1 w-full">
     <PagePack permissionName="USER_MANAGER_LIST_PAGE" v-model:toggleValue="showSeniorSearch">
       <template #searchForm>
-        <el-form :model="searchData" ref="queryForm" :inline="true">
-          <el-form-item label="用户名" prop="username">
-            <el-input v-model="searchData.username" placeholder="用户名" clearable @keyup.enter.native="hooks_handleSearch(getTablePage)" />
-          </el-form-item>
-        </el-form>
+        <el-form :model="searchData" ref="queryForm" :inline="true" style="display: none"></el-form>
       </template>
 
       <template #searchButton>
-        <el-button type="primary" @click="hooks_handleSearch(getTablePage)">{{ $t('page.search') }}</el-button>
-        <el-button @click="hooks_resetQueryTable(getTablePage)">
-          {{ $t('page.reset') }}
-        </el-button>
+        <div style="display: none"></div>
       </template>
 
-      <template #topName>{{ $t('page.userManage.title') }}</template>
+      <template #topName>角色管理</template>
       <template #topNameBtn>
         <el-button plain size="small" icon="Plus" type="primary" @click="editData({ type: 'create' })">
           {{ $t('page.add') }}
@@ -30,20 +23,10 @@
             </template>
           </el-table-column>
 
-          <el-table-column prop="username" align="center" label="用户名" show-overflow-tooltip min-width="100" />
-          <el-table-column prop="email" align="center" label="邮箱" show-overflow-tooltip min-width="100" />
+          <el-table-column prop="roleName" align="center" label="角色名称" show-overflow-tooltip min-width="100" />
+          <el-table-column prop="remark" align="center" label="备注" show-overflow-tooltip min-width="100" />
 
-          <el-table-column prop="mobile" align="center" :label="$t('page.mobilePhone')" min-width="130" show-overflow-tooltip />
-          <el-table-column prop="email" align="center" :label="$t('page.email')" show-overflow-tooltip />
-
-          <el-table-column prop="status" align="center" width="80" :label="$t('page.status')">
-            <template #default="scope">
-              <div @click="handleChangeStatus()">
-                <el-switch v-model="scope.row.status" />
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="createdTimeSort" align="center" sortable="custom" width="180" :label="$t('page.createTime')">
+          <el-table-column prop="createTime" align="center" sortable="custom" width="180" :label="$t('page.createTime')">
             <template #default="scope">
               <span>{{ scope.row.createTime }}</span>
             </template>
@@ -77,7 +60,7 @@
 
 <script setup lang="ts">
 import useTable from '@/hooks/useTable'
-import { reqTablePage } from '@/api/sys/user'
+import { reqRoleTablePage } from '@/api/sys/user'
 import { deleteUser } from '@/api/sys/user'
 
 import PopEditerUser from './components/popEditerUser.vue'
@@ -91,7 +74,7 @@ const showSeniorSearch = ref(false)
 const initTableQueryData = () => ({
   limit: 10,
   page: 1,
-  username: '',
+  roleName: '',
 })
 const popEditerUser = ref<any>('popEditerUser')
 const {
@@ -114,9 +97,9 @@ onMounted(() => {
 const getTablePage = async () => {
   tableLoading.value = true
   try {
-    const res = await reqTablePage(tableQueryData)
+    const res = await reqRoleTablePage(tableQueryData)
 
-    console.log('🚀 ~ getTablePage ~ res:', res)
+    console.log('🚀 ~ reqRoleTablePage ~ res:', res)
     tablePage.value = res.page.list
     totalPages.value = res.page.totalCount * 1 //总条数
     nextTick(() => {
@@ -157,7 +140,7 @@ const _getTableData = () => {
 // }
 const handleDelete = (data: any) => {
   console.log('🚀 ~ handleDelete ~ data:', data)
-  ElMessageBox.confirm(t('page.dialog.actionTip.sureToDelete') + '?', t('page.dialog.actionTip.tipText'), {
+  ElMessageBox.confirm(`t('page.dialog.actionTip.sureToDelete')}?`, t('page.dialog.actionTip.tipText'), {
     confirmButtonText: t('page.confirm'),
     cancelButtonText: t('page.Cancel'),
     type: 'warning',

@@ -79,9 +79,9 @@ export const asnycRoute = [
         },
       },
       {
-        path: '/sys/permission',
-        component: () => import('@/views/sys/permission/index.vue'),
-        name: 'Permission',
+        path: '/sys/menu',
+        component: () => import('@/views/sys/menu/index.vue'),
+        name: 'Menu',
         meta: {
           title: '菜单管理',
           icon: 'Monitor',

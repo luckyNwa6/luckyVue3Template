@@ -24,7 +24,7 @@
       <!-- layout组件的顶部导航tabbar -->
       <Tabbar></Tabbar>
     </div>
-    <div class="layout_tags" :class="{ fold: LayOutSettingStore.fold ? true : false }"><Tags /></div>
+    <!-- <div class="layout_tags" :class="{ fold: LayOutSettingStore.fold ? true : false }"><Tags /></div> -->
     <!-- 内容展示区域 -->
     <div class="layout_main" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <Main></Main>
@@ -44,7 +44,7 @@ import Main from './main/index.vue'
 //引入顶部tabbar组件
 import Tabbar from './tabbar/index.vue'
 
-import Tags from './tags/index.vue'
+// import Tags from './tags/index.vue'
 //获取用户相关的小仓库
 import useUserStore from '@/store/modules/user'
 import useLayOutSettingStore from '@/store/modules/setting'
@@ -103,9 +103,9 @@ export default {
   .layout_main {
     position: absolute;
     width: calc(100% - $base-menu-width);
-    height: calc(100vh - $base-tabbar-height - $base-tabbar-height);
+    height: calc(100vh - $base-tabbar-height);
     left: $base-menu-width;
-    top: $base-tabbar-height + $base-tabbar-height;
+    top: $base-tabbar-height;
     padding: 10px;
     overflow: auto;
     transition: all 0.3s;
@@ -115,20 +115,37 @@ export default {
       left: $base-menu-min-width;
     }
   }
-  .layout_tags {
-    position: absolute;
-    width: calc(100% - $base-menu-width);
-    height: $base-tabbar-height;
-    left: $base-menu-width;
-    top: $base-tabbar-height;
-    padding: 2px;
-    overflow: auto;
-    transition: all 0.3s;
 
-    &.fold {
-      width: calc(100vw - $base-menu-min-width);
-      left: $base-menu-min-width;
-    }
-  }
+  //下面是选项卡的菜单，未完成
+  // .layout_main {
+  //   position: absolute;
+  //   width: calc(100% - $base-menu-width);
+  //   height: calc(100vh - $base-tabbar-height - $base-tabbar-height);
+  //   left: $base-menu-width;
+  //   top: $base-tabbar-height + $base-tabbar-height;
+  //   padding: 10px;
+  //   overflow: auto;
+  //   transition: all 0.3s;
+
+  //   &.fold {
+  //     width: calc(100vw - $base-menu-min-width);
+  //     left: $base-menu-min-width;
+  //   }
+  // }
+  // .layout_tags {
+  //   position: absolute;
+  //   width: calc(100% - $base-menu-width);
+  //   height: $base-tabbar-height;
+  //   left: $base-menu-width;
+  //   top: $base-tabbar-height;
+  //   padding: 2px;
+  //   overflow: auto;
+  //   transition: all 0.3s;
+
+  //   &.fold {
+  //     width: calc(100vw - $base-menu-min-width);
+  //     left: $base-menu-min-width;
+  //   }
+  // }
 }
 </style>

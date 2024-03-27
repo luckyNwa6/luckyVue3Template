@@ -2,7 +2,6 @@
   <el-tabs v-model="editableTabsValue" type="card" editable class="demo-tabs" @edit="handleTabsEdit" @tab-click="handleClick()">
     <el-tab-pane v-for="tag in tags" :key="tag.name" :label="tag.title" :name="tag.name"></el-tab-pane>
   </el-tabs>
-  <!-- <router-view></router-view> -->
 </template>
 
 <script lang="ts" setup>
@@ -36,6 +35,7 @@ let $router = useRouter()
 let $route = useRoute()
 onMounted(() => {
   // lucky.star($route.meta.title)
+  // initTags();
 })
 
 let tabIndex = 2

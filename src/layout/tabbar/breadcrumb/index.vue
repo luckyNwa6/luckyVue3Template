@@ -4,11 +4,11 @@
     <component :is="LayOutSettingStore.fold ? 'Fold' : 'Expand'"></component>
   </el-icon>
   <!-- 左侧面包屑 -->
-  <!-- <el-breadcrumb separator-icon="ArrowRight">
+  <el-breadcrumb separator-icon="ArrowRight">
     <el-breadcrumb-item v-for="(item, index) in $route.matched" :key="index" v-show="item.meta.title" :to="item.path">
       <span>{{ item.meta.title }}</span>
     </el-breadcrumb-item>
-  </el-breadcrumb> -->
+  </el-breadcrumb>
 </template>
 
 <script setup lang="ts">
