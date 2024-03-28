@@ -29,7 +29,7 @@
       </template>
       <template #pageTable>
         <el-table ref="tableRef" height="485px" v-loading="tableLoading" :data="tablePage" @sort-change="handleSort">
-          <el-table-column :label="$t('page.index')" ixed="left" align="center" width="70">
+          <el-table-column :label="$t('page.index')" fixed="left" align="center" width="70">
             <template #default="scope">
               {{ scope.$index + 1 + (tableQueryData.page - 1) * tableQueryData.limit }}
             </template>

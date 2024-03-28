@@ -9,79 +9,58 @@
   >
     <el-form ref="formRef" v-loading="submitLoading" label-width="auto" :model="formData" :rules="rules">
       <el-row>
-        <el-col :span="12">
-          <el-form-item label="用户名" prop="username">
-            <el-input
-              v-model="formData.username"
-              :disabled="dialogModel !== 'create'"
-              maxlength="20"
-              show-word-limit
-              placeholder="请输入用户名"
-              clearable
-            />
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item :label="$t('page.mobilePhone')" prop="mobile">
-            <el-input
-              v-model="formData.mobile"
-              maxlength="11"
-              show-word-limit
-              :placeholder="$t('systemManager.userManager.mobilePhoneTip')"
-              clearable
+        <el-col :span="24">
+          <el-form-item label="上级菜单">
+            <el-tree-select
+              v-model="formData.parentId"
+              :data="menuOptions"
+              :render-after-expand="false"
+              node-key="menuId"
+              check-strictly
+              :props="defaultProps"
+              placeholder="选择上级菜单"
+              highlight-current
+              style="width: 100%"
             />
           </el-form-item>
         </el-col>
         <el-col :span="24">
-          <el-form-item :label="$t('page.email')" prop="email">
-            <el-input v-model="formData.email" placeholder="请输入邮箱" clearable maxlength="200" show-word-limit />
+          <el-form-item label="菜单类型" prop="type">
+            <el-radio-group v-model="formData.type">
+              <el-radio v-for="(type, index) in formData.typeList" :value="index">
+                {{ type }}
+              </el-radio>
+            </el-radio-group>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          <el-form-item :label="$t('page.role')" prop="roleIdList" class="mb-0">
-            <el-select v-model="formData.roleIdList" :placeholder="$t('page.dialog.select.errorTips.userRole')" clearable filterable>
-              <div v-for="item in roleList" :key="item.roleId">
-                <el-option :disabled="!item.enabled" :value="item.roleId" :label="item.roleName" />
-              </div>
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label-width="10px">
-            <el-link :underline="false" type="primary" class="custom-link">
-              {{ $t('systemManager.userManager.createRole') }}
-            </el-link>
-          </el-form-item>
-        </el-col>
-        <el-col v-if="dialogModel === 'create'" :span="12">
-          <el-form-item :label="$t('page.userPwd')" prop="password">
-            <el-input v-model="formData.password" :placeholder="$t('page.dialog.input.userPwd')" maxlength="20" show-word-limit>
-              <template #suffix>
-                <i-ep-refresh :title="$t('page.resetPwd')" class="cursor-pointer" @click="formData.password = randomPassword()" />
-              </template>
-            </el-input>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="昵称" prop="nickname">
-            <el-input v-model="formData.nickname" placeholder="请输入昵称" maxlength="20" show-word-limit clearable />
-          </el-form-item>
-        </el-col>
-      </el-row>
-      <el-row>
         <el-col :span="24">
-          <el-form-item :label="$t('page.remark')">
-            <el-input
-              v-model="formData.remark"
-              :placeholder="$t('page.dialog.input.fillRemark')"
-              clearable
-              type="textarea"
-              :rows="4"
-              maxlength="200"
-              show-word-limit
-            />
+          <el-form-item :label="formData.typeList[formData.type] + '名称'" prop="name">
+            <el-input v-model="formData.name" :placeholder="formData.typeList[formData.type] + '名称'"></el-input>
           </el-form-item>
         </el-col>
+
+        <el-form-item v-if="formData.type === 1" label="菜单路由" prop="url">
+          <el-input v-model="formData.url" placeholder="菜单路由"></el-input>
+        </el-form-item>
+        <el-form-item v-if="formData.type !== 0" label="授权标识" prop="perms">
+          <el-input v-model="formData.perms" placeholder="多个用逗号分隔, 如: user:list,user:create"></el-input>
+        </el-form-item>
+        <el-form-item v-if="formData.type !== 2" label="排序号" prop="orderNum">
+          <el-input-number v-model="formData.orderNum" controls-position="right" :min="0" label="排序号"></el-input-number>
+        </el-form-item>
+        <el-form-item v-if="formData.type !== 2" label="菜单图标" prop="icon">
+          <el-row>
+            <el-col :span="22">
+              <el-input
+                v-model="formData.icon"
+                v-popover:iconListPopover
+                :readonly="true"
+                placeholder="菜单图标名称"
+                class="icon-list__input"
+              ></el-input>
+            </el-col>
+          </el-row>
+        </el-form-item>
       </el-row>
     </el-form>
 
@@ -104,50 +83,37 @@ export default {
 </script>
 
 <script setup>
-import { useRouter } from 'vue-router'
-
 import useDialog from '@/hooks/useDialog'
-// import usePermission from '@/hooks/usePermission';
-
-import { validPhone, validatenull, randomPassword } from '@/utils/helper'
-
-// import MenuTypeEnum from '@/enums/authTypes';
-
 import i18n from '@/lang/index'
 
-// import { getRoleList } from '@/api/roleManager'
-import { addUserInfo, updateUserInfo } from '@/api/sys/user'
-
-// const { ROLE_MANAGER_LIST_PAGE } = MenuTypeEnum;
-
+import { addMenuInfo, updateMenuInfo, getMenuSelect } from '@/api/sys/user'
+import { treeDataTranslate } from '@/utils'
 const initFormData = () => ({
-  username: '',
-  mobile: '',
-  email: '',
-  // roleIdList: '',
-  password: '',
-  nickname: '',
-  remark: '',
+  parentName: '',
+  id: 0,
+  type: 1,
+  typeList: ['目录', '菜单', '按钮'],
+  name: '',
+  parentId: 0,
+  parentName: '',
+  url: '',
+  perms: '',
+  orderNum: 0,
+  icon: '',
+  iconList: [],
 })
 const formRef = ref('formRef')
 const { dialogClose, dialogOpen, dialogCancel, _handleOpen, dialogVisible, submitLoading, formData } = useDialog(formRef, { initFormData })
-// const { hasPermission } = usePermission();
-const router = useRouter()
-
-// 手机号
-const validatePhone = (rule, value, callback) => {
-  if (validatenull(value)) {
-    callback()
-  } else if (!validPhone(value)) {
-    callback(new Error(i18n.global.t('page.dialog.input.rightPhoneNumber')))
-  } else {
-    callback()
-  }
-}
-
-// data
 const dialogModel = ref('create')
 const roleList = ref([])
+
+const emit = defineEmits(['actionUpdatePage'])
+const defaultProps = {
+  id: 'menuId',
+  children: 'children',
+  label: 'name',
+}
+
 const rules = {
   username: [
     {
@@ -156,62 +122,23 @@ const rules = {
       trigger: ['change', 'blur'],
     },
   ],
-  nickname: [
-    {
-      required: true,
-      message: '请输入昵称',
-      trigger: ['change', 'blur'],
-    },
-  ],
-  mobileNo: [{ validator: validatePhone, trigger: ['blur', 'change'] }],
-  email: [
-    {
-      type: 'email',
-      message: i18n.global.t('page.dialog.input.rightEmail'),
-      trigger: ['blur', 'change'],
-    },
-  ],
-  roleId: [
-    {
-      required: true,
-      message: i18n.global.t('systemManager.userManager.roleTip'),
-      trigger: ['blur', 'change'],
-    },
-  ],
-  password: [
-    {
-      required: true,
-      message: i18n.global.t('systemManager.userManager.pwdTip'),
-      trigger: ['blur', 'change'],
-    },
-    {
-      min: 6,
-      max: 20,
-      message: `${i18n.global.t('page.dialog.input.pwdLimit')}：6~20`,
-      trigger: ['blur', 'change'],
-    },
-  ],
 }
 
-const emit = defineEmits(['actionUpdatePage'])
-
+//初始化调用
 const initAction = async params => {
-  // try {
-  //   await _getRoleList()
-  // } catch (error) {
-  //   console.log(error)
-  // }
-  formData.value.password = randomPassword()
-  formData.value.groupId = params.groupId
+  try {
+    await _getMenuSelect() //获取菜单下拉的数据
+  } catch (error) {
+    console.log(error)
+  }
 
-  dialogModel.value = params.type
+  dialogModel.value = params.type //类型新增还是修改
 
   if (params.type === 'edit') {
     for (const item in params.data) {
       formData.value[item] = params.data[item]
     }
   }
-
   dialogOpen()
 }
 
@@ -219,16 +146,13 @@ const handleOpen = async params => {
   _handleOpen(() => initAction(params))
 }
 
-// methods
-
-// const _getRoleList = async () => {
-//   try {
-//     const res = await getRoleList()
-//     roleList.value = res.data
-//   } catch {
-//     console.log('获取角色列表失败')
-//   }
-// }
+const menuOptions = ref([])
+const _getMenuSelect = () => {
+  getMenuSelect().then(res => {
+    // console.log(res)
+    menuOptions.value = treeDataTranslate(res.menuList, 'menuId')
+  })
+}
 
 const submit = () => {
   submitLoading.value = true
@@ -246,7 +170,7 @@ const submit = () => {
 }
 const createData = async () => {
   try {
-    await addUserInfo(formData.value)
+    await addMenuInfo(formData.value)
     ElMessage.success(i18n.global.t('page.dialog.actionFb.successfullyAdd'))
     emit('actionUpdatePage')
     dialogClose()
@@ -257,7 +181,7 @@ const createData = async () => {
 }
 const updateData = async () => {
   try {
-    await updateUserInfo(formData.value)
+    await updateMenuInfo(formData.value)
     ElMessage.success(i18n.global.t('page.dialog.actionFb.successfullyUpdate'))
     emit('actionUpdatePage')
     dialogClose()
@@ -266,16 +190,6 @@ const updateData = async () => {
   }
   submitLoading.value = false
 }
-
-// const goRole = () => {
-//   if (!hasPermission(ROLE_MANAGER_LIST_PAGE)) {
-//     ElMessage.error(i18n.global.t('page.permission.rules1'));
-//     return;
-//   }
-//   router.push({
-//     name: 'roleManager'
-//   });
-// };
 
 defineExpose({ handleOpen })
 </script>

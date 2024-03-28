@@ -20,6 +20,9 @@ dependencies:
   copy-to-clipboard:
     specifier: ^3.3.3
     version: 3.3.3
+  dayjs:
+    specifier: ^1.11.10
+    version: 1.11.10
   echarts:
     specifier: 4.9.0
     version: 4.9.0
@@ -42,7 +45,7 @@ dependencies:
     specifier: ^6.12.0
     version: 6.12.0
   vue:
-    specifier: ^3.4.19
+    specifier: ^3.2.25
     version: 3.4.21(typescript@5.4.2)
   vue-i18n:
     specifier: ^9.10.1

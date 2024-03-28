@@ -39,20 +39,12 @@
         </el-col>
         <el-col :span="12">
           <el-form-item :label="$t('page.role')" prop="roleIdList" class="mb-0">
-            <el-select v-model="formData.roleIdList" :placeholder="$t('page.dialog.select.errorTips.userRole')" clearable filterable>
-              <div v-for="item in roleList" :key="item.roleId">
-                <el-option :disabled="!item.enabled" :value="item.roleId" :label="item.roleName" />
-              </div>
-            </el-select>
+            <el-checkbox-group v-model="formData.roleIdList">
+              <el-checkbox v-for="role in roleList" :key="role.roleId" :label="role.roleName" :value="role.roleId" />
+            </el-checkbox-group>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          <el-form-item label-width="10px">
-            <el-link :underline="false" type="primary" class="custom-link">
-              {{ $t('systemManager.userManager.createRole') }}
-            </el-link>
-          </el-form-item>
-        </el-col>
+
         <el-col v-if="dialogModel === 'create'" :span="12">
           <el-form-item :label="$t('page.userPwd')" prop="password">
             <el-input v-model="formData.password" :placeholder="$t('page.dialog.input.userPwd')" maxlength="20" show-word-limit>
@@ -65,6 +57,16 @@
         <el-col :span="12">
           <el-form-item label="昵称" prop="nickname">
             <el-input v-model="formData.nickname" placeholder="请输入昵称" maxlength="20" show-word-limit clearable />
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="12">
+          <el-form-item label="状态" prop="status">
+            <el-radio-group v-model="formData.status">
+              <el-radio :value="1">正常</el-radio>
+              <el-radio :value="0">禁用</el-radio>
+            </el-radio-group>
           </el-form-item>
         </el-col>
       </el-row>
@@ -104,37 +106,28 @@ export default {
 </script>
 
 <script setup>
-import { useRouter } from 'vue-router'
-
 import useDialog from '@/hooks/useDialog'
-// import usePermission from '@/hooks/usePermission';
 
 import { validPhone, validatenull, randomPassword } from '@/utils/helper'
 
-// import MenuTypeEnum from '@/enums/authTypes';
 import { useI18n } from 'vue-i18n'
 
-// import { getRoleList } from '@/api/roleManager'
+import { addUserInfo, updateUserInfo, getRoleSelect, reqUserInfoId } from '@/api/sys/user'
 
-import { addUserInfo, updateUserInfo } from '@/api/sys/user'
-
-// const { ROLE_MANAGER_LIST_PAGE } = MenuTypeEnum;
 const { t } = useI18n()
 const initFormData = () => ({
   username: '',
   mobile: '',
   email: '',
-  // roleIdList: '',
+  status: 1,
+  roleIdList: [],
   password: '',
   nickname: '',
   remark: '',
 })
 const formRef = ref('formRef')
 const { dialogClose, dialogOpen, dialogCancel, _handleOpen, dialogVisible, submitLoading, formData } = useDialog(formRef, { initFormData })
-// const { hasPermission } = usePermission();
-const router = useRouter()
 
-// 手机号
 const validatePhone = (rule, value, callback) => {
   if (validatenull(value)) {
     callback()
@@ -145,7 +138,6 @@ const validatePhone = (rule, value, callback) => {
   }
 }
 
-// data
 const dialogModel = ref('create')
 const roleList = ref([])
 const rules = {
@@ -156,16 +148,11 @@ const rules = {
       trigger: ['change', 'blur'],
     },
   ],
-  nickname: [
-    {
-      required: true,
-      message: '请输入昵称',
-      trigger: ['change', 'blur'],
-    },
-  ],
-  mobileNo: [{ validator: validatePhone, trigger: ['blur', 'change'] }],
+
+  mobile: [{ required: true, message: '请输入正确的手机号', validator: validatePhone, trigger: ['blur', 'change'] }],
   email: [
     {
+      required: true,
       type: 'email',
       message: t('page.dialog.input.rightEmail'),
       trigger: ['blur', 'change'],
@@ -196,22 +183,27 @@ const rules = {
 const emit = defineEmits(['actionUpdatePage'])
 
 const initAction = async params => {
-  // try {
-  //   await _getRoleList()
-  // } catch (error) {
-  //   console.log(error)
-  // }
+  try {
+    await _getRoleList()
+  } catch (error) {
+    console.log(error)
+  }
   formData.value.password = randomPassword()
   formData.value.groupId = params.groupId
 
   dialogModel.value = params.type
 
   if (params.type === 'edit') {
-    for (const item in params.data) {
-      formData.value[item] = params.data[item]
-    }
+    // for (const item in params.data) {//这里是直接编辑传过来的值
+    //   formData.value[item] = params.data[item]
+    // }
+    // console.log(params.data)
+    reqUserInfoId(params.data.userId).then(res => {
+      for (const item in res.user) {
+        formData.value[item] = res.user[item]
+      }
+    })
   }
-
   dialogOpen()
 }
 
@@ -219,16 +211,15 @@ const handleOpen = async params => {
   _handleOpen(() => initAction(params))
 }
 
-// methods
-
-// const _getRoleList = async () => {
-//   try {
-//     const res = await getRoleList()
-//     roleList.value = res.data
-//   } catch {
-//     console.log('获取角色列表失败')
-//   }
-// }
+const _getRoleList = async () => {
+  try {
+    const res = await getRoleSelect()
+    // console.log('🚀 ~ const_getRoleList= ~ res:', res)
+    roleList.value = res.list
+  } catch {
+    console.log('获取角色列表失败')
+  }
+}
 
 const submit = () => {
   submitLoading.value = true
@@ -266,16 +257,6 @@ const updateData = async () => {
   }
   submitLoading.value = false
 }
-
-// const goRole = () => {
-//   if (!hasPermission(ROLE_MANAGER_LIST_PAGE)) {
-//     ElMessage.error(t('page.permission.rules1'));
-//     return;
-//   }
-//   router.push({
-//     name: 'roleManager'
-//   });
-// };
 
 defineExpose({ handleOpen })
 </script>

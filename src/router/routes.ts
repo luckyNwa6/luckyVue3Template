@@ -87,6 +87,15 @@ export const asnycRoute = [
           icon: 'Monitor',
         },
       },
+      {
+        path: '/sys/log',
+        component: () => import('@/views/sys/log/index.vue'),
+        name: 'Log',
+        meta: {
+          title: '系统日志',
+          icon: 'FolderRemove',
+        },
+      },
     ],
   },
   {

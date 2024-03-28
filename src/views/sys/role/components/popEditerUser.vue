@@ -11,14 +11,7 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="角色名称" prop="roleName">
-            <el-input
-              v-model="formData.roleName"
-              :disabled="dialogModel !== 'create'"
-              maxlength="20"
-              show-word-limit
-              placeholder="请输入用户名"
-              clearable
-            />
+            <el-input v-model="formData.roleName" maxlength="20" show-word-limit placeholder="请输入用户名" clearable />
           </el-form-item>
         </el-col>
 
@@ -83,6 +76,10 @@ import { addRoleInfo, updateRoleInfo, getRoleInfo } from '@/api/sys/user'
 const treeData = ref([])
 
 const { t } = useI18n()
+const defaultProps = {
+  children: 'children',
+  label: 'name',
+}
 const initFormData = () => ({
   roleName: '',
   remark: '',
@@ -90,24 +87,10 @@ const initFormData = () => ({
   roleId: '',
 })
 
-const init = async () => {
-  try {
-    await reqMenuTablePage().then(res => {
-      // console.log('🚀 ~ .then ~ data:', res)
-      treeData.value = treeDataTranslate(res, 'menuId') //返回的数据处理成树型
-    })
-  } catch (error) {
-    console.log(error)
-  }
-}
-const defaultProps = {
-  children: 'children',
-  label: 'name',
-}
-
 const formRef = ref('formRef')
 const { dialogClose, dialogOpen, dialogCancel, _handleOpen, dialogVisible, submitLoading, formData } = useDialog(formRef, { initFormData })
-
+const treeRef = ref(null)
+const tempKey = ref(-666666) // 临时key, 用于解决tree半选中状态项不能传给后台接口问题. # 待优化
 const dialogModel = ref('create')
 
 const rules = {
@@ -121,6 +104,16 @@ const rules = {
 }
 const emit = defineEmits(['actionUpdatePage'])
 
+const init = async () => {
+  try {
+    await reqMenuTablePage().then(res => {
+      // console.log('🚀 ~ .then ~ data:', res)
+      treeData.value = treeDataTranslate(res, 'menuId') //返回的数据处理成树型
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
 const initAction = params => {
   init() //获取树数据
 
@@ -162,8 +155,7 @@ const submit = () => {
     }
   })
 }
-const treeRef = ref(null)
-const tempKey = ref(-666666) // 临时key, 用于解决tree半选中状态项不能传给后台接口问题. # 待优化
+
 const createData = async () => {
   formData.value.menuIdList = [].concat(treeRef.value.getCheckedKeys(), [tempKey.value], treeRef.value.getHalfCheckedKeys()) //拼接
   // console.log('🚀 ~ createData ~ formData.value:', formData.value)

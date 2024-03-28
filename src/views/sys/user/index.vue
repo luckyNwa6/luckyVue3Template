@@ -24,7 +24,7 @@
       </template>
       <template #pageTable>
         <el-table ref="tableRef" height="485px" v-loading="tableLoading" :data="tablePage" @sort-change="handleSort">
-          <el-table-column :label="$t('page.index')" ixed="left" align="center" width="70">
+          <el-table-column :label="$t('page.index')" fixed="left" align="center" width="70">
             <template #default="scope">
               {{ scope.$index + 1 + (tableQueryData.page - 1) * tableQueryData.limit }}
             </template>
@@ -38,9 +38,8 @@
 
           <el-table-column prop="status" align="center" width="80" :label="$t('page.status')">
             <template #default="scope">
-              <div @click="handleChangeStatus()">
-                <el-switch v-model="scope.row.status" />
-              </div>
+              <el-tag v-if="scope.row.status === 0" size="small" type="danger">禁用</el-tag>
+              <el-tag v-else size="small">正常</el-tag>
             </template>
           </el-table-column>
           <el-table-column prop="createdTimeSort" align="center" sortable="custom" width="180" :label="$t('page.createTime')">
