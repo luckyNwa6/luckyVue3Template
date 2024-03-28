@@ -22,8 +22,8 @@
               :placeholder="$t('page.dialog.input.fillRemark')"
               clearable
               type="textarea"
-              :rows="4"
-              maxlength="200"
+              :rows="1"
+              maxlength="80"
               show-word-limit
             />
           </el-form-item>

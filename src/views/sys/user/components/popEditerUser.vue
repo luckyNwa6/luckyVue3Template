@@ -22,6 +22,12 @@
           </el-form-item>
         </el-col>
         <el-col :span="12">
+          <el-form-item label="昵称" prop="nickname">
+            <el-input v-model="formData.nickname" placeholder="请输入昵称" maxlength="20" show-word-limit clearable />
+          </el-form-item>
+        </el-col>
+
+        <el-col :span="12">
           <el-form-item :label="$t('page.mobilePhone')" prop="mobile">
             <el-input
               v-model="formData.mobile"
@@ -32,21 +38,13 @@
             />
           </el-form-item>
         </el-col>
-        <el-col :span="24">
+        <el-col :span="12">
           <el-form-item :label="$t('page.email')" prop="email">
             <el-input v-model="formData.email" placeholder="请输入邮箱" clearable maxlength="200" show-word-limit />
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          <el-form-item :label="$t('page.role')" prop="roleIdList" class="mb-0">
-            <el-checkbox-group v-model="formData.roleIdList">
-              <el-checkbox v-for="role in roleList" :key="role.roleId" :label="role.roleName" :value="role.roleId" />
-            </el-checkbox-group>
-          </el-form-item>
-        </el-col>
-
         <el-col v-if="dialogModel === 'create'" :span="12">
-          <el-form-item :label="$t('page.userPwd')" prop="password">
+          <el-form-item label="密码" prop="password">
             <el-input v-model="formData.password" :placeholder="$t('page.dialog.input.userPwd')" maxlength="20" show-word-limit>
               <template #suffix>
                 <i-ep-refresh :title="$t('page.resetPwd')" class="cursor-pointer" @click="formData.password = randomPassword()" />
@@ -54,13 +52,14 @@
             </el-input>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
-          <el-form-item label="昵称" prop="nickname">
-            <el-input v-model="formData.nickname" placeholder="请输入昵称" maxlength="20" show-word-limit clearable />
+        <el-col :span="24">
+          <el-form-item :label="$t('page.role')" prop="roleIdList" class="mb-0">
+            <el-checkbox-group v-model="formData.roleIdList">
+              <el-checkbox v-for="role in roleList" :key="role.roleId" :label="role.roleName" :value="role.roleId" />
+            </el-checkbox-group>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
+
         <el-col :span="12">
           <el-form-item label="状态" prop="status">
             <el-radio-group v-model="formData.status">
@@ -69,8 +68,7 @@
             </el-radio-group>
           </el-form-item>
         </el-col>
-      </el-row>
-      <el-row>
+
         <el-col :span="24">
           <el-form-item :label="$t('page.remark')">
             <el-input

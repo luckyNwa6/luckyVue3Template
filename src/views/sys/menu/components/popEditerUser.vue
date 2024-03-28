@@ -38,29 +38,33 @@
             <el-input v-model="formData.name" :placeholder="formData.typeList[formData.type] + '名称'"></el-input>
           </el-form-item>
         </el-col>
+        <el-col :span="24">
+          <el-form-item v-if="formData.type === 1" label="菜单路由" prop="url">
+            <el-input v-model="formData.url" placeholder="菜单路由"></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="24">
+          <el-form-item v-if="formData.type !== 0" label="授权标识" prop="perms">
+            <el-input v-model="formData.perms" placeholder="多个用逗号分隔, 如: user:list,user:create"></el-input>
+          </el-form-item>
+        </el-col>
 
-        <el-form-item v-if="formData.type === 1" label="菜单路由" prop="url">
-          <el-input v-model="formData.url" placeholder="菜单路由"></el-input>
-        </el-form-item>
-        <el-form-item v-if="formData.type !== 0" label="授权标识" prop="perms">
-          <el-input v-model="formData.perms" placeholder="多个用逗号分隔, 如: user:list,user:create"></el-input>
-        </el-form-item>
-        <el-form-item v-if="formData.type !== 2" label="排序号" prop="orderNum">
-          <el-input-number v-model="formData.orderNum" controls-position="right" :min="0" label="排序号"></el-input-number>
-        </el-form-item>
-        <el-form-item v-if="formData.type !== 2" label="菜单图标" prop="icon">
-          <el-row>
-            <el-col :span="22">
-              <el-input
-                v-model="formData.icon"
-                v-popover:iconListPopover
-                :readonly="true"
-                placeholder="菜单图标名称"
-                class="icon-list__input"
-              ></el-input>
-            </el-col>
-          </el-row>
-        </el-form-item>
+        <el-col :span="12">
+          <el-form-item v-if="formData.type !== 2" label="菜单图标" prop="icon">
+            <el-input
+              v-model="formData.icon"
+              v-popover:iconListPopover
+              :readonly="true"
+              placeholder="菜单图标名称"
+              class="icon-list__input"
+            ></el-input>
+          </el-form-item>
+        </el-col>
+        <el-col :span="12">
+          <el-form-item v-if="formData.type !== 2" label="排序号" prop="orderNum">
+            <el-input-number v-model="formData.orderNum" controls-position="right" :min="0" label="排序号"></el-input-number>
+          </el-form-item>
+        </el-col>
       </el-row>
     </el-form>
 
