@@ -53,22 +53,22 @@ let loginForm = reactive({
 const login = async () => {
   //保证全部表单相校验通过再发请求
   await loginForms.value.validate()
-
-  const config = {
-    requestCaptchaDataUrl: '/yzm/LuckyYzm/gen',
-    validCaptchaUrl: '/yzm/LuckyYzm/check',
-    bindEl: '#captcha-div',
-    // 验证成功回调函数
-    validSuccess: (res: any, c: any, tac: any) => {
-      loginAdmin()
-      tac.destroyWindow()
-    },
-  }
-  new window.TAC(config).init()
-  var elementToRemove: any = document.getElementById('tianai-captcha-logo')
-  if (elementToRemove) {
-    elementToRemove.parentNode.removeChild(elementToRemove)
-  }
+  loginAdmin()
+  // const config = {
+  //   requestCaptchaDataUrl: '/yzm/LuckyYzm/gen',
+  //   validCaptchaUrl: '/yzm/LuckyYzm/check',
+  //   bindEl: '#captcha-div',
+  //   // 验证成功回调函数
+  //   validSuccess: (res: any, c: any, tac: any) => {
+  //     loginAdmin()
+  //     tac.destroyWindow()
+  //   },
+  // }
+  // new window.TAC(config).init()
+  // var elementToRemove: any = document.getElementById('tianai-captcha-logo')
+  // if (elementToRemove) {
+  //   elementToRemove.parentNode.removeChild(elementToRemove)
+  // }
 }
 
 const loginAdmin = async () => {
@@ -108,10 +108,10 @@ const validatorUserName = (rule: any, value: any, callback: any) => {
   //value:即为表单元素文本内容
   //函数:如果符合条件callBack放行通过即为
   //如果不符合条件callBack方法,注入错误提示信息
-  if (value.length >= 5) {
+  if (value.length >= 2) {
     callback()
   } else {
-    callback(new Error('账号长度至少五位'))
+    callback(new Error('账号长度至少两位'))
   }
 }
 

@@ -18,7 +18,7 @@
 
       <template #topName>{{ $t('page.userManage.title') }}</template>
       <template #topNameBtn>
-        <el-button plain size="small" icon="Plus" type="primary" @click="editData({ type: 'create' })">
+        <el-button plain size="small" v-has="`sys:user:save`" icon="Plus" type="primary" @click="editData({ type: 'create' })">
           {{ $t('page.add') }}
         </el-button>
       </template>
@@ -50,10 +50,16 @@
           <el-table-column width="210" :label="$t('page.operate')" align="center" fixed="right">
             <template #default="scope">
               <div>
-                <el-link class="opreation-link" :underline="false" icon="Edit" @click="editData({ type: 'edit', data: scope.row })">
+                <el-link
+                  class="opreation-link"
+                  v-has="`sys:user:update`"
+                  :underline="false"
+                  icon="Edit"
+                  @click="editData({ type: 'edit', data: scope.row })"
+                >
                   修改
                 </el-link>
-                <el-link class="opreation-link" :underline="false" icon="Delete" @click="handleDelete(scope.row)">
+                <el-link class="opreation-link" v-has="`sys:user:delete`" :underline="false" icon="Delete" @click="handleDelete(scope.row)">
                   {{ $t('page.delete') }}
                 </el-link>
               </div>

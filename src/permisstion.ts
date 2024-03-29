@@ -38,8 +38,9 @@ router.beforeEach(async (to: any, from: any, next: any) => {
         //如果没有用户信息,在守卫这里发请求获取到了用户信息再放行
         try {
           //获取用户信息
-          await userStore.userInfo()
+          console.log('获取用户信息')
 
+          await userStore.userInfo()
           // 获取所有字典
           const dictStore = useDictStore()
           if (!dictStore.getIsSetDict) {
@@ -52,6 +53,8 @@ router.beforeEach(async (to: any, from: any, next: any) => {
           //token过期:获取不到用户信息了
           //用户手动修改本地存储token
           //退出登录->用户相关的数据清空
+          console.log(error)
+
           await userStore.userLogout()
           next({ path: '/login', query: { redirect: to.path } })
         }

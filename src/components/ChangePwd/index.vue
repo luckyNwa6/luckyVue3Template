@@ -9,8 +9,8 @@
     :title="$t('page.dialog.title.changePassword')"
   >
     <el-form ref="formRef" v-loading="submitLoading" label-width="auto" :model="formData" :rules="rules">
-      <el-form-item :label="$t('page.dialog.oldPassword')" prop="oldPassword">
-        <el-input v-model="formData.oldPassword" :type="oldPasswordShow" clearable :placeholder="$t('page.dialog.enterOldPassword')">
+      <el-form-item :label="$t('page.dialog.oldPassword')" prop="password">
+        <el-input v-model="formData.password" :type="oldPasswordShow" clearable :placeholder="$t('page.dialog.enterOldPassword')">
           <template #suffix>
             <span class="show-pwd cursor-pointer" @click="oldPasswordShow = oldPasswordShow ? '' : 'password'">
               <i class="ff-cloud-icon" :class="oldPasswordShow === 'password' ? 'clound-open-eye' : 'clound-close-eye'" />
@@ -57,22 +57,25 @@
 
 <script setup>
 import { ref } from 'vue'
-import i18n from '@/lang'
 
+import { useI18n } from 'vue-i18n'
 import { valid_9, validatenull } from '@/utils/helper'
-
+import useUserStore from '@/store/modules/user'
 import useDialog from '@/hooks/useDialog'
-
-// import { updateUserPwd } from '@/api/system/user'
-
+import { updatePwd } from '@/api/sys/user'
+import pinia from '@/store'
+const userStore = useUserStore(pinia)
+const { t } = useI18n()
 const formRef = ref('formRef')
 const { dialogVisible, dialogOpen, dialogCancel, dialogClose, submitLoading, formData } = useDialog(formRef, { emitName: 'changePwd' })
+
+const router = useRouter()
 // 密码
 const validatePass = (rule, value, callback) => {
   // if (validatenull(value)) {
-  //   return callback(new Error(i18n.global.t('page.dialog.pwdsettingTips')));
+  //   return callback(new Error(t('page.dialog.pwdsettingTips')));
   // } else if (!valid_9(value)) {
-  //   return callback(new Error(i18n.global.t('page.dialog.pwdsettingTips')));
+  //   return callback(new Error(t('page.dialog.pwdsettingTips')));
   // } else {
   //   callback();
   // }
@@ -81,9 +84,9 @@ const validatePass = (rule, value, callback) => {
 // 再次输入密码
 const checkPass = (rule, value, callback) => {
   // if (validatenull(value)) {
-  //   return callback(new Error(i18n.global.t('page.dialog.enterPasswordAgain')));
+  //   return callback(new Error(t('page.dialog.enterPasswordAgain')));
   // } else if (value !== formData.value.newPassword) {
-  //   return callback(new Error(i18n.global.t('page.dialog.pwdAreInconsistent')));
+  //   return callback(new Error(t('page.dialog.pwdAreInconsistent')));
   // } else {
   //   return callback();
   // }
@@ -94,37 +97,37 @@ const newPasswordShoww = ref('password')
 const confirmPasswordShow = ref('password')
 
 const rules = {
-  oldPassword: [
+  password: [
     {
       required: true,
-      message: i18n.global.t('page.dialog.enterOldPassword'),
+      message: t('page.dialog.enterOldPassword'),
       trigger: ['blur', 'change'],
     },
   ],
   newPassword: [
     {
       required: true,
-      validator: validatePass,
+      // validator: validatePass,
       trigger: ['blur', 'change'],
     },
     {
-      min: 6,
+      min: 5,
       max: 20,
-      message: i18n.global.t('page.dialog.pwdsettingTips'),
+      message: t('page.dialog.pwdsettingTips'),
       trigger: ['blur', 'change'],
     },
   ],
   confirmPassword: [
     {
       required: true,
-      validator: checkPass,
+      // validator: checkPass,
       trigger: ['blur', 'change'],
     },
   ],
 }
 
 const handleOpen = () => {
-  formData.value = { oldPassword: '', newPassword: '', confirmPassword: '' }
+  formData.value = { password: '', newPassword: '', confirmPassword: '' }
 
   dialogOpen()
 }
@@ -140,18 +143,20 @@ const submit = () => {
   })
 }
 
-const changePassword = () => {}
-
-// const changePassword = async () => {
-//   try {
-//     await updateUserPwd(formData.value)
-//     ElMessage.success(i18n.global.t('page.dialog.actionFb.successfullyChange'))
-//     dialogClose()
-//   } catch {
-//     console.log('修改失败')
-//   }
-//   submitLoading.value = false
-// }
+const changePassword = async () => {
+  try {
+    await updatePwd(formData.value)
+    ElMessage.success(t('page.dialog.actionFb.successfullyChange'))
+    dialogClose()
+    await userStore.userLogout()
+    setTimeout(() => {
+      router.push({ path: '/login' })
+    }, 900)
+  } catch {
+    console.log('修改失败')
+  }
+  submitLoading.value = false
+}
 
 window.bus.on('dialogBeforeClose', data => {
   lucky.star('进入了')

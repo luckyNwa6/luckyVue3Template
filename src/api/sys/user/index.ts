@@ -4,7 +4,9 @@ enum API {
   LOGIN_URL = '/sys/login',
   LOGOUT_URL = '/admin/acl/index/logout',
   USERINFO_URL = '/sys/user/info',
+  UPDATE_PWD = '/sys/user/password',
   USERINFO_URL_ID = '/sys/user/info/',
+  NAV_INFO_URL = '/sys/menu/nav',
 
   TABLE_PAGE_URL = '/sys/user/list',
   ADD_USER_INFO = '/sys/user/save',
@@ -32,6 +34,12 @@ export const reqLogin = (data: loginFormData) => request.post<any, loginResponse
 
 //获取用户信息
 export const reqUserInfo = () => request.get<any, userInfoResponseData>(API.USERINFO_URL)
+
+//修改密码
+export const updatePwd = (data: any) => request.post<any, any>(API.UPDATE_PWD, data)
+
+//获取路由和权限信息
+export const reqNavInfo = () => request.get<any, any>(API.NAV_INFO_URL)
 
 //获取用户信息
 export const reqUserInfoId = (id: any) => request.get<any, userInfoResponseData>(API.USERINFO_URL_ID + id)

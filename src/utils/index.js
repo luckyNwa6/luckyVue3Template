@@ -26,3 +26,11 @@ export function treeDataTranslate(data, id = 'id', pid = 'parentId') {
   }
   return res
 }
+
+/**
+ * URL地址
+ * @param {*} s
+ */
+export function isURL(s) {
+  return /^http[s]?:\/\/.*/.test(s)
+}
