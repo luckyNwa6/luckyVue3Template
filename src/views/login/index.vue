@@ -48,12 +48,23 @@ let loginForm = reactive({
   password: '123456',
   uuid: '',
 })
-let openYzm = ref(false)
+let openYzm = ref(true) //开启滑动二维码
 //登录按钮回调
 const login = async () => {
   //保证全部表单相校验通过再发请求
   await loginForms.value.validate()
+
   if (openYzm.value) {
+    let style = {
+      btnUrl: 'https://minio.tianai.cloud/public/captcha-btn/btn3.png',
+      // 背景样式
+      bgUrl: 'https://minio.tianai.cloud/public/captcha-btn/btn3-bg.jpg',
+      // logo地址
+      logoUrl: '',
+      // 滑动边框样式
+      moveTrackMaskBgColor: '#f7b645',
+      moveTrackMaskBorderColor: '#ef9c0d',
+    } // 去除logo
     const config = {
       requestCaptchaDataUrl: '/yzm/LuckyYzm/gen',
       validCaptchaUrl: '/yzm/LuckyYzm/check',
@@ -64,11 +75,7 @@ const login = async () => {
         tac.destroyWindow()
       },
     }
-    new window.TAC(config).init()
-    var elementToRemove: any = document.getElementById('tianai-captcha-logo')
-    if (elementToRemove) {
-      elementToRemove.parentNode.removeChild(elementToRemove)
-    }
+    new window.TAC(config, style).init()
   } else {
     loginAdmin()
   }
