@@ -27,11 +27,8 @@
   <img :src="userStore.avatar" style="width: 24px; height: 24px; margin: 0px 10px; border-radius: 50%" />
   <!-- 下拉菜单 -->
   <el-dropdown>
-    <span class="el-dropdown-link">
+    <span class="el-dropdown-link mr-4">
       {{ userStore.username }}
-      <el-icon class="el-icon--right">
-        <arrow-down />
-      </el-icon>
     </span>
     <template #dropdown>
       <el-dropdown-menu>

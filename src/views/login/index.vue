@@ -45,30 +45,33 @@ let loginForm = reactive({
   username: 'admin',
   captcha: '',
   openCaptcha: false,
-  password: 'admin',
+  password: '123456',
   uuid: '',
 })
-
+let openYzm = ref(false)
 //登录按钮回调
 const login = async () => {
   //保证全部表单相校验通过再发请求
   await loginForms.value.validate()
-  loginAdmin()
-  // const config = {
-  //   requestCaptchaDataUrl: '/yzm/LuckyYzm/gen',
-  //   validCaptchaUrl: '/yzm/LuckyYzm/check',
-  //   bindEl: '#captcha-div',
-  //   // 验证成功回调函数
-  //   validSuccess: (res: any, c: any, tac: any) => {
-  //     loginAdmin()
-  //     tac.destroyWindow()
-  //   },
-  // }
-  // new window.TAC(config).init()
-  // var elementToRemove: any = document.getElementById('tianai-captcha-logo')
-  // if (elementToRemove) {
-  //   elementToRemove.parentNode.removeChild(elementToRemove)
-  // }
+  if (openYzm.value) {
+    const config = {
+      requestCaptchaDataUrl: '/yzm/LuckyYzm/gen',
+      validCaptchaUrl: '/yzm/LuckyYzm/check',
+      bindEl: '#captcha-div',
+      // 验证成功回调函数
+      validSuccess: (res: any, c: any, tac: any) => {
+        loginAdmin()
+        tac.destroyWindow()
+      },
+    }
+    new window.TAC(config).init()
+    var elementToRemove: any = document.getElementById('tianai-captcha-logo')
+    if (elementToRemove) {
+      elementToRemove.parentNode.removeChild(elementToRemove)
+    }
+  } else {
+    loginAdmin()
+  }
 }
 
 const loginAdmin = async () => {
