@@ -1,12 +1,18 @@
-# Vue3 项目模板
+# Vue3 项目
+
+## 🐑 分支
+
+main------------>基于 Vue3+TypeScript+Pinia+Vite+vue-router+Element Plus 框架，从零搭建
+
+luckyDev-------->上面的分支
+
+lucky-------->同事使用的测试学习分支
+
+test------------>个人使用学习测试分支
 
 ## 🐶 开发环境
 
 node 16+
-
-技术栈采用:
-
-Vue3+TypeScript+Pinia+Vite+vue-router+Element Plus
 
 包管理采用 pnpm
 
@@ -62,8 +68,6 @@ fix: 修复 bug
 2、在 vscode 提交时候走 husky 流程，先走格式化代码和修复，以及提交必须走提交规范,代码有错误则不能提交
 
 ## 🐷 其他
-
-暂无
 
 启动项目后另启一个终端输入
 
