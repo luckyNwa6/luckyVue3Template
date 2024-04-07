@@ -1,27 +1,33 @@
-# Vue3项目模板
+# Vue3 项目
 
-## 🐶测试环境
+## 🐑 分支
+
+main------------>基于 Vue3+TypeScript+Pinia+Vite+vue-router+Element Plus 框架，从零搭建
+
+luckyDev-------->上面的分支
+
+lucky-------->同事使用的测试学习分支
+
+test------------>个人使用学习测试分支
+
+## 🐶 开发环境
 
 node 16+
 
-技术栈采用:
-
-Vue3+TypeScript+Pinia+Vite+vue-router+Element Plus
-
-包管理采用pnpm
+包管理采用 pnpm
 
 ```shell
 npm install -g pnpm
 pnpm install
 ```
 
-## 🐯代码提交规范
+## 🐯 代码提交规范
 
 husky 是一个 Git Hook 工具，可以让你在 Git 提交过程中自动运行脚本。
 
-当commit的时候会执行脚本，脚本会校验commit message是否符合规范。
+当 commit 的时候会执行脚本，脚本会校验 commit message 是否符合规范。
 
-严格安装如下规范:
+严格按照如下规范:
 
 | 类型     | 描述                     |
 | -------- | ------------------------ |
@@ -33,13 +39,13 @@ husky 是一个 Git Hook 工具，可以让你在 Git 提交过程中自动运�
 | test     | 测试                     |
 | chore    | 构建过程或辅助工具的变动 |
 
-比如修复一个bug 必须是
+比如修复一个 bug 必须是
 
-fix: 修复bug
+fix: 修复 bug
 
 中间有:后面有空格
 
-## ⭐️开发工具
+## ⭐️ 开发工具
 
 推荐 VS Code 开发，配合插件如下：
 
@@ -55,12 +61,16 @@ fix: 修复bug
 | ESLint                        | 脚本代码检查                                     |
 | DotENV                        | env 文件高亮                                     |
 
-## 🚀优势
+## 🚀 优势
 
-1、自动按需引入组件，自动按需引入Vue相关API，自动引入ep图标
+1、自动按需引入组件，自动按需引入 Vue 相关 API，自动引入 ep 图标
 
-2、在vscode提交时候走husky流程，先走格式化代码和修复，以及提交必须走提交规范,代码有错误则不能提交
+2、在 vscode 提交时候走 husky 流程，先走格式化代码和修复，以及提交必须走提交规范,代码有错误则不能提交
 
-## 🐷其他
+## 🐷 其他
 
-暂无
+启动项目后另启一个终端输入
+
+npx localtunnel --port 8000
+
+选y,点击链接跳转，点网站里的链接获取密码，复制粘贴提交，可公网访问，
