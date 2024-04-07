@@ -2,11 +2,7 @@
 import { defineStore } from 'pinia'
 //引入接口
 import { reqLogin, reqUserInfo, reqLogout } from '@/api/user'
-import type {
-  loginFormData,
-  loginResponseData,
-  userInfoReponseData,
-} from '@/api/user/type'
+import type { loginFormData, loginResponseData, userInfoReponseData } from '@/api/user/type'
 
 import type { UserState } from './types/type'
 //引入操作本地存储的工具方法

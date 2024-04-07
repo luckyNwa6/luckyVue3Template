@@ -22,12 +22,12 @@ import pinia from './store'
 // 国际化
 import i18n from '@/lang/index'
 
+import luckyLogPrint from '@/utils/luckyLogPrint'
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
 if (isDevMode()) {
   import('element-plus/dist/index.css')
 }
-// 扩展
-import modal from '@/plugins/modal'
+window.lucky = luckyLogPrint
 // // 创建实例
 // const setupAll = async () => {
 //   const app = createApp(App)
@@ -80,12 +80,11 @@ app.use(baiduMap, {
   ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
   plugins: ['TrackAnimation'],
 })
-app.config.globalProperties.$modal = modal
-app
 
+app
   .use(router) //注册模板路由
   .use(i18n) //中英切换
   .use(ElementPlus) //安装element-plus插件
   .use(pinia) //安装仓库
-  // .use(plugins)
   .mount('#app') //将应用挂载道节点上
+lucky.blue(`欢迎使用`, import.meta.env.VITE_APP_TITLE + '后台管理系统')

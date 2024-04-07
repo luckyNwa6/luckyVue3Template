@@ -1,6 +1,12 @@
 <template>
   <div>
     <exitButton />
+    <div v-for="(item, index) in markers">
+      <span>{{ item.icon }}</span>
+      <img :src="getAssetsFile('yd_4.png')" />
+      ||
+      <span>{{ index }}</span>
+    </div>
     <hr />
     <div class="mapBox">
       <BMap
@@ -23,7 +29,10 @@
           v-for="(item, index) in markers"
           :title="item.title"
           :position="item.position"
-          :icon="`blue${(index + 1) as 1 | 2}`"
+          :icon="{
+            imageUrl: getAssetsFile(item.icon),
+            imageSize: item.size,
+          }"
           @click="() => handleClick(item)"
           enableClicking
         />
@@ -42,13 +51,7 @@
             {{ content }}
           </div>
         </BInfoWindow>
-        <BPolyline
-          :path="polylinePath"
-          stroke-color="#ff8800"
-          :stroke-opacity="1"
-          :stroke-weight="10"
-          :enableEditing="false"
-        />
+        <BPolyline :path="polylinePath" stroke-color="#ff8800" :stroke-opacity="1" :stroke-weight="10" :enableEditing="false" />
         <BPolygon
           :enableEditing="false"
           :geodesic="true"
@@ -86,18 +89,47 @@
 <script setup lang="ts">
 import { useIpLocation } from 'vue3-baidu-map-gl'
 
+// import emptyImage from '@/assets/home/yd_4.png'
+
+// const imgSize = ref({
+//   width: 100,
+//   height: 100,
+// })
+
 let cityName = ref('')
+
+// const testI = computed(() => {
+//   return (icon: any) => import(`@/assets/home/yd_4.png`)
+// })
+
+const getAssetsFile = (url: string) => {
+  console.log('🚀 ~ getAssetsFile ~ url:', url)
+  console.log('接收', url, 'SSS', window.location.href)
+  let imgH = new URL(`/src/assets/home/${url}`, window.location.href).href
+  console.log('🚀 ~ getAssetsFile ~ imgH:', imgH)
+  return imgH
+}
 
 let markers = ref([
   {
     position: { lat: 24.613554, lng: 118.058301 },
     title: '地址一',
     content: '这是地址一的信息窗',
+    icon: 'yd_4.png',
+    size: {
+      width: 100,
+      height: 100,
+    },
   },
   {
     position: { lat: 24.613854, lng: 118.058301 },
     title: '地址二',
     content: '这是地址二的信息窗',
+    icon: 'yd_3.png',
+    size: {
+      width: 100,
+      height: 100,
+    },
   },
 ])
 let polylinePath = ref([
@@ -138,6 +170,7 @@ let circleList = ref([
     radius: 30000,
   },
 ])
+
 const title = ref(markers.value[0].title)
 const position = ref(markers.value[0].position)
 const content = ref(markers.value[0].content)

@@ -12,6 +12,8 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+// @ts-ignore
+import Pages from 'vite-plugin-pages'
 const pathSrc = path.resolve(__dirname, 'src')
 
 // export default defineConfig({
@@ -67,6 +69,11 @@ export default defineConfig(({ command, mode }) => {
     plugins: [
       vue(),
       UnoCSS({}),
+      Pages({
+        //路由自动引入
+        pagesDir: 'src/p',
+        extensions: ['vue'],
+      }),
       //---------------------------------------
       AutoImport({
         // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
@@ -130,6 +137,7 @@ export default defineConfig(({ command, mode }) => {
     ],
     //代理跨域
     server: {
+      port: 8888,
       proxy: {
         [env.VITE_APP_BASE_API]: {
           //获取数据的服务器地址设置
@@ -142,6 +150,55 @@ export default defineConfig(({ command, mode }) => {
           },
         },
       },
+    },
+    optimizeDeps: {
+      include: [
+        'vue',
+        'vue-router',
+        'pinia',
+        'axios',
+        'element-plus/es/utils/index.mjs',
+        'element-plus/es/components/form/style/css',
+        'element-plus/es/components/form-item/style/css',
+        'element-plus/es/components/button/style/css',
+        'element-plus/es/components/input/style/css',
+        'element-plus/es/components/input-number/style/css',
+        'element-plus/es/components/switch/style/css',
+        'element-plus/es/components/upload/style/css',
+        'element-plus/es/components/menu/style/css',
+        'element-plus/es/components/col/style/css',
+        'element-plus/es/components/icon/style/css',
+        'element-plus/es/components/row/style/css',
+        'element-plus/es/components/tag/style/css',
+        'element-plus/es/components/dialog/style/css',
+        'element-plus/es/components/loading/style/css',
+        'element-plus/es/components/radio/style/css',
+        'element-plus/es/components/radio-group/style/css',
+        'element-plus/es/components/popover/style/css',
+        'element-plus/es/components/scrollbar/style/css',
+        'element-plus/es/components/tooltip/style/css',
+        'element-plus/es/components/dropdown/style/css',
+        'element-plus/es/components/dropdown-menu/style/css',
+        'element-plus/es/components/dropdown-item/style/css',
+        'element-plus/es/components/sub-menu/style/css',
+        'element-plus/es/components/menu-item/style/css',
+        'element-plus/es/components/divider/style/css',
+        'element-plus/es/components/card/style/css',
+        'element-plus/es/components/link/style/css',
+        'element-plus/es/components/breadcrumb/style/css',
+        'element-plus/es/components/breadcrumb-item/style/css',
+        'element-plus/es/components/table/style/css',
+        'element-plus/es/components/tree-select/style/css',
+        'element-plus/es/components/table-column/style/css',
+        'element-plus/es/components/select/style/css',
+        'element-plus/es/components/option/style/css',
+        'element-plus/es/components/pagination/style/css',
+        'element-plus/es/components/tree/style/css',
+        'element-plus/es/components/alert/style/css',
+        '@vueuse/core',
+        'echarts',
+        'vue-i18n',
+      ],
     },
   }
 })

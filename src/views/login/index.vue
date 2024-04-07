@@ -15,11 +15,14 @@
   <el-button @click="iconT">icon测试</el-button>
   <el-button @click="conT">组件测试</el-button>
   <el-button @click="mapT">地图测试</el-button>
-  <el-button @click="dicT">字典测试</el-button>
+
   <hr />
+  <img :src="emptyImage" class="h-10 w-10" />
 </template>
 
 <script setup lang="ts">
+import emptyImage from '@/assets/home/yd_4.png'
+
 // import request from '@/utils/request'
 // import { reqLogin } from '@/api/user'
 import { reqLoginX } from '@/api/login/index'
@@ -33,9 +36,12 @@ let luckyC = ref('ref类似定义data里的值') //下面使用它的值luckyC.v
 //获取路由器
 let $router = useRouter()
 //路由对象
-let $route = useRoute()
+let $routes = useRoute()
 const { x, y } = useMousePosition()
-
+onMounted(() => {
+  const allRoutes = $router.options.routes
+  console.log(allRoutes)
+})
 const form = reactive({
   //一般表单用这个
   username: 'admin',
@@ -61,9 +67,6 @@ const conT = () => {
 
 const mapT = () => {
   $router.push({ path: '/mapT' })
-}
-const dicT = () => {
-  $router.push({ path: '/dicT' })
 }
 
 //下面是登录
