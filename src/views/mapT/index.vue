@@ -88,7 +88,8 @@
 </template>
 <script setup lang="ts">
 import { useIpLocation } from 'vue3-baidu-map-gl'
-
+import * as mapv from 'mapv'
+import * as mapvgl from 'mapvgl'
 // import emptyImage from '@/assets/home/yd_4.png'
 
 // const imgSize = ref({

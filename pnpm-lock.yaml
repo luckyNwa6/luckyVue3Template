@@ -35,6 +35,9 @@ dependencies:
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
+  mapv:
+    specifier: ^2.0.62
+    version: 2.0.62
   moment:
     specifier: ^2.30.1
     version: 2.30.1
@@ -2970,6 +2973,19 @@ packages:
       - debug
     dev: false
 
+  /babel-plugin-external-helpers@6.22.0:
+    resolution: {integrity: sha512-TdAMiM6MzLokhk3yCA0KCctmivVZ/mmCwbp7YPmRGkqh2KkcNuxE3R0jxuYU+4xmvfMZx4p4uo8d1cT9t5BLxA==}
+    dependencies:
+      babel-runtime: 6.26.0
+    dev: false
+
+  /babel-runtime@6.26.0:
+    resolution: {integrity: sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==}
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.11.1
+    dev: false
+
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
@@ -3308,6 +3324,12 @@ packages:
     resolution: {integrity: sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==}
     dependencies:
       toggle-selection: 1.0.6
+    dev: false
+
+  /core-js@2.6.12:
+    resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
+    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+    requiresBuild: true
     dev: false
 
   /cors@2.8.5:
@@ -5305,6 +5327,12 @@ packages:
       object-visit: 1.0.1
     dev: true
 
+  /mapv@2.0.62:
+    resolution: {integrity: sha512-P/diaWXuH+vJHVON//RBA7nCEdJAdafwN3Hys/TVYB6e3n7emqlQm+r9qy2xYV0GuxflRhbEeMPJWVIK5HEEqw==}
+    dependencies:
+      babel-plugin-external-helpers: 6.22.0
+    dev: false
+
   /mdn-data@2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
     dev: true
@@ -5950,6 +5978,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+
+  /regenerator-runtime@0.11.1:
+    resolution: {integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==}
+    dev: false
 
   /regex-not@1.0.2:
     resolution: {integrity: sha512-J6SDjUgDxQj5NusnOtdFxDwN/+HWykR8GELwctJ7mdqhcyy1xEc4SRFHUXvxTp661YaVKAjfRLZ9cCqS6tn32A==}
