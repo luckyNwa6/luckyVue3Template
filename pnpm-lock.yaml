@@ -38,6 +38,9 @@ dependencies:
   mapv:
     specifier: ^2.0.62
     version: 2.0.62
+  mapvgl:
+    specifier: 1.0.0-beta.189
+    version: 1.0.0-beta.189
   moment:
     specifier: ^2.30.1
     version: 2.30.1
@@ -5331,6 +5334,10 @@ packages:
     resolution: {integrity: sha512-P/diaWXuH+vJHVON//RBA7nCEdJAdafwN3Hys/TVYB6e3n7emqlQm+r9qy2xYV0GuxflRhbEeMPJWVIK5HEEqw==}
     dependencies:
       babel-plugin-external-helpers: 6.22.0
+    dev: false
+
+  /mapvgl@1.0.0-beta.189:
+    resolution: {integrity: sha512-1QGX1dIddKO9i8QK0pt/0CVobEZHXOc4D9v8FZKKnofnSWIcdwIVZx/y+kZMLSjVnZnbldlm0mK1+zDNZOEirA==}
     dev: false
 
   /mdn-data@2.0.14:

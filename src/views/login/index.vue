@@ -10,7 +10,7 @@
   <el-button @click="loginX">线上登录测试</el-button>
   <el-button @click="i18T">牛逼i18n测试</el-button>
   <el-button @click="chart">echarts测试</el-button>
-  <el-button @click="uNoCssT">unocss测试</el-button>
+  <el-button @click="uNoCssT">unocss和深度样式测试</el-button>
   <hr />
   <el-button @click="iconT">icon测试</el-button>
   <el-button @click="conT">组件测试</el-button>

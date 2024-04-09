@@ -3,6 +3,7 @@
     i18测试
     <el-input v-model="filterText" :placeholder="$t('role')" />
     <exitButton />
+    t('ha-ha')
   </div>
 </template>
 

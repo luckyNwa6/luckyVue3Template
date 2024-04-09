@@ -78,7 +78,8 @@ app.use(ElementPlus, {
 
 app.use(baiduMap, {
   ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
-  plugins: ['TrackAnimation', 'Mapvgl', 'Mapv']
+  // plugins: ['TrackAnimation', 'Mapvgl', 'Mapv']
+  plugins: ['TrackAnimation'],
 })
 
 app
