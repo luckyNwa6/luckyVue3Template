@@ -59,6 +59,9 @@ dependencies:
   vue:
     specifier: ^3.4.19
     version: 3.4.21(typescript@5.3.3)
+  vue-baidu-map-3x:
+    specifier: ^1.0.37
+    version: 1.0.37(vue@3.4.21)
   vue-i18n:
     specifier: ^9.10.1
     version: 9.10.1(vue@3.4.21)
@@ -2761,6 +2764,10 @@ packages:
       - vue
     dev: false
 
+  /@yangjianfei/bmaplib.lushu@1.0.0:
+    resolution: {integrity: sha512-qZVijbgUgNs6tsP1muS67x0XzE5fJ3kFireouDvXO3bUYVV6XbpjZXksQTsggihLMIEvC1DO9GS9vVF8CnEeqQ==}
+    dev: false
+
   /JSONStream@1.3.5:
     resolution: {integrity: sha512-E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ==}
     hasBin: true
@@ -3022,6 +3029,28 @@ packages:
     resolution: {integrity: sha512-XH4EJuk2wssk9gdQEhZyPM9O+2NStFQgglshiM03ZuUIjbi89pf/QIuZD/3ucoqzac8Bv/uXKF8/Ub7WTtmJtw==}
     dependencies:
       '@turf/turf': 6.5.0
+    dev: false
+
+  /bmaplib.curveline@1.0.0:
+    resolution: {integrity: sha512-9wcFMVhiYxNPqpvsLDAADn3qDhNzXp2mA6VyHSHg2XOAgSooC7ZiujdFhy0sp+0QYjTfJ/MjmLuNoUg2HHxH4Q==}
+    dev: false
+
+  /bmaplib.distancetool@1.0.2:
+    resolution: {integrity: sha512-EvxMnQRH6xM036zx5OLPyTg5tMCTbFBuGTTHOtExLy2/T0X6v5Va0YE7c3IPm/a/Eo5V/ynYpOLOLZbRY8ccyA==}
+    dev: false
+
+  /bmaplib.heatmap@1.0.4:
+    resolution: {integrity: sha512-rmhqUARBpUSJ9jXzUI2j7dIOqnc38bqubkx/8a349U2qtw/ulLUwyzRD535OrA8G7w5cz4aPKm6/rNvUAarg/Q==}
+    dev: false
+
+  /bmaplib.markerclusterer@1.0.13:
+    resolution: {integrity: sha512-VrLyWSiuDEVNi0yUfwOhFQ6z1oEEHS4w36GNu3iASu6p52QIx9uAXMUkuSCHReNR0bj2Cp9SA1dSx5RpojXajQ==}
+    dependencies:
+      bmaplib.texticonoverlay: 1.0.2
+    dev: false
+
+  /bmaplib.texticonoverlay@1.0.2:
+    resolution: {integrity: sha512-4ZTWr4ZP3B6qEWput5Tut16CfZgII38YwM3bpyb4gFTQyORlKYryFp9WHWrwZZaHlOyYDAXG9SX0hka43jTADg==}
     dev: false
 
   /boolbase@1.0.0:
@@ -6507,6 +6536,10 @@ packages:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
     dev: true
 
+  /tiny-emitter@2.1.0:
+    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
+    dev: false
+
   /tinyqueue@2.0.3:
     resolution: {integrity: sha512-ppJZNDuKGgxzkHihX8v9v9G5f+18gzaTfrukGrq6ueg0lmH4nqVnA2IPG0AEH3jKEk2GRJCUhDoqpoiw3PHLBA==}
     dev: false
@@ -7012,6 +7045,21 @@ packages:
       sass: 1.71.1
     optionalDependencies:
       fsevents: 2.3.3
+
+  /vue-baidu-map-3x@1.0.37(vue@3.4.21):
+    resolution: {integrity: sha512-pl5fUodoOdytfBSK94JU8tO+lrKSLtFaIA3L+ksR9ASRNZqQS3KMpob4O6qULtDSNXyYowIyExbm1ArKODoNOw==}
+    peerDependencies:
+      vue: ^3.2.25
+    dependencies:
+      '@yangjianfei/bmaplib.lushu': 1.0.0
+      bmaplib.curveline: 1.0.0
+      bmaplib.distancetool: 1.0.2
+      bmaplib.heatmap: 1.0.4
+      bmaplib.markerclusterer: 1.0.13
+      tiny-emitter: 2.1.0
+      vue: 3.4.21(typescript@5.3.3)
+      vue-router: 4.3.0(vue@3.4.21)
+    dev: false
 
   /vue-demi@0.14.7(vue@3.4.21):
     resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}

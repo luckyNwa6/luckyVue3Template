@@ -1,114 +1,95 @@
 <template>
-  <div style="display: flex; height: 100vh">
-    <!-- 左边 -->
-    <div style="width: 10%; background: pink">
-      <exitButton />
-      <div v-for="(item, index) in markers">
-        <span>{{ item.icon }}</span>
-        <img :src="getAssetsFile('yd_4.png')" />
-        ||
-        <span>{{ index }}</span>
-      </div>
-      <div class="bg-red-300 mt-2 p-[20px]">当前所在地区：{{ cityName }}</div>
-    </div>
-    <!-- 右边 -->
-    <div style="width: 90%; height: 100vh">
-      <BMap
-        height="815px"
-        :center="{
-          lng: 118.058301,
-          lat: 24.613554,
-        }"
-        :zoom="18"
-        :minZoom="3"
-        :enableScrollWheelZoom="true"
-        @initd="initMapFinish"
-      >
-        <BMarker
-          v-for="(item, index) in markers"
-          :key="index"
-          :position="item.position"
-          :icon="{
-            imageUrl: getAssetsFile(item.icon),
-            imageSize: item.size,
-          }"
-          @click="() => handleClick(item)"
-          enableClicking
-        />
-        <BInfoWindow
-          v-model:show="show"
-          :position="position"
-          :title="title"
-          enableAutoPan
-          enableCloseOnClick
-          :offset="{
-            x: 0,
-            y: -10,
-          }"
-        >
-          <div>
-            {{ content }}
-          </div>
-        </BInfoWindow>
-      </BMap>
-    </div>
+  <div>
+    <baidu-map :center="center" class="map" :zoom="zoom" @ready="handler" scroll-wheel-zoom>
+      <bml-marker-clusterer :averageCenter="true" :styles="styles">
+        <bm-marker v-for="marker of markers" :key="marker" :position="{ lng: marker.lng, lat: marker.lat }"></bm-marker>
+      </bml-marker-clusterer>
+    </baidu-map>
+    <button class="md-raised md-primary" @click="addMarker">添加一个随机点</button>
+    <button class="md-raised md-primary" @click="removeMarker">删除上一个点</button>
+    <button class="md-raised md-primary" @click="changeStyles">更换皮肤</button>
   </div>
 </template>
-<script setup lang="ts">
-import { useIpLocation } from 'vue3-baidu-map-gl'
-import * as mapv from 'mapv'
-import * as mapvgl from 'mapvgl'
 
-let cityName = ref('')
+<script setup>
+import { ref, onMounted } from 'vue'
+import { BmlMarkerClusterer } from 'vue-baidu-map-3x'
+const center = ref({ lng: 0, lat: 0 })
+const zoom = ref(13)
 
-const getAssetsFile = (url: string) => {
-  let imgH = new URL(`/src/assets/home/${url}`, window.location.href).href
-  return imgH
+const handler = ({ BMap, map }) => {
+  console.log(BMap, map)
+  center.value.lng = 118.048689
+  center.value.lat = 24.61794
+  zoom.value = 15
 }
 
-let markers = ref([
-  {
-    position: { lat: 24.613554, lng: 118.058301 },
-    title: '地址一',
-    content: '这是地址一的信息窗',
-    icon: 'yd_4.png',
-    size: {
-      width: 100,
-      height: 100,
+const markers = ref([])
+const styles = ref([])
+const customStyles = ref(false)
+
+const addMarker = () => {
+  const position = { lng: Math.random() * 40 + 85, lat: Math.random() * 30 + 21 }
+  markers.value.push(position)
+}
+
+const updateMarker = ({ point }, marker) => {
+  marker.lng = point.lng
+  marker.lat = point.lat
+}
+const removeMarker = () => {
+  markers.value.pop()
+}
+const changeStyles = () => {
+  customStyles.value = !customStyles.value
+  const EXAMPLE_URL = 'http://api.map.baidu.com/library/MarkerClusterer/1.2/examples/'
+  const stylesArr = [
+    {
+      url: EXAMPLE_URL + 'images/heart30.png',
+      size: {
+        width: 30,
+        height: 26,
+      },
+      opt_anchor: [16, 0],
+      textColor: '#ff00ff',
+      opt_textSize: 10,
     },
-  },
-  {
-    position: { lat: 24.613854, lng: 118.058301 },
-    title: '地址二',
-    content: '这是地址二的信息窗',
-    icon: 'yd_3.png',
-    size: {
-      width: 100,
-      height: 100,
+    {
+      url: EXAMPLE_URL + 'images/heart40.png',
+      size: {
+        width: 40,
+        height: 35,
+      },
+      opt_anchor: [40, 35],
+      textColor: '#ff0000',
+      opt_textSize: 12,
     },
-  },
-])
-
-const title = ref(markers.value[0].title)
-const position = ref(markers.value[0].position)
-const content = ref(markers.value[0].content)
-const show = ref<boolean>(false)
-function handleClick(item: any) {
-  position.value = item.position
-  title.value = item.title
-  show.value = true
+    {
+      url: EXAMPLE_URL + 'images/heart50.png',
+      size: {
+        width: 50,
+        height: 44,
+      },
+      opt_anchor: [32, 0],
+      textColor: 'white',
+      opt_textSize: 14,
+    },
+  ]
+  styles.value = customStyles.value ? stylesArr : []
 }
-const { get, location, isLoading } = useIpLocation((res: any) => {
-  console.log('返回定位数据', res)
-  cityName.value = res._rawValue.name
-  console.log('加载信息2', isLoading)
-})
-onMounted(() => {
-  // console.log('加载信息1', isLoading)
-})
 
-const initMapFinish = () => {
-  get()
+const getMarkers = () => {
+  for (let i = 0; i < 10; i++) {
+    const position = { lng: Math.random() * 40 + 85, lat: Math.random() * 30 + 21 }
+    markers.value.push(position)
+  }
 }
+
+getMarkers()
 </script>
-<style lang="scss" scoped></style>
+<style>
+.map {
+  width: 100%;
+  height: 90vh;
+}
+</style>

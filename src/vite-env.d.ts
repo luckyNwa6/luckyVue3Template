@@ -12,7 +12,7 @@ declare module 'element-plus/dist/locale/zh-cn.mjs'
 declare module 'element-plus/dist/locale/en.mjs'
 
 declare module 'vue3-baidu-map-gl'
-
+declare module 'vue-baidu-map-3x'
 declare module 'mapv'
 declare module 'mapvgl'
 //声明解决爆红

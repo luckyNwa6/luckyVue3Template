@@ -4,7 +4,8 @@ import App from '@/App.vue'
 import { isDevMode } from '@/utils/env'
 import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs' //配置了vue-i18n就不需要这个了
-import baiduMap from 'vue3-baidu-map-gl' //百度地图
+// import baiduMap from 'vue3-baidu-map-gl' //百度地图
+import BaiduMap from 'vue-baidu-map-3x'
 //样式---------------------------------
 import '@/styles/index.scss' //重置样式
 import 'uno.css'
@@ -76,10 +77,17 @@ app.use(ElementPlus, {
   locale: zhCn,
 })
 
-app.use(baiduMap, {
+// app.use(baiduMap, {
+//   ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
+//   // plugins: ['TrackAnimation', 'Mapvgl', 'Mapv']
+//   plugins: ['TrackAnimation'],
+// })
+
+app.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
   ak: 'YCdK22Org07KZW3sdYtsCcU3FIPLkHvB',
-  // plugins: ['TrackAnimation', 'Mapvgl', 'Mapv']
-  plugins: ['TrackAnimation'],
+  // v:'2.0',  // 默认使用3.0
+  // type: 'WebGL' // ||API 默认API  (使用此模式 BMap=BMapGL)
 })
 
 app
