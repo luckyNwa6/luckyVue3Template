@@ -2,7 +2,7 @@ module.exports = {
   singleQuote: true, // 使用单引号
   tabWidth: 2, // 缩进字节数
   printWidth: 140, // 超过最大值换行
-  htmlWhitespaceSensitivity: 'ignore', //处理 HTML 文件时忽略空格敏感度
+  htmlWhitespaceSensitivity: 'ignore', //处理 HTML 文件时忽略空格敏感度,闭合标签>新行问题
   semi: false, // 结尾不用分号
   useTabs: false, // 启用tab取代空格符缩进，默认为false
   bracketSpacing: true, // 对象大括号直接是否有空格，默认为true，效果：{ foo: bar }
