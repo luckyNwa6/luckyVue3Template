@@ -121,6 +121,9 @@ devDependencies:
   mockjs:
     specifier: ^1.1.0
     version: 1.1.0
+  picocolors:
+    specifier: ^1.0.0
+    version: 1.0.0
   sass:
     specifier: ^1.71.1
     version: 1.72.0
@@ -145,6 +148,9 @@ devDependencies:
   vite-plugin-mock:
     specifier: 2.9.6
     version: 2.9.6(mockjs@1.1.0)(rollup@2.79.1)(vite@4.5.2)
+  vite-plugin-progress:
+    specifier: ^0.0.7
+    version: 0.0.7(vite@4.5.2)
   vite-plugin-svg-icons:
     specifier: ^2.0.1
     version: 2.0.1(vite@4.5.2)
@@ -1207,6 +1213,10 @@ packages:
 
   /@types/mockjs@1.0.10:
     resolution: {integrity: sha512-SXgrhajHG7boLv6oU93CcmdDm0HYRiceuz6b+7z+/2lCJPTWDv0V5YiwFHT2ejE4bQqgSXQiVPQYPWv7LGsK1g==}
+    dev: true
+
+  /@types/node@10.17.60:
+    resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
     dev: true
 
   /@types/node@20.11.28:
@@ -4844,6 +4854,11 @@ packages:
     hasBin: true
     dev: true
 
+  /progress@2.0.3:
+    resolution: {integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==}
+    engines: {node: '>=0.4.0'}
+    dev: true
+
   /proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
@@ -4870,6 +4885,12 @@ packages:
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  /rd@2.0.1:
+    resolution: {integrity: sha512-/XdKU4UazUZTXFmI0dpABt8jSXPWcEyaGdk340KdHnsEOdkTctlX23aAK7ChQDn39YGNlAJr1M5uvaKt4QnpNw==}
+    dependencies:
+      '@types/node': 10.17.60
+    dev: true
 
   /readable-stream@3.6.2:
     resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
@@ -5787,6 +5808,18 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+    dev: true
+
+  /vite-plugin-progress@0.0.7(vite@4.5.2):
+    resolution: {integrity: sha512-zyvKdcc/X+6hnw3J1HVV1TKrlFKC4Rh8GnDnWG/2qhRXjqytTcM++xZ+SAPnoDsSyWl8O93ymK0wZRgHAoglEQ==}
+    engines: {node: '>=14', pnpm: '>=7.0.0'}
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      picocolors: 1.0.0
+      progress: 2.0.3
+      rd: 2.0.1
+      vite: 4.5.2(@types/node@20.11.28)(sass@1.72.0)
     dev: true
 
   /vite-plugin-svg-icons@2.0.1(vite@4.5.2):

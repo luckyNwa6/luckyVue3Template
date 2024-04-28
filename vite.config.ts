@@ -1,6 +1,5 @@
 import { resolve } from 'path'
 import { defineConfig, loadEnv } from 'vite'
-
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import UnoCSS from 'unocss/vite'
@@ -10,8 +9,10 @@ import { viteMockServe } from 'vite-plugin-mock'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
+import progress from 'vite-plugin-progress'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+
 const pathSrc = path.resolve(__dirname, 'src')
 
 export default defineConfig(({ command, mode }) => {
@@ -46,6 +47,13 @@ export default defineConfig(({ command, mode }) => {
     //---------------------------------------
     plugins: [
       vue(),
+      progress({
+        format: 'Building 👻:bar👻 :percent',
+        total: 200,
+        width: 60,
+        complete: '💓',
+        incomplete: '',
+      }),
       UnoCSS({}),
       //---------------------------------------
       AutoImport({
