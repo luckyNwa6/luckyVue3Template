@@ -70,7 +70,7 @@ const useUserStore = defineStore('User', {
         const nav = await reqNavInfo()
         this.buttons = nav.permissions //返回这种   "sys:menu:delete",数组
         // 用于存放去重后的 routes 值
-        let uniqueRoutes: any = []
+        const uniqueRoutes: any = []
         // 循环遍历 routes 数组
         nav.menuList.forEach((item: any) => {
           if (item.routes) {
