@@ -3,18 +3,19 @@ export default [
   {
     url: '/api/home-list/page',
     method: 'get',
-    response: (request) => {
-      const { pageNum, pageSize, nickname, groupId, username, status } = request.query
+    response: req => {
+      const { pageNum, pageSize, nickname, groupId, username, status } = req.query
 
       // 模拟数据库查询数据
-      const userList = createList().filter((user) => {
+      const userList = createList().filter(user => {
         return (
           (!nickname || user.nickname.includes(nickname)) &&
           (!groupId || user.groupId === groupId) &&
           (!username || user.username.includes(username)) &&
-          (!status || (user.enabled ? 'enabled' : 'disabled') === status)
+          (!status || user.status === status)
         )
       })
+
       const total = userList.length
       const start = (pageNum - 1) * pageSize
       const end = pageNum * pageSize
@@ -51,7 +52,7 @@ function createList() {
 const dataForever = createRandomData(120) //这样数据就不会变了
 //数据的类型
 interface UserData {
-  tenantId: string
+  id: string
   userId: string
   username: string
   nickname: string
@@ -65,6 +66,7 @@ interface UserData {
   primaryAccount: boolean
   createdTime: string
   remark: string | null
+  status: string
 }
 //循环创建假数据
 function createRandomData(num: Number): UserData[] {
@@ -74,7 +76,7 @@ function createRandomData(num: Number): UserData[] {
 
   for (let i = 0; i < num; i++) {
     const randomUser: UserData = {
-      tenantId: '1390101533310976',
+      id: '1390101533310976',
       userId: Math.floor(Math.random() * 1000000000000000000).toString(),
       username: `user${i}`,
       nickname: `nickname${i}`,
@@ -88,6 +90,7 @@ function createRandomData(num: Number): UserData[] {
       primaryAccount: Math.random() > 0.5,
       createdTime: generateRandomDate(),
       remark: Math.random() > 0.5 ? `remark${i}` : null,
+      status: Math.random() > 0.5 ? '1' : '0',
     }
 
     data.push(randomUser)

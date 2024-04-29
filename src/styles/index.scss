@@ -1,2 +1,38 @@
 //引入清除默认样式
 @import './reset.scss';
+
+//全局样式
+.table-top {
+  width: 100%;
+  padding: 11px 10px;
+  background: #fff;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.table-title {
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 18px;
+  font-weight: bold;
+}
+
+//ep相关样式
+.el-table th.el-table__cell {
+  background-color: $tableHeaderBg !important;
+  color: $tableHeaderColor;
+  padding: $tableHeaderPadding;
+}
+.el-table .el-table__header-wrapper th {
+  background: #fafafa !important;
+}
+.el-table .el-table__fixed-header-wrapper th {
+  background-color: #fafafa !important;
+}
+
+.el-table {
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.pagination-container {
+  background-color: #fff;
+}

@@ -1,6 +1,5 @@
 import { resolve } from 'path'
 import { defineConfig, loadEnv } from 'vite'
-
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
 import UnoCSS from 'unocss/vite'
@@ -10,8 +9,10 @@ import { viteMockServe } from 'vite-plugin-mock'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
+import progress from 'vite-plugin-progress'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+
 const pathSrc = path.resolve(__dirname, 'src')
 
 export default defineConfig(({ command, mode }) => {
@@ -37,6 +38,8 @@ export default defineConfig(({ command, mode }) => {
           javascriptEnabled: true,
           additionalData: `
               @use "./src/styles/variable.scss" as * ;
+              @use '@/styles/ff-cloud/index.scss' as *;
+
               `,
         },
       },
@@ -44,6 +47,13 @@ export default defineConfig(({ command, mode }) => {
     //---------------------------------------
     plugins: [
       vue(),
+      progress({
+        format: 'Building 👻:bar👻 :percent',
+        total: 200,
+        width: 60,
+        complete: '💓',
+        incomplete: '',
+      }),
       UnoCSS({}),
       //---------------------------------------
       AutoImport({
@@ -52,7 +62,10 @@ export default defineConfig(({ command, mode }) => {
           'vue',
           '@vueuse/core',
           'vue-router',
-          // { '@/hooks/web/useI18n': ['useI18n'] },//还能这样每个vue页都导入
+
+          {
+            '@/hooks/web/useMessage': ['useMessage'], //这样每个vue页都导入
+          },
         ],
         // dts: '/auto-import.d.ts',
         eslintrc: {
@@ -117,7 +130,7 @@ export default defineConfig(({ command, mode }) => {
           //需要代理跨域
           changeOrigin: true,
           //路径重写
-          rewrite: (path) => {
+          rewrite: path => {
             return path.replace(new RegExp('^' + env.VITE_APP_BASE_API), '')
           },
         },
@@ -127,7 +140,7 @@ export default defineConfig(({ command, mode }) => {
           //需要代理跨域
           changeOrigin: true,
           //路径重写
-          rewrite: (path) => {
+          rewrite: path => {
             return path.replace(new RegExp('^' + env.VITE_APP_BASE_API_YZM), '')
           },
         },
@@ -178,12 +191,14 @@ export default defineConfig(({ command, mode }) => {
         'element-plus/es/components/tree/style/css',
         'element-plus/es/components/alert/style/css',
         '@vueuse/core',
-        'path-to-regexp',
         'echarts',
-        '@wangeditor/editor',
-        '@wangeditor/editor-for-vue',
         'vue-i18n',
         'jquery',
+        'lodash-es',
+        'nprogress',
+        'dayjs',
+        'sass',
+        'qs',
       ],
     },
   }

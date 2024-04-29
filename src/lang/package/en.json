@@ -1,4 +1,11 @@
 {
+  "common": {
+    "confirmTitle": "Title",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "delMessage": "Are you sure you want to delete?",
+    "exportMessage": "Are you sure you want to export?"
+  },
   "14 days": "14 Days",
   "1_3_0": {
     "7-day alarm trend": "7-Day Alarm Trend",

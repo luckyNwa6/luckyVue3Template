@@ -1,4 +1,11 @@
 {
+  "common": {
+    "confirmTitle": "系统提示",
+    "ok": "确定",
+    "cancel": "取消",
+    "delMessage": "是否删除所选中数据?",
+    "exportMessage": "是否确认要导出吗?"
+  },
   "14 days": "14天",
   "1_3_0": {
     "7-day alarm trend": "7天告警趋势",

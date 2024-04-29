@@ -27,18 +27,19 @@
   <img :src="userStore.avatar" style="width: 24px; height: 24px; margin: 0px 10px; border-radius: 50%" />
   <!-- 下拉菜单 -->
   <el-dropdown>
-    <span class="el-dropdown-link">
+    <span class="el-dropdown-link mr-4">
       {{ userStore.username }}
-      <el-icon class="el-icon--right">
-        <arrow-down />
-      </el-icon>
     </span>
     <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item @click="rePwd">修改密码</el-dropdown-item>
+      </el-dropdown-menu>
       <el-dropdown-menu>
         <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
+  <ChangePwd ref="changePwdRef" />
 </template>
 
 <script setup lang="ts">
@@ -48,6 +49,9 @@ import useUserStore from '@/store/modules/user'
 import useLayOutSettingStore from '@/store/modules/setting'
 let layoutSettingStore = useLayOutSettingStore()
 let userStore = useUserStore()
+
+const changePwdRef = ref<any>('changePwdRef')
+
 //获取路由器对象
 let $router = useRouter()
 //获取路由对向
@@ -56,7 +60,12 @@ let $route = useRoute()
 let dark = ref<boolean>(false)
 //刷新按钮点击回调
 const updateRefsh = () => {
-  layoutSettingStore.refsh = !layoutSettingStore.refsh
+  layoutSettingStore.refresh = !layoutSettingStore.refresh
+}
+//重置密码
+const rePwd = () => {
+  lucky.star('密码修改，弹框！')
+  changePwdRef.value.handleOpen()
 }
 //全屏按钮点击的回调
 const fullScreen = () => {

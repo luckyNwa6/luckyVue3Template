@@ -1,9 +1,6 @@
 <template>
   <div class="flex flex-col h-full overflow-y-auto">
     <div class="page-box h-0 flex-1 flex flex-col">
-      <template v-if="slots.promptContent">
-        <slot name="promptContent"></slot>
-      </template>
       <el-card class="search-card">
         <el-form>
           <div class="flex pb-3">
@@ -13,19 +10,29 @@
             <div class="space-x-2 ml-2 flex button-area">
               <div>
                 <el-button v-if="showToggleButton" text @click="changeToggle">
-                  <i-ep-arrow-down
-                    :class="showSeniorSearch ? 'down-icon' : ''"
-                    class="change-icon mr-1"
-                  />
-                  {{ showSeniorSearch }}
+                  <i-ep-arrow-down :class="showSeniorSearch ? 'down-icon' : ''" class="change-icon mr-1" />
+                  {{ showSeniorSearch ? $t('general.collapse') : $t('general.expand') }}
                 </el-button>
               </div>
+
               <slot name="searchButton"></slot>
             </div>
           </div>
         </el-form>
       </el-card>
       <el-card class="table-card">
+        <div class="table-top">
+          <el-row :gutter="10">
+            <el-col :span="12">
+              <div class="table-title"><slot name="topName"></slot></div>
+            </el-col>
+            <el-col :span="12" style="text-align: right">
+              <slot name="topNameBtn"></slot>
+            </el-col>
+          </el-row>
+        </div>
+
+        <!-- <slot name="topName"></slot> -->
         <slot name="pageTable"></slot>
         <div class="pagination-box">
           <slot name="pagePagination"></slot>
@@ -41,7 +48,7 @@
 // import MenuTypeEnum from '@/enums/authTypes'
 
 // const { hasPermission } = usePermission();
-const slots = useSlots()
+
 const emit = defineEmits(['update:toggleValue'])
 
 const showSeniorSearch = ref(false)
@@ -62,13 +69,7 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  /**
-   * 是否存在描述组件
-   */
-  // isPromptContent: {
-  //   type: Boolean,
-  //   default: false,
-  // },
+
   /**
    * 用于按钮双向绑定的值
    */
@@ -97,9 +98,9 @@ const changeToggle = () => {
   margin-bottom: 12px;
   border-radius: 4px;
 
-  :deep(.el-card__body) {
-    padding: 12px 12px 0 12px;
-  }
+  // :deep(.el-card__body) {
+  //   padding: 12px 12px 0 12px;
+  // }
 
   :deep(.el-form-item) {
     margin-bottom: 12px !important;
@@ -139,13 +140,13 @@ const changeToggle = () => {
   transform: rotateZ(180deg);
 }
 
-.search-form {
-  :deep(.el-date-editor) {
-    width: 100%;
-  }
+// .search-form {
+//   :deep(.el-date-editor) {
+//     width: 100%;
+//   }
 
-  :deep(.el-select) {
-    width: 100%;
-  }
-}
+//   :deep(.el-select) {
+//     width: 100%;
+//   }
+// }
 </style>

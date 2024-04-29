@@ -11,7 +11,7 @@
         </template>
       </div>
       <template v-if="showLanguage">
-        <LangSelect langSelectClass="lang-select" icon-class="icon-class" />
+        <LangSelect langSelectClass="lang-select" />
       </template>
     </div>
   </div>
@@ -118,9 +118,5 @@ const headTitle = computed(() => {
 :deep(.lang-select) {
   display: unset;
   width: unset;
-}
-
-:deep(.icon-class) {
-  color: #fff;
 }
 </style>

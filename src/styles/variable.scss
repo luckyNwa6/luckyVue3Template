@@ -1,11 +1,44 @@
 //项目提供scss全局变量
+
+:root {
+  --menuBg: #001529; // 菜单栏背景色
+  --menuText: #101828; // 菜单栏文字颜色
+  --menuActiveText: #2e90fa; // 菜单栏选中文字颜色
+  --menuHover: #2e90fa; // 菜单栏hover颜色
+  --menuHoverText: #fff; // 菜单栏hover文字颜色
+
+  --subMenuBg: #fff; // 子菜单背景色
+  --subMenuActiveText: #2e90fa; // 子菜单选中文字颜色
+  --subMenuHover: #2e90fa; // 子菜单hover背景颜色
+  --subMenuHoverText: #fff; // 子菜单hover文字颜色
+  --subMenuActiveHoverText: #2e90fa; // 子菜单选中时hover文字颜色
+
+  --el-menu-item-height: 48px; // 菜单栏高度
+  --miniSideBarWidth: 55px; // 菜单栏收缩宽度
+  --sideBarWidth: 240px; // 菜单栏宽度
+
+  --hideSideBarWidth: -240px; //
+
+  --tableHeaderBg: #eff6ff; // 表格头部背景色
+  --tableHeaderColor: #475467; // 表格头部字体颜色
+  --tableHeaderPadding: 15px 0; // 表格头部内边距
+
+  --appMainMinWidth: 1346px; // 主体最小宽度
+
+  --el-dropdown-menuItem-hover-fill: var(--el-color-primary-light-9); // el-dropdown-menu hover背景色
+  --el-dropdown-menuItem-hover-color: var(--el-color-primary); // el-dropdown-menu hover文字颜色
+  --dialogheaderBg: #eff6ff;
+  --el-border-radius-mid: 8px; // border-radius 8px
+  --el-dialog__footer-text-align-center: center; // footer操作栏按钮居中
+}
+
 //定义项目主题颜色
 
 //左侧的菜单的宽度
 $base-menu-width: 260px;
 //左侧菜单的背景颜色
-$base-menu-background: #001529;
-$base-menu-min-width: 55px;
+$base-menu-background: var(--menuBg);
+$base-menu-min-width: var(--miniSideBarWidth);
 
 // 顶部导航的高度
 $base-tabbar-height: 50px;
@@ -16,4 +49,6 @@ $base-menu-logo-height: 50px;
 //左侧菜单logo右侧文字大小
 $base-logo-title-fontSize: 20px;
 
-$base-color: skyblue;
+$tableHeaderColor: var(--tableHeaderColor);
+$tableHeaderPadding: var(--tableHeaderPadding);
+$tableHeaderBg: var(--tableHeaderBg);

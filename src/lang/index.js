@@ -1,9 +1,7 @@
 import { createI18n } from 'vue-i18n'
-// import { useAppStore } from '@/store/modules/app';
 import Elp_ZhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import Elp_en from 'element-plus/dist/locale/en.mjs'
 
-// const appStore = useAppStore();
 // 本地语言包
 import enLocale from './package/en.json'
 import zhCnLocale from './package/zh-cn.json'
