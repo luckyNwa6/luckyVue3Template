@@ -32,6 +32,11 @@ router.beforeEach(async (to: any, from: any, next: any) => {
       //登录成功访问其余六个路由(登录排除)
       //有用户信息
       if (username) {
+        console.log('xxxxxxxxxxx------------')
+        console.log('🚀 ~ router.beforeEach ~ from:', from)
+        console.log('🚀 ~ router:', username)
+        console.log('🚀 ~ router.beforeEach ~ to:', to)
+        console.log('xxxxxxxxxxx------------')
         //放行
         next()
       } else {
