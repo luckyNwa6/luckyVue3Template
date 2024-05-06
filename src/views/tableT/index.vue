@@ -3,26 +3,14 @@
   <hr />
   下面是组件的使用。首先是pagePack
   <div class="flex-1 w-full">
-    <PagePack
-      permissionName="USER_MANAGER_LIST_PAGE"
-      showToggleButton
-      v-model:toggleValue="showSeniorSearch"
-    >
+    <PagePack permissionName="USER_MANAGER_LIST_PAGE" showToggleButton v-model:toggleValue="showSeniorSearch">
       <template #searchForm>
         <el-row :gutter="12">
           <el-col :span="7">
-            <el-input
-              v-model="searchData.username"
-              placeholder="请输入用户名"
-              clearable
-            />
+            <el-input v-model="searchData.username" placeholder="请输入用户名" clearable />
           </el-col>
           <el-col :span="7">
-            <el-input
-              v-model="searchData.nickname"
-              :placeholder="$t('systemManager.userManager.username')"
-              clearable
-            />
+            <el-input v-model="searchData.nickname" :placeholder="$t('systemManager.userManager.username')" clearable />
           </el-col>
           <el-col :span="10">
             <el-date-picker
@@ -37,26 +25,15 @@
         </el-row>
         <el-row :gutter="12" v-if="showSeniorSearch" class="mt-3">
           <el-col :span="7">
-            <el-select
-              v-model="searchData.status"
-              :placeholder="$t('systemManager.userManager.status')"
-            >
-              <el-option
-                :value="1"
-                :label="$t('systemManager.userManager.normal')"
-              />
-              <el-option
-                :value="0"
-                :label="$t('systemManager.userManager.disabled')"
-              />
+            <el-select v-model="searchData.status" :placeholder="$t('systemManager.userManager.status')">
+              <el-option :value="1" :label="$t('systemManager.userManager.normal')" />
+              <el-option :value="0" :label="$t('systemManager.userManager.disabled')" />
             </el-select>
           </el-col>
         </el-row>
       </template>
       <template #searchButton>
-        <el-button type="primary" @click="hooks_handleSearch(getTablePage)">
-          搜索
-        </el-button>
+        <el-button type="primary" @click="hooks_handleSearch(getTablePage)">搜索</el-button>
         <el-button @click="hooks_resetQueryTable(getTablePage)">
           {{ $t('page.reset') }}
         </el-button>
@@ -79,25 +56,9 @@
           }"
           @sort-change="handleSort"
         >
-          <el-table-column
-            type="index"
-            width="60"
-            label="序号"
-            fixed="left"
-            align="center"
-          />
-          <el-table-column
-            prop="username"
-            :label="$t('systemManager.userManager.accountName')"
-            show-overflow-tooltip
-            min-width="100"
-          />
-          <el-table-column
-            prop="nickname"
-            label="姓名"
-            show-overflow-tooltip
-            min-width="100"
-          />
+          <el-table-column type="index" width="60" label="序号" fixed="left" align="center" />
+          <el-table-column prop="username" :label="$t('systemManager.userManager.accountName')" show-overflow-tooltip min-width="100" />
+          <el-table-column prop="nickname" label="姓名" show-overflow-tooltip min-width="100" />
           <!-- <el-table-column
             :label="$t('systemManager.userManager.accountType')"
             show-overflow-tooltip
@@ -111,17 +72,8 @@
               }}
             </template>
           </el-table-column> -->
-          <el-table-column
-            prop="mobileNo"
-            label="手机号"
-            min-width="130"
-            show-overflow-tooltip
-          />
-          <el-table-column
-            prop="emailNo"
-            :label="$t('page.email')"
-            show-overflow-tooltip
-          />
+          <el-table-column prop="mobileNo" label="手机号" min-width="130" show-overflow-tooltip />
+          <el-table-column prop="emailNo" :label="$t('page.email')" show-overflow-tooltip />
           <!-- <el-table-column
             prop="groupName"
             :label="$t('systemManager.userManager.belongingGroup')"
@@ -155,12 +107,7 @@
               </div>
             </template>
           </el-table-column> -->
-          <el-table-column
-            prop="createdTimeSort"
-            sortable="custom"
-            width="150"
-            label="创建时间"
-          >
+          <el-table-column prop="createdTimeSort" sortable="custom" width="150" label="创建时间">
             <template #default="scope">
               <span>{{ scope.row.createdTime }}</span>
             </template>
@@ -168,13 +115,7 @@
           <el-table-column width="210" label="操作" fixed="right">
             <template #default="scope">
               <div>
-                <el-link
-                  class="opreation-link"
-                  :underline="false"
-                  @click="editData()"
-                >
-                  编辑
-                </el-link>
+                <el-link class="opreation-link" :underline="false" @click="editData()">编辑</el-link>
                 <!-- <el-link
                   class="opreation-link"
                   v-has-perms="16"

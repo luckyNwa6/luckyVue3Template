@@ -42,8 +42,7 @@ export default [
     url: '/api/home-list/page',
     method: 'get',
     response: (request) => {
-      const { pageNum, pageSize, nickname, groupId, username, status } =
-        request.query
+      const { pageNum, pageSize, nickname, groupId, username, status } = request.query
 
       // 模拟数据库查询数据
       const userList = createList().filter((user) => {

@@ -24,10 +24,7 @@ import {
   p as P,
   q as R,
 } from './index-uBCHypy4.js'
-/* empty css                  */ import {
-  r as U,
-  u as Y,
-} from './request-CJ29PJIZ.js'
+/* empty css                  */ import { r as U, u as Y } from './request-CJ29PJIZ.js'
 /* empty css                 */ const G = {
     viewBox: '0 0 1024 1024',
     width: '1.2em',
@@ -95,9 +92,7 @@ const le = { name: 'ep-add-location', render: se },
     },
   })
 function ce(t, l, _, a, v, x) {
-  return (
-    u(), r('div', null, '****这是自动引入的主键，都不需要import也不用注册*****')
-  )
+  return u(), r('div', null, '****这是自动引入的主键，都不需要import也不用注册*****')
 }
 const ie = y(ae, [
     ['render', ce],
@@ -121,15 +116,7 @@ const ie = y(ae, [
           r(
             'svg',
             { style: N({ width: t.width, height: t.height }) },
-            [
-              e(
-                'use',
-                { 'xlink:href': t.prefix + t.name, fill: t.color },
-                null,
-                8,
-                ue,
-              ),
-            ],
+            [e('use', { 'xlink:href': t.prefix + t.name, fill: t.color }, null, 8, ue)],
             4,
           )),
         ])
@@ -156,13 +143,9 @@ function he() {
 const o = (t) => (P('data-v-0cf1cc6b'), (t = t()), R(), t),
   de = o(() => e('hr', null, null, -1)),
   pe = o(() => e('hr', null, null, -1)),
-  me = o(() =>
-    e('h1', null, '测试svg,用xlink:herf执行哪一个图标#icon-图标名称', -1),
-  ),
+  me = o(() => e('h1', null, '测试svg,用xlink:herf执行哪一个图标#icon-图标名称', -1)),
   fe = { style: { width: '30px', height: '30px' } },
-  ge = o(() =>
-    e('use', { 'xlink:href': '#icon-phone', fill: 'pink' }, null, -1),
-  ),
+  ge = o(() => e('use', { 'xlink:href': '#icon-phone', fill: 'pink' }, null, -1)),
   ve = [ge],
   xe = o(() => e('div', { class: 'testColor' }, 'lucky小维', -1)),
   ye = o(() => e('hr', null, null, -1)),
@@ -201,16 +184,12 @@ const o = (t) => (P('data-v-0cf1cc6b'), (t = t()), R(), t),
             pwd: 'nwa999',
             uuid: '',
           }).then((h) => {
-            console.log(h),
-              h.code === 0 &&
-                m({ type: 'success', message: '登录成功!', title: 'HI，小维' })
+            console.log(h), h.code === 0 && m({ type: 'success', message: '登录成功!', title: 'HI，小维' })
           })
         },
         M = async () => {
           try {
-            await l.userLogin(C),
-              a.push({ path: '/home' }),
-              m({ type: 'success', message: '欢迎回来', title: 'HI' })
+            await l.userLogin(C), a.push({ path: '/home' }), m({ type: 'success', message: '欢迎回来', title: 'HI' })
           } catch (h) {
             m({ type: 'error', message: h.message })
           }
@@ -228,11 +207,7 @@ const o = (t) => (P('data-v-0cf1cc6b'), (t = t()), R(), t),
             V,
             null,
             [
-              n(
-                c,
-                { type: 'primary', size: 'small', icon: 'plus' },
-                { default: i(() => [s(' 编辑2种自动引入的方法应用 ')]), _: 1 },
-              ),
+              n(c, { type: 'primary', size: 'small', icon: 'plus' }, { default: i(() => [s(' 编辑2种自动引入的方法应用 ')]), _: 1 }),
               de,
               s(' 默认是英文的，需要main那修改配置 '),
               n(F, {
@@ -248,15 +223,7 @@ const o = (t) => (P('data-v-0cf1cc6b'), (t = t()), R(), t),
               ye,
               e('div', null, d(p(_)), 1),
               Ce,
-              e(
-                'div',
-                null,
-                ' hooks混入,也很好用：点击变化，当前x的值：' +
-                  d(p(v)) +
-                  ',当前y的值是：' +
-                  d(p(x)),
-                1,
-              ),
+              e('div', null, ' hooks混入,也很好用：点击变化，当前x的值：' + d(p(v)) + ',当前y的值是：' + d(p(x)), 1),
               ke,
               n(z),
               $e,
@@ -265,39 +232,15 @@ const o = (t) => (P('data-v-0cf1cc6b'), (t = t()), R(), t),
               n(L),
               we,
               s(' 这是elementui组件按需自动导入 '),
-              n(
-                c,
-                { plain: !0, onClick: k },
-                { default: i(() => [s('Show message')]), _: 1 },
-              ),
+              n(c, { plain: !0, onClick: k }, { default: i(() => [s('Show message')]), _: 1 }),
               Ee,
               s(' 这里测试mockjs模拟的数据 '),
-              n(
-                c,
-                { plain: !0, onClick: M },
-                { default: i(() => [s('Mock登录测试')]), _: 1 },
-              ),
-              n(
-                c,
-                { plain: !0, onClick: S },
-                { default: i(() => [s('线上登录测试')]), _: 1 },
-              ),
-              n(
-                c,
-                { plain: !0, onClick: $ },
-                { default: i(() => [s('牛逼i18n测试')]), _: 1 },
-              ),
-              n(
-                c,
-                { plain: !0, onClick: w },
-                { default: i(() => [s('echarts测试')]), _: 1 },
-              ),
+              n(c, { plain: !0, onClick: M }, { default: i(() => [s('Mock登录测试')]), _: 1 }),
+              n(c, { plain: !0, onClick: S }, { default: i(() => [s('线上登录测试')]), _: 1 }),
+              n(c, { plain: !0, onClick: $ }, { default: i(() => [s('牛逼i18n测试')]), _: 1 }),
+              n(c, { plain: !0, onClick: w }, { default: i(() => [s('echarts测试')]), _: 1 }),
               Se,
-              n(
-                c,
-                { plain: !0, onClick: E },
-                { default: i(() => [s('unocss测试')]), _: 1 },
-              ),
+              n(c, { plain: !0, onClick: E }, { default: i(() => [s('unocss测试')]), _: 1 }),
             ],
             64,
           )

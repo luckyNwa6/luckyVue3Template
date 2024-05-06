@@ -14,11 +14,7 @@
 <template>
   <div>
     <!-- 使用 CustomPage 组件 -->
-    <PagePack
-      :permissionName="permissionName"
-      :showToggleButton="showToggleButton"
-      :toggleValue="toggleValue"
-    >
+    <PagePack :permissionName="permissionName" :showToggleButton="showToggleButton" :toggleValue="toggleValue">
       <!-- 描述内容插槽 -->
       <template v-if="slots.promptContent">
         <template v-slot:promptContent>
