@@ -137,6 +137,7 @@ export default defineConfig(({ command, mode }) => {
     ],
     //代理跨域
     server: {
+      host: '0.0.0.0',
       port: 8888,
       proxy: {
         [env.VITE_APP_BASE_API]: {

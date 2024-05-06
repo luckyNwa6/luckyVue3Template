@@ -35,6 +35,12 @@ dependencies:
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
+  mapv:
+    specifier: ^2.0.62
+    version: 2.0.62
+  mapvgl:
+    specifier: 1.0.0-beta.189
+    version: 1.0.0-beta.189
   moment:
     specifier: ^2.30.1
     version: 2.30.1
@@ -53,6 +59,9 @@ dependencies:
   vue:
     specifier: ^3.4.19
     version: 3.4.21(typescript@5.3.3)
+  vue-baidu-map-3x:
+    specifier: ^1.0.37
+    version: 1.0.37(vue@3.4.21)
   vue-i18n:
     specifier: ^9.10.1
     version: 9.10.1(vue@3.4.21)
@@ -2755,6 +2764,10 @@ packages:
       - vue
     dev: false
 
+  /@yangjianfei/bmaplib.lushu@1.0.0:
+    resolution: {integrity: sha512-qZVijbgUgNs6tsP1muS67x0XzE5fJ3kFireouDvXO3bUYVV6XbpjZXksQTsggihLMIEvC1DO9GS9vVF8CnEeqQ==}
+    dev: false
+
   /JSONStream@1.3.5:
     resolution: {integrity: sha512-E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ==}
     hasBin: true
@@ -2970,6 +2983,19 @@ packages:
       - debug
     dev: false
 
+  /babel-plugin-external-helpers@6.22.0:
+    resolution: {integrity: sha512-TdAMiM6MzLokhk3yCA0KCctmivVZ/mmCwbp7YPmRGkqh2KkcNuxE3R0jxuYU+4xmvfMZx4p4uo8d1cT9t5BLxA==}
+    dependencies:
+      babel-runtime: 6.26.0
+    dev: false
+
+  /babel-runtime@6.26.0:
+    resolution: {integrity: sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==}
+    dependencies:
+      core-js: 2.6.12
+      regenerator-runtime: 0.11.1
+    dev: false
+
   /balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
@@ -3003,6 +3029,28 @@ packages:
     resolution: {integrity: sha512-XH4EJuk2wssk9gdQEhZyPM9O+2NStFQgglshiM03ZuUIjbi89pf/QIuZD/3ucoqzac8Bv/uXKF8/Ub7WTtmJtw==}
     dependencies:
       '@turf/turf': 6.5.0
+    dev: false
+
+  /bmaplib.curveline@1.0.0:
+    resolution: {integrity: sha512-9wcFMVhiYxNPqpvsLDAADn3qDhNzXp2mA6VyHSHg2XOAgSooC7ZiujdFhy0sp+0QYjTfJ/MjmLuNoUg2HHxH4Q==}
+    dev: false
+
+  /bmaplib.distancetool@1.0.2:
+    resolution: {integrity: sha512-EvxMnQRH6xM036zx5OLPyTg5tMCTbFBuGTTHOtExLy2/T0X6v5Va0YE7c3IPm/a/Eo5V/ynYpOLOLZbRY8ccyA==}
+    dev: false
+
+  /bmaplib.heatmap@1.0.4:
+    resolution: {integrity: sha512-rmhqUARBpUSJ9jXzUI2j7dIOqnc38bqubkx/8a349U2qtw/ulLUwyzRD535OrA8G7w5cz4aPKm6/rNvUAarg/Q==}
+    dev: false
+
+  /bmaplib.markerclusterer@1.0.13:
+    resolution: {integrity: sha512-VrLyWSiuDEVNi0yUfwOhFQ6z1oEEHS4w36GNu3iASu6p52QIx9uAXMUkuSCHReNR0bj2Cp9SA1dSx5RpojXajQ==}
+    dependencies:
+      bmaplib.texticonoverlay: 1.0.2
+    dev: false
+
+  /bmaplib.texticonoverlay@1.0.2:
+    resolution: {integrity: sha512-4ZTWr4ZP3B6qEWput5Tut16CfZgII38YwM3bpyb4gFTQyORlKYryFp9WHWrwZZaHlOyYDAXG9SX0hka43jTADg==}
     dev: false
 
   /boolbase@1.0.0:
@@ -3308,6 +3356,12 @@ packages:
     resolution: {integrity: sha512-2KV8NhB5JqC3ky0r9PMCAZKbUHSwtEo4CwCs0KXgruG43gX5PMqDEBbVU4OUzw2MuAWUfsuFmWvEKG5QRfSnJA==}
     dependencies:
       toggle-selection: 1.0.6
+    dev: false
+
+  /core-js@2.6.12:
+    resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
+    deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+    requiresBuild: true
     dev: false
 
   /cors@2.8.5:
@@ -5305,6 +5359,16 @@ packages:
       object-visit: 1.0.1
     dev: true
 
+  /mapv@2.0.62:
+    resolution: {integrity: sha512-P/diaWXuH+vJHVON//RBA7nCEdJAdafwN3Hys/TVYB6e3n7emqlQm+r9qy2xYV0GuxflRhbEeMPJWVIK5HEEqw==}
+    dependencies:
+      babel-plugin-external-helpers: 6.22.0
+    dev: false
+
+  /mapvgl@1.0.0-beta.189:
+    resolution: {integrity: sha512-1QGX1dIddKO9i8QK0pt/0CVobEZHXOc4D9v8FZKKnofnSWIcdwIVZx/y+kZMLSjVnZnbldlm0mK1+zDNZOEirA==}
+    dev: false
+
   /mdn-data@2.0.14:
     resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
     dev: true
@@ -5951,6 +6015,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
 
+  /regenerator-runtime@0.11.1:
+    resolution: {integrity: sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==}
+    dev: false
+
   /regex-not@1.0.2:
     resolution: {integrity: sha512-J6SDjUgDxQj5NusnOtdFxDwN/+HWykR8GELwctJ7mdqhcyy1xEc4SRFHUXvxTp661YaVKAjfRLZ9cCqS6tn32A==}
     engines: {node: '>=0.10.0'}
@@ -6468,6 +6536,10 @@ packages:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
     dev: true
 
+  /tiny-emitter@2.1.0:
+    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
+    dev: false
+
   /tinyqueue@2.0.3:
     resolution: {integrity: sha512-ppJZNDuKGgxzkHihX8v9v9G5f+18gzaTfrukGrq6ueg0lmH4nqVnA2IPG0AEH3jKEk2GRJCUhDoqpoiw3PHLBA==}
     dev: false
@@ -6973,6 +7045,21 @@ packages:
       sass: 1.71.1
     optionalDependencies:
       fsevents: 2.3.3
+
+  /vue-baidu-map-3x@1.0.37(vue@3.4.21):
+    resolution: {integrity: sha512-pl5fUodoOdytfBSK94JU8tO+lrKSLtFaIA3L+ksR9ASRNZqQS3KMpob4O6qULtDSNXyYowIyExbm1ArKODoNOw==}
+    peerDependencies:
+      vue: ^3.2.25
+    dependencies:
+      '@yangjianfei/bmaplib.lushu': 1.0.0
+      bmaplib.curveline: 1.0.0
+      bmaplib.distancetool: 1.0.2
+      bmaplib.heatmap: 1.0.4
+      bmaplib.markerclusterer: 1.0.13
+      tiny-emitter: 2.1.0
+      vue: 3.4.21(typescript@5.3.3)
+      vue-router: 4.3.0(vue@3.4.21)
+    dev: false
 
   /vue-demi@0.14.7(vue@3.4.21):
     resolution: {integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==}
