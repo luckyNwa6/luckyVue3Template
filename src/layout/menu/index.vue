@@ -1,5 +1,5 @@
 <template>
-  <template v-for="(item, index) in menuList" :key="index">
+  <template v-for="(item, index) in menuList" :key="item.path">
     <!--没有子路由-->
     <template v-if="!item.children">
       <el-menu-item :index="item.path" v-if="!item.meta.hidden" @click="goRoute">
@@ -49,7 +49,7 @@ const goRoute = (vc: any) => {
 </script>
 <script lang="ts">
 export default {
-  name: 'MenuLucky',
+  name: 'Menu',
 }
 </script>
 
