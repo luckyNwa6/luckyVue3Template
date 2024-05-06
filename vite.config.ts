@@ -85,7 +85,7 @@ export default defineConfig(({ command, mode }) => {
         ],
         // dts: '/auto-import.d.ts',
         eslintrc: {
-          enabled: false, //  Default `false`
+          enabled: false, // 项目启动生成后改false
           filepath: './.eslintrc-auto-import.json', // Default `./.eslintrc-auto-import.json`
           globalsPropValue: true, // Default `true`, (true | false | 'readonly' | 'readable' | 'writable' | 'writeable')
         },

@@ -19,8 +19,9 @@ module.exports = {
       jsx: true,
     },
   },
-  /* 继承已有的规则 */
-  extends: [
+  /* 继承已有的规则 全局json配置记得放下面*/
+  extends: [  
+    './.eslintrc-auto-import.json',
     'eslint:recommended',
     'plugin:vue/vue3-essential',
     'plugin:@typescript-eslint/recommended',
