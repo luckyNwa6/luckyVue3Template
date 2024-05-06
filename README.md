@@ -71,8 +71,16 @@ fix: 修复 bug
 
 ## 🐷 其他
 
+npm install -g rimraf
+删除node包用的
+
 启动项目后另启一个终端输入
 
 npx localtunnel --port 8000
 
 选y,点击链接跳转，点网站里的链接获取密码，复制粘贴提交，可公网访问
+
+新的本地打包进行接口调试
+pnpm i local-http-preview
+scripts 修改 "preview": "npx local-http-preview",
+pnpm run preview http://192.168.15.115:10086/luckyAdmin/ (这个地址可以是自己项目后台的api地址)

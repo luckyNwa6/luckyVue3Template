@@ -33,7 +33,7 @@ module.exports = {
     },
   },
   /* 继承已有的规则 */
-  extends: ['eslint:recommended', 'plugin:vue/vue3-essential', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  extends: ['./.eslintrc-auto-import.json','eslint:recommended', 'plugin:vue/vue3-essential', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
   plugins: ['vue', '@typescript-eslint'],
   /*
    * "off" 或 0    ==>  关闭规则
