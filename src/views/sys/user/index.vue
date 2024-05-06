@@ -133,7 +133,7 @@ const getTablePage = async () => {
   tableLoading.value = false
 }
 
-const editData = ({ type, data }: { type: String; data?: any }) => {
+const editData = ({ type, data }: { type: string; data?: any }) => {
   popEditerUser.value.handleOpen({
     type: type,
     data: data,

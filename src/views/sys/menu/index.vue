@@ -92,7 +92,7 @@ onMounted(() => {
 })
 
 // 当前页真正获取表格页数据的方法
-// @ts-ignore 下面将返回的菜单列表处理成树结构配合表格里的key
+// 下面将返回的菜单列表处理成树结构配合表格里的key
 const getTablePage = async () => {
   tableLoading.value = true
   try {
@@ -110,7 +110,7 @@ const getTablePage = async () => {
   tableLoading.value = false
 }
 
-const editData = ({ type, data }: { type: String; data?: any }) => {
+const editData = ({ type, data }: { type: string; data?: any }) => {
   popEditerUser.value.handleOpen({
     type: type,
     data: data,
