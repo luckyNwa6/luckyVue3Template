@@ -2,9 +2,9 @@
   <div class="flex-1 w-full">
     <PagePack permissionName="USER_MANAGER_LIST_PAGE" v-model:toggleValue="showSeniorSearch">
       <template #searchForm>
-        <el-form :model="searchData" ref="queryForm" :inline="true">
+        <el-form :model="searchData" ref="queryForm" :inline="true" @submit.prevent>
           <el-form-item label="用户名" prop="username">
-            <el-input v-model="searchData.key" placeholder="用户名" clearable @keyup.enter.native="hooks_handleSearch(getTablePage)" />
+            <el-input v-model="searchData.key" placeholder="用户名" clearable @keyup.enter="hooks_handleSearch(getTablePage)" />
           </el-form-item>
         </el-form>
       </template>
