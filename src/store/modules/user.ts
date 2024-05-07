@@ -92,7 +92,7 @@ const useUserStore = defineStore('User', {
         ;[...userAsyncRoute, anyRoute].forEach((route: any) => {
           router.addRoute(route)
         })
-        console.log('🚀 ~ ; router:', router.getRoutes())
+        console.log('🚀 ~ 获取到的路由地址 router:', router.getRoutes())
         return 'ok'
       } else {
         return Promise.reject(new Error(result.msg))
@@ -102,7 +102,7 @@ const useUserStore = defineStore('User', {
     async userLogout() {
       //退出登录请求
       const result: any = await reqLogout()
-      if (result.code == 200) {
+      if (result.code === 0) {
         //目前没有mock接口:退出登录接口(通知服务器本地用户唯一标识失效)
         this.token = ''
         this.username = ''

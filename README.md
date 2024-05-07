@@ -71,18 +71,34 @@ fix: 修复 bug
 
 ## 🐷 其他
 
+删除node包
+
+```shell
 npm install -g rimraf
-删除node包用的
+```
 
-启动项目后另启一个终端输入
+配置 scripts 中 clean
 
+配置本地公网访问，启动项目后另启一个终端输入
+
+```shell
 npx localtunnel --port 8000
+```
 
-选y,点击链接跳转，点网站里的链接获取密码，复制粘贴提交，可公网访问
+选y，点击链接跳转，点网站里的链接获取密码，复制粘贴提交
 
-新的本地打包进行接口调试
+本地打包进行接口调试
+
+```shell
 pnpm i local-http-preview
-scripts 修改 "preview": "npx local-http-preview",
-pnpm run preview http://192.168.15.115:10086/luckyAdmin/ (这个地址可以是自己项目后台的api地址)
+```
+
+配置 scripts 中 "preview": "npx local-http-preview",
+
+(这个地址为后台的api地址)，或者nginx通过域名反向代理
+
+```shell
+npm run preview https://luckynwa.top
+```
 
 docker compose up --build -d

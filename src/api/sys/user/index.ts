@@ -2,7 +2,7 @@ import request from '@/utils/request'
 import type { loginFormData, loginResponseData, userInfoResponseData } from './type'
 enum API {
   LOGIN_URL = '/sys/login',
-  LOGOUT_URL = '/admin/acl/index/logout',
+  LOGOUT_URL = '/sys/logout',
   USERINFO_URL = '/sys/user/info',
   UPDATE_PWD = '/sys/user/password',
   USERINFO_URL_ID = '/sys/user/info/',
