@@ -17,7 +17,7 @@ const pages = Object.keys(routes).map((path: any) => {
 const router = createRouter({
   //路由模式hash
   history: createWebHashHistory(),
-  routes: [...testRoute, ...constantRoute, ...asnycRoute, ...pages, anyRoute],
+  routes: [...testRoute, ...constantRoute, ...asnycRoute, ...pages, ...anyRoute],
   //滚动行为
   scrollBehavior() {
     return {

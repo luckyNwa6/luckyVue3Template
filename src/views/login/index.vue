@@ -36,6 +36,7 @@ let useStore = useUserStore()
 let luckyC = ref('ref类似定义data里的值') //下面使用它的值luckyC.value
 //获取路由器
 let $router = useRouter()
+
 //路由对象
 let $routes = useRoute()
 const { x, y } = useMousePosition()

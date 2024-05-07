@@ -12,32 +12,14 @@ export const constantRoute = [
   {
     path: '/',
     redirect: '/login',
+    name: '/',
     meta: {
       title: '',
       hidden: true,
       icon: '',
     },
   },
-  {
-    path: '/redirect',
-    component: () => import('@/views/layoutT/index.vue'),
-    meta: {
-      title: '',
-      hidden: true,
-      icon: '',
-    },
-    children: [
-      {
-        path: '/redirect/:path(.*)',
-        component: () => import('@/views/layoutT/redirect.vue'),
-        meta: {
-          title: '',
-          hidden: true,
-          icon: '',
-        },
-      },
-    ],
-  },
+
   {
     path: '/layoutT',
     component: () => import('@/views/layoutT/index.vue'),
@@ -157,14 +139,37 @@ export const asnycRoute = [
 ]
 
 //任意路由
-export const anyRoute = {
-  //任意路由
-  path: '/:pathMatch(.*)*',
-  component: () => import('@/views/404/index.vue'),
-  name: 'Any',
-  meta: {
-    title: '404',
-    hidden: true,
-    icon: 'DataLine',
+export const anyRoute = [
+  {
+    path: '/redirect',
+    component: () => import('@/views/layoutT/index.vue'),
+    name: 'redirect',
+    meta: {
+      title: '',
+      hidden: true,
+      icon: '',
+    },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/layoutT/redirect.vue'),
+        meta: {
+          title: '',
+          hidden: true,
+          icon: '',
+        },
+      },
+    ],
   },
-}
+  {
+    //任意路由
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/404/index.vue'),
+    name: '404',
+    meta: {
+      title: '404',
+      hidden: true,
+      icon: 'DataLine',
+    },
+  },
+]
