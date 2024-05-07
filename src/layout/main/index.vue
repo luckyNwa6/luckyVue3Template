@@ -33,7 +33,7 @@ watch(
 </script>
 <script lang="ts">
 export default {
-  name: 'Main',
+  name: 'MainLucky',
 }
 </script>
 
