@@ -92,7 +92,7 @@ const useUserStore = defineStore('User', {
         ;[...userAsyncRoute, anyRoute].forEach((route: any) => {
           router.addRoute(route)
         })
-        console.log('🚀 ~ ; router:', router.getRoutes())
+        console.log('🚀 ~ 获取到的路由地址 router:', router.getRoutes())
         return 'ok'
       } else {
         return Promise.reject(new Error(result.msg))
