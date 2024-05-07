@@ -68,7 +68,7 @@ let menuRoutes = [...constantRoute, ...asnycRoute]
 const tagsViewStore = useTagsViewStore()
 
 const { visitedViews } = storeToRefs(tagsViewStore)
-const layout = ''
+const layout = 'mix'
 const selectedTag = ref({})
 const scrollPaneRef = ref()
 const left = ref(0)
@@ -306,17 +306,34 @@ function closeAllTags(view) {
  * @param {Event} e - 单击事件。
  */
 function openTagMenu(tag, e) {
+  console.log('🚀 ~ openTagMenu ~ openTagMenu:', e)
   const menuMinWidth = 105
 
   const offsetLeft = proxy?.$el.getBoundingClientRect().left // container margin left
+  console.log('🚀 ~ openTagMenu ~ offsetLeft:', offsetLeft)
   const offsetWidth = proxy?.$el.offsetWidth // container width
+  console.log('🚀 ~ openTagMenu ~ offsetWidth:', offsetWidth)
   const maxLeft = offsetWidth - menuMinWidth // left boundary
+  console.log('🚀 ~ openTagMenu ~ maxLeft:', maxLeft)
+  console.log('🚀 ~ openTagMenu ~ e.clientX:', e.clientX)
+  console.log('🚀 ~ openTagMenu ~ offsetLeft:', offsetLeft)
   const l = e.clientX - offsetLeft + 15 // 15: margin right
 
   if (l > maxLeft) {
     left.value = maxLeft
+    console.log(left.value)
   } else {
-    left.value = l
+    left.value = l + 180
+    console.log(left.value)
+  }
+
+  // 混合模式下，需要减去顶部菜单(fixed)的高度
+  if (layout.value === 'mix') {
+    top.value = e.clientY - 10
+    console.log('🚀 ~ openTagMenu ~ top.value:', top.value)
+  } else {
+    top.value = e.clientY
+    console.log('🚀 ~ openTagMenu ~ top.value:', top.value)
   }
 
   tagMenuVisible.value = true
@@ -476,5 +493,10 @@ onMounted(() => {
       background: var(--el-fill-color-light);
     }
   }
+}
+
+.el-scrollbar__view a {
+  text-decoration: none;
+  color: black;
 }
 </style>

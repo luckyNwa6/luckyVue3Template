@@ -111,8 +111,8 @@ export default {
 
     formatDateLucky(timestamp) {
       const numberTime = parseInt(timestamp)
-      var date = new Date(numberTime)
-      var formattedDateTime =
+      let date = new Date(numberTime)
+      let formattedDateTime =
         date.getFullYear() +
         '-' +
         ('0' + (date.getMonth() + 1)).slice(-2) +

@@ -166,7 +166,7 @@ export default {
       }
     },
     getFirstStation(treeList) {
-      for (var i = 0; i < treeList.length; i++) {
+      for (let i = 0; i < treeList.length; i++) {
         let t = treeList[i]
         if (t.type == '1') {
           return t

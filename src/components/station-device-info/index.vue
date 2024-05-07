@@ -291,7 +291,7 @@ export default {
     },
 
     addMarkersToMap() {
-      var that = this
+      let that = this
       if (that.locationList.length === 0) {
         return false
       } else {
@@ -299,8 +299,8 @@ export default {
         that.markers = []
         let points = []
         let data = that.locationList
-        for (var i = 0; i < data.length; i++) {
-          var device = data[i]
+        for (let i = 0; i < data.length; i++) {
+          let device = data[i]
           that.mapCenter.lng = device.lng
           that.mapCenter.lat = device.lat
           let position = that.buildMarkerPosition(device)
@@ -328,7 +328,7 @@ export default {
     //   this.zoom = e.target.getZoom()
     // },
     buildMarkerPosition(device, type) {
-      var position = {}
+      let position = {}
       // type 区分是否显示重复点位
       position['position'] = { lng: device.lng, lat: device.lat }
       this.markerIcon = this.getAssetsFile(this.stationInfo.stationType)

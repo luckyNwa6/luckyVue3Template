@@ -55,12 +55,12 @@ const setChart = () => {
     chart.value = null
   }
   chart.value = echarts.init(document.getElementById(chartId))
-  var dataset = {
+  let dataset = {
     dimensions: ['name', 'value'],
     source: chartData.value,
   }
 
-  var option = {
+  let option = {
     tooltip: {
       trigger: 'item',
       formatter: (params) => {
