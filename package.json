@@ -35,6 +35,7 @@
     "mapvgl": "1.0.0-beta.189",
     "moment": "^2.30.1",
     "nprogress": "^0.2.0",
+    "path-browserify": "1.0.1",
     "pinia": "^2.1.7",
     "swiper": "10.1.0",
     "vite-plugin-pages": "^0.32.0",

@@ -10,7 +10,10 @@
         </el-menu>
       </div>
       <!-- 内容展示区域 -->
-      <div class="w-300 h-[80vh]"><MainLucky></MainLucky></div>
+      <div class="w-300 h-[80vh]">
+        <tags-view />
+        <MainLucky />
+      </div>
     </div>
   </div>
 </template>

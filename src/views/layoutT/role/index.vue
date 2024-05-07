@@ -1,5 +1,5 @@
 <template>
-  <div>菜单2</div>
+  <div>角色管理</div>
 </template>
 
 <script setup></script>

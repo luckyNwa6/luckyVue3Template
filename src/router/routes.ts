@@ -19,6 +19,26 @@ export const constantRoute = [
     },
   },
   {
+    path: '/redirect',
+    component: () => import('@/views/layoutT/index.vue'),
+    meta: {
+      title: '',
+      hidden: true,
+      icon: '',
+    },
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/layoutT/redirect.vue'),
+        meta: {
+          title: '',
+          hidden: true,
+          icon: '',
+        },
+      },
+    ],
+  },
+  {
     path: '/layoutT',
     component: () => import('@/views/layoutT/index.vue'),
     name: 'layoutT',
@@ -32,10 +52,12 @@ export const constantRoute = [
       {
         path: '/home',
         component: () => import('@/views/layoutT/home/index.vue'),
+        name: '首页',
         meta: {
           title: '首页',
           hidden: false,
           icon: 'HomeFilled',
+          affix: true,
         },
       },
     ],

@@ -1,7 +1,11 @@
 <template>
-  <div>菜单1</div>
+  <div>用户管理</div>
 </template>
 
-<script setup></script>
+<script setup>
+onMounted(() => {
+  console.log('用户管理')
+})
+</script>
 
 <style lang="scss" scoped></style>
