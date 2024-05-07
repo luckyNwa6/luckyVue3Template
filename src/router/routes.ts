@@ -4,26 +4,41 @@ export const constantRoute = [
     path: '/login',
     component: () => import('@/views/login/index.vue'),
     name: 'login',
+    meta: {
+      title: '登录', //菜单标题
+      hidden: true, //代表路由标题在菜单中是否隐藏  true:隐藏 false:不隐藏
+    },
   },
   {
     path: '/',
     redirect: '/login',
-  },
-
-  {
-    path: '/404',
-    component: () => import('@/views/404/index.vue'),
-    name: '404',
-  },
-  {
-    path: '/:pathMatch(.*)*',
-    redirect: '/404',
-    name: 'Any',
     meta: {
-      title: '任意路由',
+      title: '',
       hidden: true,
-      icon: 'DataLine',
+      icon: '',
     },
+  },
+  {
+    path: '/layoutT',
+    component: () => import('@/views/layoutT/index.vue'),
+    name: 'layoutT',
+    meta: {
+      title: '',
+      hidden: false,
+      icon: '',
+    },
+    redirect: '/home',
+    children: [
+      {
+        path: '/home',
+        component: () => import('@/views/layoutT/home/index.vue'),
+        meta: {
+          title: '首页',
+          hidden: false,
+          icon: 'HomeFilled',
+        },
+      },
+    ],
   },
 ]
 
@@ -66,8 +81,68 @@ export const testRoute = [
     name: 'mapT',
   },
   {
-    path: '/MenuT',
-    component: () => import('@/views/MenuT/index.vue'),
-    name: 'MenuT',
+    path: '/menuT',
+    component: () => import('@/views/menuT/index.vue'),
+    name: 'menuT',
   },
 ]
+
+//异步路由
+export const asnycRoute = [
+  {
+    path: '/sys',
+    component: () => import('@/views/layoutT/index.vue'),
+    name: 'Sys',
+    meta: {
+      title: '系统管理',
+      icon: 'Setting',
+      hidden: false,
+    },
+    redirect: '/sys/user',
+    children: [
+      {
+        path: '/sys/user',
+        component: () => import('@/views/layoutT/user/index.vue'),
+        name: 'User',
+        meta: {
+          title: '用户管理',
+          icon: 'User',
+          hidden: false,
+        },
+      },
+      {
+        path: '/sys/role',
+        component: () => import('@/views/layoutT/role/index.vue'),
+        name: 'Role',
+        meta: {
+          title: '角色管理',
+          hidden: false,
+          icon: 'UserFilled',
+        },
+      },
+      {
+        path: '/sys/menu',
+        component: () => import('@/views/layoutT/menu/index.vue'),
+        name: 'Menu',
+        meta: {
+          title: '菜单管理',
+          hidden: false,
+          icon: 'Monitor',
+        },
+      },
+    ],
+  },
+]
+
+//任意路由
+export const anyRoute = {
+  //任意路由
+  path: '/:pathMatch(.*)*',
+  component: () => import('@/views/404/index.vue'),
+  name: 'Any',
+  meta: {
+    title: '404',
+    hidden: true,
+    icon: 'DataLine',
+  },
+}

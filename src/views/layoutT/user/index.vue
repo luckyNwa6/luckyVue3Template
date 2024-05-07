@@ -1,5 +1,5 @@
 <template>
-  <div>112</div>
+  <div>菜单1</div>
 </template>
 
 <script setup></script>
