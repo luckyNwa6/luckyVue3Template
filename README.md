@@ -101,4 +101,28 @@ pnpm i local-http-preview
 npm run preview https://luckynwa.top
 ```
 
+方法1：
+
+先build打包，只需配置dockerfile文件即可，
+配置如下
+
+```
+FROM nginx:latest
+LABEL Author luckynwa
+COPY dist /usr/share/nginx/html
+
+```
+
+制作镜像
+docker build -t luckyvue3 .
+docker images
+发布到hub库
+docker login
+前面镜像弄的比较快，名字luckyvue3
+修改镜像名称
+docker tag luckyvue3 luckynwa6/luckyvue3:1.0
+发布
+docker push luckynwa6/luckyvue3:1.0
+
+方法2：
 docker compose up --build -d

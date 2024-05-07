@@ -1,5 +1,5 @@
 # 安装Node.js
-FROM node:latest AS development
+FROM node:16.20.1 AS development
 
 # 创建工作目录
 WORKDIR /app
