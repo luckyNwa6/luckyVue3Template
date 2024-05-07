@@ -65,4 +65,9 @@ export const testRoute = [
     component: () => import('@/views/mapT/index.vue'),
     name: 'mapT',
   },
+  {
+    path: '/MenuT',
+    component: () => import('@/views/MenuT/index.vue'),
+    name: 'MenuT',
+  },
 ]
