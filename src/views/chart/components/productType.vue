@@ -65,9 +65,7 @@ const setChart = () => {
       trigger: 'item',
       formatter: (params) => {
         const { name, value, seriesName, percent, marker } = params
-        return `${seriesName}<br />${marker} ${name}&emsp;${value} ${t(
-          'Units',
-        )}(${percent}%)`
+        return `${seriesName}<br />${marker} ${name}&emsp;${value} ${t('Units')}(${percent}%)`
       },
     },
     legend: {

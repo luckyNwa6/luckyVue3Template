@@ -1,10 +1,6 @@
 <template>
   <div>
-    <svg
-      :style="{ width: width, height: height }"
-      aria-hidden="true"
-      class="svg-icon"
-    >
+    <svg :style="{ width: width, height: height }" aria-hidden="true" class="svg-icon">
       <use :xlink:href="prefix + name" :fill="color"></use>
     </svg>
   </div>

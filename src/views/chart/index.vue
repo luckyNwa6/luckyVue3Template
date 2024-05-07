@@ -1,11 +1,7 @@
 <template>
   <div class="page-wrap">
     <el-row :gutter="12">
-      <el-col
-        v-for="item in componentsListSort"
-        :key="item.component"
-        :span="item.span"
-      >
+      <el-col v-for="item in componentsListSort" :key="item.component" :span="item.span">
         <component :is="item.component" :com-title="item.title" />
       </el-col>
     </el-row>

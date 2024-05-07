@@ -24,8 +24,7 @@ const k = {
             n,
             {
               modelValue: i(e),
-              'onUpdate:modelValue':
-                o[0] || (o[0] = (r) => (_(e) ? (e.value = r) : null)),
+              'onUpdate:modelValue': o[0] || (o[0] = (r) => (_(e) ? (e.value = r) : null)),
               placeholder: l.$t('role'),
             },
             null,
