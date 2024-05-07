@@ -84,3 +84,5 @@ npx localtunnel --port 8000
 pnpm i local-http-preview
 scripts 修改 "preview": "npx local-http-preview",
 pnpm run preview http://192.168.15.115:10086/luckyAdmin/ (这个地址可以是自己项目后台的api地址)
+
+docker compose up --build -d
