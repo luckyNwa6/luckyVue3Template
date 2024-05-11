@@ -106,7 +106,7 @@ npm run preview https://luckynwa.top
 先build打包，只需配置dockerfile文件即可，
 配置如下
 
-```
+```dockerfile
 FROM nginx:latest
 LABEL Author luckynwa
 COPY dist /usr/share/nginx/html
