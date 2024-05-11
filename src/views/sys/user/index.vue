@@ -2,9 +2,9 @@
   <div class="flex-1 w-full">
     <PagePack permissionName="USER_MANAGER_LIST_PAGE" v-model:toggleValue="showSeniorSearch">
       <template #searchForm>
-        <el-form :model="searchData" ref="queryForm" :inline="true">
+        <el-form :model="searchData" ref="queryForm" :inline="true" @submit.prevent>
           <el-form-item label="用户名" prop="username">
-            <el-input v-model="searchData.username" placeholder="用户名" clearable @keyup.enter.native="hooks_handleSearch(getTablePage)" />
+            <el-input v-model="searchData.username" placeholder="用户名" clearable @keyup.enter="hooks_handleSearch(getTablePage)" />
           </el-form-item>
         </el-form>
       </template>
@@ -133,7 +133,7 @@ const getTablePage = async () => {
   tableLoading.value = false
 }
 
-const editData = ({ type, data }: { type: String; data?: any }) => {
+const editData = ({ type, data }: { type: string; data?: any }) => {
   popEditerUser.value.handleOpen({
     type: type,
     data: data,
@@ -190,26 +190,28 @@ const handleDelete = (data: any) => {
     })
 }
 
-const handleChangeStatus = () => {
-  // tableLoading.value = true;
-  // try {
-  //   await changeStatus({
-  //     userId: data.userId
-  //   });
-  //   ElMessage({
-  //     type: 'success',
-  //     message: t('page.dialog.actionFb.successfullyChange')
-  //   });
-  //   tableLoading.value = false;
-  //   _getTableData();
-  // } catch {
-  //   ElMessage({
-  //     type: 'error',
-  //     message: t('page.dialog.actionFb.failedChange')
-  //   });
-  //   tableLoading.value = false;
-  // }
-}
+// const handleChangeStatus = () => {
+//   console.log('c');
+
+//   // tableLoading.value = true;
+//   // try {
+//   //   await changeStatus({
+//   //     userId: data.userId
+//   //   });
+//   //   ElMessage({
+//   //     type: 'success',
+//   //     message: t('page.dialog.actionFb.successfullyChange')
+//   //   });
+//   //   tableLoading.value = false;
+//   //   _getTableData();
+//   // } catch {
+//   //   ElMessage({
+//   //     type: 'error',
+//   //     message: t('page.dialog.actionFb.failedChange')
+//   //   });
+//   //   tableLoading.value = false;
+//   // }
+// }
 </script>
 
 <style lang="scss" scoped>

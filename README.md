@@ -71,8 +71,58 @@ fix: 修复 bug
 
 ## 🐷 其他
 
-启动项目后另启一个终端输入
+删除node包
 
+```shell
+npm install -g rimraf
+```
+
+配置 scripts 中 clean
+
+配置本地公网访问，启动项目后另启一个终端输入
+
+```shell
 npx localtunnel --port 8000
+```
 
-选y,点击链接跳转，点网站里的链接获取密码，复制粘贴提交，可公网访问
+选y，点击链接跳转，点网站里的链接获取密码，复制粘贴提交
+
+本地打包进行接口调试
+
+```shell
+pnpm i local-http-preview
+```
+
+配置 scripts 中 "preview": "npx local-http-preview",
+
+(这个地址为后台的api地址)，或者nginx通过域名反向代理
+
+```shell
+npm run preview https://luckynwa.top
+```
+
+方法1：
+
+先build打包，只需配置dockerfile文件即可，
+配置如下
+
+```dockerfile
+FROM nginx:latest
+LABEL Author luckynwa
+COPY dist /usr/share/nginx/html
+
+```
+
+制作镜像
+docker build -t luckyvue3 .
+docker images
+发布到hub库
+docker login
+前面镜像弄的比较快，名字luckyvue3
+修改镜像名称
+docker tag luckyvue3 luckynwa6/luckyvue3:1.0
+发布
+docker push luckynwa6/luckyvue3:1.0
+
+方法2：
+docker compose up --build -d

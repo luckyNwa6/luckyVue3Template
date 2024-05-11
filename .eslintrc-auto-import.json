@@ -1,5 +1,9 @@
 {
   "globals": {
+    "ElNotification": true,
+    "useMessage": true,
+    "useRoute": true,
+    "useRouter": true,
     "EffectScope": true,
     "ElForm": true,
     "ElMessage": true,

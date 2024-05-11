@@ -2,7 +2,7 @@
   <div class="site-wrapper site-page--not-found">
     <div class="site-content__wrapper">
       <div class="site-content">
-        <h2 class="not-found-title">400</h2>
+        <h2 class="not-found-title">404</h2>
         <p class="not-found-desc">
           抱歉！您访问的页面
           <em>失联</em>

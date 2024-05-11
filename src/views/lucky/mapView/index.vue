@@ -28,6 +28,7 @@
           v-for="(item, index) in markers"
           :title="item.title"
           :position="item.position"
+          :key="index"
           :icon="{
             imageUrl: getAssetsFile(item.icon),
             imageSize: item.size,
@@ -72,12 +73,13 @@
           }"
         /> -->
         <BCircle
-          v-for="itemC in circleList"
+          v-for="(itemC, index) in circleList"
           stroke-style="dotted"
           :center="{ lat: itemC.lat, lng: itemC.lng }"
           :radius="itemC.radius"
           strokeColor="#f00"
           fillColor="#f00"
+          :key="index"
           :fillOpacity="0.1"
         />
       </BMap>

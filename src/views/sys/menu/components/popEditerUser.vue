@@ -27,7 +27,7 @@
         <el-col :span="24">
           <el-form-item label="菜单类型" prop="type">
             <el-radio-group v-model="formData.type">
-              <el-radio v-for="(type, index) in formData.typeList" :value="index">
+              <el-radio v-for="(type, index) in formData.typeList" :value="index" :key="index">
                 {{ type }}
               </el-radio>
             </el-radio-group>
@@ -99,7 +99,6 @@ const initFormData = () => ({
   typeList: ['目录', '菜单', '按钮'],
   name: '',
   parentId: 0,
-  parentName: '',
   url: '',
   perms: '',
   orderNum: 0,

@@ -15,7 +15,7 @@
           active-text-color="yellowgreen"
         >
           <!--根据路由动态生成菜单-->
-          <Menu :menuList="userStore.menuRoutes"></Menu>
+          <MenuLucky :menuList="userStore.menuRoutes"></MenuLucky>
         </el-menu>
       </el-scrollbar>
     </div>
@@ -27,7 +27,7 @@
     <!-- <div class="layout_tags" :class="{ fold: LayOutSettingStore.fold ? true : false }"><Tags /></div> -->
     <!-- 内容展示区域 -->
     <div class="layout_main" :class="{ fold: LayOutSettingStore.fold ? true : false }">
-      <Main></Main>
+      <MainLucky></MainLucky>
     </div>
   </div>
 </template>
@@ -38,9 +38,9 @@ import { useRoute } from 'vue-router'
 //引入左侧菜单logo子组件
 import Logo from './logo/index.vue'
 //引入菜单组件
-import Menu from './menu/index.vue'
+import MenuLucky from './menu/index.vue'
 //右侧内容展示区域
-import Main from './main/index.vue'
+import MainLucky from './main/index.vue'
 //引入顶部tabbar组件
 import Tabbar from './tabbar/index.vue'
 

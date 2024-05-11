@@ -1,7 +1,6 @@
 <template>
   <div>
     <!-- 路由组件出口的位置 -->
-
     <router-view v-slot="{ Component }">
       <transition name="fade">
         <!-- 渲染layout一级路由组件的子路由 -->
@@ -34,7 +33,7 @@ watch(
 </script>
 <script lang="ts">
 export default {
-  name: 'Main',
+  name: 'MainLucky',
 }
 </script>
 

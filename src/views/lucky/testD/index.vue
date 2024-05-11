@@ -2,13 +2,13 @@
   <div class="flex-1 w-full">
     <PagePack permissionName="USER_MANAGER_LIST_PAGE" v-model:toggleValue="showSeniorSearch">
       <template #searchForm>
-        <el-form :model="searchData" ref="queryForm" :inline="true">
+        <el-form :model="searchData" ref="queryForm" :inline="true" @submit.prevent>
           <el-form-item :label="$t('systemManager.userManager.accountName')" prop="username">
             <el-input
               v-model="searchData.username"
               :placeholder="$t('systemManager.userManager.accountName')"
               clearable
-              @keyup.enter.native="hooks_handleSearch(getTablePage)"
+              @keyup.enter="hooks_handleSearch(getTablePage)"
             />
           </el-form-item>
 
@@ -17,7 +17,7 @@
               v-model="searchData.nickname"
               :placeholder="$t('systemManager.userManager.username')"
               clearable
-              @keyup.enter.native="hooks_handleSearch(getTablePage)"
+              @keyup.enter="hooks_handleSearch(getTablePage)"
             />
           </el-form-item>
           <el-form-item :label="$t('page.createTime')" prop="starEndDate">
@@ -243,7 +243,7 @@ const getTablePage = async () => {
   tableLoading.value = false
 }
 
-const editData = ({ type, data }: { type: String; data?: any }) => {
+const editData = ({ type, data }: { type: string; data?: any }) => {
   console.log('编辑')
 
   popEditerUser.value.handleOpen({

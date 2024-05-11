@@ -2,14 +2,9 @@
   <div class="flex-1 w-full">
     <PagePack permissionName="USER_MANAGER_LIST_PAGE" v-model:toggleValue="showSeniorSearch">
       <template #searchForm>
-        <el-form :model="searchData" ref="queryForm" :inline="true">
+        <el-form :model="searchData" ref="queryForm" :inline="true" @submit.prevent>
           <el-form-item label="菜单名称" prop="menuName">
-            <el-input
-              v-model="searchData.menuName"
-              placeholder="菜单名称"
-              clearable
-              @keyup.enter.native="hooks_handleSearch(getTablePage)"
-            />
+            <el-input v-model="searchData.menuName" placeholder="菜单名称" clearable @keyup.enter="hooks_handleSearch(getTablePage)" />
           </el-form-item>
         </el-form>
       </template>
@@ -92,7 +87,7 @@ onMounted(() => {
 })
 
 // 当前页真正获取表格页数据的方法
-// @ts-ignore 下面将返回的菜单列表处理成树结构配合表格里的key
+// 下面将返回的菜单列表处理成树结构配合表格里的key
 const getTablePage = async () => {
   tableLoading.value = true
   try {
@@ -110,7 +105,7 @@ const getTablePage = async () => {
   tableLoading.value = false
 }
 
-const editData = ({ type, data }: { type: String; data?: any }) => {
+const editData = ({ type, data }: { type: string; data?: any }) => {
   popEditerUser.value.handleOpen({
     type: type,
     data: data,

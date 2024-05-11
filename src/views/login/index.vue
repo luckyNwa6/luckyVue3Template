@@ -48,7 +48,7 @@ let loginForm = reactive({
   password: '123456',
   uuid: '',
 })
-let openYzm = ref(true) //开启滑动二维码
+let openYzm = ref(false) //开启滑动二维码
 //登录按钮回调
 const login = async () => {
   //保证全部表单相校验通过再发请求
