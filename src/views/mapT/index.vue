@@ -1,6 +1,7 @@
 <template>
   <div>
     <baidu-map :center="center" class="map" :zoom="zoom" @ready="handler" scroll-wheel-zoom>
+      <bm-city-list anchor="BMAP_ANCHOR_TOP_LEFT"></bm-city-list>
       <bml-marker-clusterer :averageCenter="true">
         <bm-marker v-for="marker of markers" :position="{ lng: marker.lng, lat: marker.lat }" @click="infoWindowOpen(marker)"></bm-marker>
         <bm-info-window
@@ -61,9 +62,13 @@ onMounted(() => {
   }, 10000)
 })
 </script>
-<style>
+<style scoped>
 .map {
   width: 100%;
   height: 90vh;
+}
+
+:deep(.BMap_noprint .ui_city_change .citylist_popup_main) {
+  display: block;
 }
 </style>
