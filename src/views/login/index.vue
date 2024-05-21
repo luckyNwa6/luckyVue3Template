@@ -42,7 +42,11 @@ let $routes = useRoute()
 const { x, y } = useMousePosition()
 onMounted(() => {
   const allRoutes = $router.options.routes
-  console.log(allRoutes)
+
+  const a = allRoutes.map((element) => {
+    return 'http://localhost:8888/#' + element.path
+  })
+  console.log(a)
 })
 const form = reactive({
   //一般表单用这个
