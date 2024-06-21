@@ -21,13 +21,13 @@
 
       <el-button @click="getData" type="primary" style="margin-left: 55px">获取宝可梦数据图片</el-button>
       <hr />
-      <el-card style="width: 100%; height: 400px; display: flex; overflow: auto" v-loading="loading">
+      <el-card style="width: 100%; height: 700px; display: flex; overflow: auto" v-loading="loading">
         <div v-for="(item, index) in picList" v-if="showPic">
           <img :src="`http://picsum.photos/${item.width}/${item.height}?${index + 1}`" :alt="`pic${index + 1}`" />
         </div>
       </el-card>
     </div>
-    <el-card style="width: 100%; height: 430px; display: flex; overflow: auto; margin-top: 10px">
+    <el-card style="width: 100%; height: 130px; display: flex; overflow: auto; margin-top: 10px">
       <div v-if="responseData">
         <h2>{{ responseData.name }}</h2>
         <div>height: {{ responseData.height }}</div>
@@ -43,9 +43,7 @@
 
 <script setup>
 import axios from 'axios'
-
 const responseData = ref(null)
-
 const picNum = ref(10)
 const picWidth = ref(200)
 const picHeight = ref(100)
@@ -55,6 +53,13 @@ const picList = reactive([])
 //获取自定义大小图片
 const genPicS = () => {
   restPicS()
+  if (!picWidth.value && !picHeight.value) {
+    ElMessage({
+      type: 'error',
+      message: '宽度和高度不能同时为空！',
+    })
+    return false
+  }
   showPic.value = true
   let arr = []
   for (let index = 0; index < picNum.value; index++) {
