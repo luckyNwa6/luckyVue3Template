@@ -16,7 +16,10 @@
   <el-button @click="conT">组件测试</el-button>
   <el-button @click="mapT">地图测试</el-button>
   <el-button @click="layoutT">菜单测试</el-button>
-
+  <el-select v-model="selectValue" placeholder="请选择自定义的菜单" class="ml-3" style="width: 240px">
+    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+  </el-select>
+  <el-button @click="goMenu" class="ml-2">前往</el-button>
   <hr />
   <img :src="emptyImage" class="h-10 w-10" />
 </template>
@@ -40,14 +43,30 @@ let $router = useRouter()
 //路由对象
 let $routes = useRoute()
 const { x, y } = useMousePosition()
+const selectValue = ref('') //下拉框的值
+interface Option {
+  value: string
+  label: string
+}
+const options: Ref<Option[]> = ref([])
 onMounted(() => {
   const allRoutes = $router.options.routes
 
-  const a = allRoutes.map((element) => {
-    return 'http://localhost:8888/#' + element.path
-  })
-  console.log(a)
+  options.value = allRoutes
+    .filter((element) => element.path !== '/:pathMatch(.*)*')
+    .filter((element) => element.path !== '/')
+    .filter((element) => element.path !== '/redirect')
+    .map((element) => {
+      return { value: 'http://localhost:8888/#' + element.path, label: element.path }
+    })
+
+  console.log(options.value)
 })
+
+const goMenu = () => {
+  // window.location.href = selectValue.value//一个窗口
+  window.open(selectValue.value, '_blank') //新窗口
+}
 const form = reactive({
   //一般表单用这个
   username: 'admin',
