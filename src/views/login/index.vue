@@ -48,7 +48,7 @@ let loginForm = reactive({
   password: '123456',
   uuid: '',
 })
-let openYzm = ref(false) //开启滑动二维码
+let openYzm = ref(true) //开启滑动二维码
 //登录按钮回调
 const login = async () => {
   //保证全部表单相校验通过再发请求
@@ -66,8 +66,8 @@ const login = async () => {
       moveTrackMaskBorderColor: '#ef9c0d',
     } // 去除logo
     const config = {
-      requestCaptchaDataUrl: '/yzm/LuckyYzm/gen',
-      validCaptchaUrl: '/yzm/LuckyYzm/check',
+      requestCaptchaDataUrl: '/api/LuckyYzm/gen',
+      validCaptchaUrl: '/api/LuckyYzm/check',
       bindEl: '#captcha-div',
       // 验证成功回调函数
       validSuccess: (res: any, c: any, tac: any) => {
